@@ -1,30 +1,18 @@
-name: Wush Tunnel
+name: Internet Tunnel via Chisel
 
 on:
   workflow_dispatch:
 
 jobs:
-  connect:
+  chisel-tunnel:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install Wush
+      - name: Setup Chisel server
         run: |
-          curl -fsSL https://github.com/coder/wush/releases/download/v0.4.0/wush_0.4.0_linux_amd64.tar.gz | tar -xz
-          chmod +x wush
-
-      - name: Create Custom DERP Config
-        run: |
-          cat <<EOF > derpmap.json
-          {
-            "OmitDefaultRegions": true
-          }
-          EOF
-
-      - name: Start Wush Server
-        run: |
-          export WUSH_DERP_MAP_PATH=derpmap.json
-          ./wush serve
+          # دانلود Chisel
+          curl -LO https://github.com/jpillora/chisel/releases/download/v1.9.1/chisel_1.9.1_linux_amd64.gz
+          gzip -d chisel_1.9.1_linux_amd64.gz
+          chmod +x chisel_1.9.1_linux_amd64
+          # اجرای سرور Chisel روی پورت 8080
+          ./chisel_1.9.1_linux_amd64 server --port 8080 --reverse
