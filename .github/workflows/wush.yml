@@ -1,18 +1,39 @@
-name: Internet Tunnel via Chisel
+name: Internet Tunnel via Chisel & Bore
 
 on:
   workflow_dispatch:
 
 jobs:
-  chisel-tunnel:
+  tunnel:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Setup Chisel server
+      - name: Install Chisel
         run: |
-          # دانلود Chisel
           curl -LO https://github.com/jpillora/chisel/releases/download/v1.9.1/chisel_1.9.1_linux_amd64.gz
           gzip -d chisel_1.9.1_linux_amd64.gz
           chmod +x chisel_1.9.1_linux_amd64
-          # اجرای سرور Chisel روی پورت 8080
-          ./chisel_1.9.1_linux_amd64 server --port 8080 --reverse
+          mv chisel_1.9.1_linux_amd64 chisel
+
+      - name: Install Bore
+        run: |
+          curl -LO https://github.com/ekzhang/bore/releases/download/v0.5.2/bore-v0.5.2-x86_64-unknown-linux-musl.tar.gz
+          tar -xzf bore-v0.5.2-x86_64-unknown-linux-musl.tar.gz
+          chmod +x bore
+
+      - name: Start Chisel server and capture fingerprint
+        run: |
+          ./chisel server --port 8080 --reverse 2>&1 | tee chisel.log &
+          sleep 2
+          echo "=== Fingerprint ==="
+          grep 'Fingerprint' chisel.log || echo "Fingerprint not found, check full log"
+          echo "==================="
+
+      - name: Expose Chisel server via Bore
+        run: |
+          nohup ./bore local 8080 --to bore.pub > bore.log 2>&1 &
+          sleep 3
+          echo "=== Bore Public Address ==="
+          cat bore.log
+          echo "=========================="
+          tail -f /dev/null   # ← این خط ماشین مجازی را ۳۰ دقیقه زنده نگه می‌دارد
