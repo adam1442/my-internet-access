@@ -1,36 +1,65 @@
-name: Direct Chisel Tunnel
+name: 📘 ساخت نسخه PDF و HTML کتاب شیدرها
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:        # ← با این دکمه می‌تونی دستی اجراش کنی
+  # push:                   # ← (اختیاری) اگر خواستی با هر push هم اجرا بشه
 
 jobs:
-  tunnel:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+
     steps:
-      - name: Install Chisel
-        run: |
-          curl -LO https://github.com/jpillora/chisel/releases/download/v1.9.1/chisel_1.9.1_linux_amd64.gz
-          gzip -d chisel_1.9.1_linux_amd64.gz
-          chmod +x chisel_1.9.1_linux_amd64
-          mv chisel_1.9.1_linux_amd64 chisel
+      - name: 📥 دریافت کدهای کتاب
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
-      - name: Get Runner Public IP
-        id: ip
+      - name: 🧰 نصب پیش‌نیازهای اصلی
         run: |
-          MY_IP=$(curl -s ifconfig.me)
-          echo "Runner public IP: $MY_IP"
-          echo "ip=$MY_IP" >> $GITHUB_ENV
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-xetex texlive-latex-extra texlive-fonts-recommended \
+            pandoc python3 make wget gettext
 
-      - name: Start Chisel Server & Print Fingerprint
+      - name: 🎨 نصب glslViewer (برای تصاویر شیدرها)
         run: |
-          echo "=============================================="
-          echo "Runner IP: ${{ env.ip }}"
-          echo "Use this IP with port 8080 in your client."
-          echo "=============================================="
-          ./chisel server --port 8080 --reverse 2>&1 | tee chisel.log &
-          sleep 2
-          # استخراج اثر انگشت از لاگ
-          grep 'Fingerprint' chisel.log || (echo "Fingerprint line not found, showing first 10 lines:" && head -n 10 chisel.log)
-          # زنده نگه‌داشتن رانر
-          tail -f /dev/null
+          GLSL_VERSION="3.1.1"
+          wget -q https://github.com/patriciogonzalezvivo/glslViewer/releases/download/${GLSL_VERSION}/glslViewer-${GLSL_VERSION}-linux64 -O glslViewer
+          chmod +x glslViewer
+          sudo mv glslViewer /usr/local/bin/
+
+      - name: ⚙️ نصب کتابخانه‌های Python مورد نیاز ساخت
+        run: pip3 install --user markdown
+
+      # ---------- ساخت PDF ----------
+      - name: 📄 تولید فایل PDF کتاب
+        run: make clean pdf
+
+      # ---------- ساخت HTML (آینهٔ وبسایت) ----------
+      - name: 🌐 آینه‌سازی کامل وبسایت کتاب
+        run: |
+          # یک پوشهٔ جداگانه برای خروجی HTML
+          mkdir -p website_mirror
+          cd website_mirror
+          wget --mirror \
+               --convert-links \
+               --adjust-extension \
+               --page-requisites \
+               --no-parent \
+               --wait=1 \
+               --random-wait \
+               https://thebookofshaders.com/
+          # انتقال یک سطح بالا (اختیاری، فقط برای تمیزی)
+          mv thebookofshaders.com/* .
+          rm -rf thebookofshaders.com
+          cd ..
+
+      # ---------- ذخیره‌سازی تغییرات در مخزن ----------
+      - name: 💾 کامیت و پوش کردن خروجی‌ها
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: '🎉 نسخه PDF و HTML کتاب ساخته شد (توسط اکشن)'
+          file_pattern: 'book.pdf website_mirror/*'
+          commit_user_name: 'GitHub Action'
+          commit_user_email: 'action@github.com'
