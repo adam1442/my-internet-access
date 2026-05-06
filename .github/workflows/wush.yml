@@ -1,47 +1,57 @@
-name: 📘 ساخت نسخه PDF و HTML کتاب شیدرها
+name: 📘 ساخت نسخه PDF و HTML کتاب شیدرها (از مخزن خالی)
 
 on:
-  workflow_dispatch:        # ← با این دکمه می‌تونی دستی اجراش کنی
-  # push:                   # ← (اختیاری) اگر خواستی با هر push هم اجرا بشه
+  workflow_dispatch:          # با دکمه Run workflow دستی اجرا می‌شود
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 دریافت کدهای کتاب
+      # ۱. دریافت مخزن خالی فعلی (برای کامیت نهایی)
+      - name: 📥 Checkout مخزن جاری (خالی)
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          persist-credentials: true
 
-      - name: 🧰 نصب پیش‌نیازهای اصلی
+      # ۲. Clone مخزن اصلی کتاب در یک پوشهٔ موقت
+      - name: 📚 Clone کتاب از گیت‌هاب
+        run: |
+          git clone https://github.com/patriciogonzalezvivo/thebookofshaders.git /tmp/book
+
+      # ۳. نصب پیش‌نیازهای PDF و wget
+      - name: 🧰 نصب بسته‌های مورد نیاز
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             texlive-xetex texlive-latex-extra texlive-fonts-recommended \
-            pandoc python3 make wget gettext
+            pandoc python3 make wget gettext binutils
 
+      # ۴. نصب glslViewer با استفاده از بسته .deb
       - name: 🎨 نصب glslViewer (برای تصاویر شیدرها)
         run: |
           GLSL_VERSION="3.1.1"
-          wget -q https://github.com/patriciogonzalezvivo/glslViewer/releases/download/${GLSL_VERSION}/glslViewer-${GLSL_VERSION}-linux64 -O glslViewer
-          chmod +x glslViewer
-          sudo mv glslViewer /usr/local/bin/
+          wget -q "https://github.com/patriciogonzalezvivo/glslViewer/releases/download/${GLSL_VERSION}/glslViewer-${GLSL_VERSION}-linux64.deb" -O glslViewer.deb
+          mkdir -p glsl_extract
+          dpkg-deb -x glslViewer.deb glsl_extract
+          sudo cp glsl_extract/usr/bin/glslViewer /usr/local/bin/
+          # تست اجرا
+          glslViewer --version
 
-      - name: ⚙️ نصب کتابخانه‌های Python مورد نیاز ساخت
+      # ۵. نصب کتابخانه‌های پایتون
+      - name: ⚙️ نصب pip مورد نیاز
         run: pip3 install --user markdown
 
-      # ---------- ساخت PDF ----------
-      - name: 📄 تولید فایل PDF کتاب
+      # ۶. ساخت فایل PDF از کتاب کلون شده
+      - name: 📄 تولید PDF کتاب
+        working-directory: /tmp/book
         run: make clean pdf
 
-      # ---------- ساخت HTML (آینهٔ وبسایت) ----------
-      - name: 🌐 آینه‌سازی کامل وبسایت کتاب
+      # ۷. آینه‌سازی کامل وبسایت
+      - name: 🌐 دانلود نسخه HTML آفلاین
         run: |
-          # یک پوشهٔ جداگانه برای خروجی HTML
-          mkdir -p website_mirror
-          cd website_mirror
+          mkdir -p /tmp/mirror
+          cd /tmp/mirror
           wget --mirror \
                --convert-links \
                --adjust-extension \
@@ -50,16 +60,24 @@ jobs:
                --wait=1 \
                --random-wait \
                https://thebookofshaders.com/
-          # انتقال یک سطح بالا (اختیاری، فقط برای تمیزی)
-          mv thebookofshaders.com/* .
-          rm -rf thebookofshaders.com
-          cd ..
+          # انتقال فایلها به پوشه ساده‌تر
+          if [ -d "thebookofshaders.com" ]; then
+            mv thebookofshaders.com/* .
+            rm -rf thebookofshaders.com
+          fi
 
-      # ---------- ذخیره‌سازی تغییرات در مخزن ----------
-      - name: 💾 کامیت و پوش کردن خروجی‌ها
+      # ۸. کپی خروجی‌ها به مخزن جاری
+      - name: 📁 انتقال خروجی‌ها به ریشه مخزن
+        run: |
+          cp /tmp/book/book.pdf ./book.pdf
+          mkdir -p website_mirror
+          cp -r /tmp/mirror/* ./website_mirror/
+
+      # ۹. کامیت و پوش فایل‌ها
+      - name: 💾 ثبت خروجی‌ها در مخزن
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: '🎉 نسخه PDF و HTML کتاب ساخته شد (توسط اکشن)'
+          commit_message: '🎉 PDF و HTML کتاب ساخته شد (توسط اکشن)'
           file_pattern: 'book.pdf website_mirror/*'
           commit_user_name: 'GitHub Action'
           commit_user_email: 'action@github.com'
