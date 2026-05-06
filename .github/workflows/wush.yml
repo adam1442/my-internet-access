@@ -31,7 +31,7 @@ jobs:
       - name: 🎨 نصب glslViewer (برای تصاویر شیدرها)
         run: |
           GLSL_VERSION="3.1.1"
-          wget -q "https://github.com/patriciogonzalezvivo/glslViewer/releases/download/${GLSL_VERSION}/glslViewer-${GLSL_VERSION}-linux64.deb" -O glslViewer.deb
+          wget -q "https://github.com/patriciogonzalezvivo/glslViewer/releases/download/3.5.2/glslViewer-3.5.2-amd64.deb" -O glslViewer.deb
           mkdir -p glsl_extract
           dpkg-deb -x glslViewer.deb glsl_extract
           sudo cp glsl_extract/usr/bin/glslViewer /usr/local/bin/
