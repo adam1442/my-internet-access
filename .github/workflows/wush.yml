@@ -1,83 +1,50 @@
-name: 📘 ساخت نسخه PDF و HTML کتاب شیدرها
+name: Mirror LearnOpenTK Website
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:          # اجرای دستی
+  schedule:
+    - cron: '0 0 * * 0'      # اختیاری: هر یکشنبه نیمه‌شب به‌روزرسانی شود
+
+permissions:
+  contents: write             # اجازهٔ push به مخزن
 
 jobs:
-  build:
+  mirror:
     runs-on: ubuntu-latest
-
     steps:
-      # ۰. دریافت مخزن خالی جاری
-      - name: 📥 Checkout مخزن جاری
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      # ۱. کلون کردن مخزن اصلی کتاب
-      - name: 📚 Clone کتاب
+      - name: Install wget
+        run: sudo apt-get update && sudo apt-get install -y wget
+
+      - name: Mirror website with wget
         run: |
-          git clone https://github.com/patriciogonzalezvivo/thebookofshaders.git /tmp/book
+          wget \
+            --mirror \
+            --convert-links \
+            --adjust-extension \
+            --page-requisites \
+            --no-parent \
+            --wait=2 \
+            --limit-rate=200k \
+            --tries=3 \
+            --domains=opentk.net \
+            --include-directories=/learn,/styles,/images,/scripts,/fonts \
+            --directory-prefix=./mirrored_site \
+            https://opentk.net/learn/index.html
 
-      # ۲. نصب پیش‌نیازهای PDF و ابزارها
-      - name: 🧰 نصب بسته‌های سیستم
+      - name: Copy mirrored files to repository root
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive-xetex texlive-latex-extra texlive-fonts-recommended \
-            pandoc python3 make wget gettext binutils
+          # انتقال فایل‌های دانلود شده به ریشهٔ مخزن (بدون حذف پوشهٔ .git)
+          rsync -a ./mirrored_site/ ./
+          rm -rf ./mirrored_site
 
-      # ۳. نصب glslViewer (نسخه ۳.۵.۲ - لینک درست)
-      - name: 🎨 نصب glslViewer
+      - name: Commit and push changes
         run: |
-          GLSL_VERSION="3.5.2"
-          DEB_FILE="glslViewer-${GLSL_VERSION}-amd64.deb"
-          wget -q "https://github.com/patriciogonzalezvivo/glslViewer/releases/download/${GLSL_VERSION}/${DEB_FILE}" -O glslViewer.deb
-          mkdir -p glsl_extract
-          dpkg-deb -x glslViewer.deb glsl_extract
-          sudo cp glsl_extract/usr/bin/glslViewer /usr/local/bin/
-          # تست سلامت
-          glslViewer --version || echo "⚠️ تست شکست خورد، اما ساخت ادامه دارد"
-
-      # ۴. نصب کتابخانه‌های پایتون
-      - name: ⚙️ نصب pip
-        run: pip3 install --user markdown
-
-      # ۵. ساخت PDF کتاب
-      - name: 📄 تولید PDF
-        working-directory: /tmp/book
-        run: make clean pdf
-
-      # ۶. آینه‌سازی وبسایت (HTML آفلاین)
-      - name: 🌐 دانلود نسخه HTML
-        run: |
-          mkdir -p /tmp/mirror
-          cd /tmp/mirror
-          wget --mirror \
-               --convert-links \
-               --adjust-extension \
-               --page-requisites \
-               --no-parent \
-               --wait=1 \
-               --random-wait \
-               https://thebookofshaders.com/
-          if [ -d "thebookofshaders.com" ]; then
-            mv thebookofshaders.com/* .
-            rm -rf thebookofshaders.com
-          fi
-
-      # ۷. انتقال خروجی‌ها به مخزن
-      - name: 📁 کپی خروجی‌ها
-        run: |
-          cp /tmp/book/book.pdf ./book.pdf
-          mkdir -p website_mirror
-          cp -r /tmp/mirror/* ./website_mirror/
-
-      # ۸. کامیت و پوش نهایی
-      - name: 💾 ثبت در مخزن
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: '🎉 PDF و HTML کتاب ساخته شد'
-          file_pattern: 'book.pdf website_mirror/*'
-          commit_user_name: 'GitHub Action'
-          commit_user_email: 'action@github.com'
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          # در صورت عدم تغییر، کامیتی انجام نمی‌شود
+          git diff --staged --quiet || git commit -m "Mirror LearnOpenTK website"
+          git push
