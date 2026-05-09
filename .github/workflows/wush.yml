@@ -29,8 +29,8 @@ jobs:
             --wait=2 \
             --limit-rate=200k \
             --tries=3 \
-            --domains=opentk.net \
-            --include-directories=/learn,/styles,/images,/scripts,/fonts \
+            --domains=dotnet.github.io \
+            --include-directories=/Silk.NET/docs/learn,/Silk.NET/docs/styles,/Silk.NET/docs/images,/Silk.NET/docs/scripts,/Silk.NET/docs/fonts \
             --directory-prefix=./mirrored_site \
             https://dotnet.github.io/Silk.NET/docs/index.html
 
