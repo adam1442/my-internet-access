@@ -1,12 +1,12 @@
-name: Mirror SilkNet Website (Playwright)
+name: Mirror SilkNet Website (wget)
 
 on:
-  workflow_dispatch:          # اجرای دستی
+  workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0'      # اختیاری: هر یکشنبه نیمه‌شب به‌روزرسانی شود
+    - cron: '0 0 * * 0'
 
 permissions:
-  contents: write             # اجازهٔ push به مخزن
+  contents: write
 
 jobs:
   mirror:
@@ -15,33 +15,24 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+      - name: Install wget
+        run: sudo apt-get update && sudo apt-get install -y wget
 
-      - name: Install Playwright
+      - name: Mirror website with wget
         run: |
-          npm init -y
-          npm install playwright website-scraper website-scraper-puppeteer
-          npx playwright install --with-deps chromium
-
-      - name: Scrape website with Playwright
-        run: |
-          npx website-scraper \
-            https://dotnet.github.io/Silk.NET/docs/ \
-            --output-directory ./mirrored_site \
-            --plugins website-scraper-puppeteer \
-            --recursive true \
-            --max-depth 20 \
-            --max-recursive-depth 20 \
-            --url-filter "dotnet.github.io" \
-            --prettify-urls true \
-            --sources [
-              {"selector": "link[rel='stylesheet']", "attr": "href"},
-              {"selector": "script", "attr": "src"},
-              {"selector": "img", "attr": "src"}
-            ]
+          wget \
+            --mirror \
+            --convert-links \
+            --adjust-extension \
+            --page-requisites \
+            --no-parent \
+            --wait=2 \
+            --limit-rate=200k \
+            --tries=3 \
+            --level=10 \
+            --random-wait \
+            --directory-prefix=./mirrored_site \
+            https://dotnet.github.io/Silk.NET/docs/
 
       - name: Copy mirrored files to repository root
         run: |
@@ -57,5 +48,5 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
-          git diff --staged --quiet || git commit -m "Mirror Silk.NET website (Playwright)"
+          git diff --staged --quiet || git commit -m "Mirror Silk.NET website (wget)"
           git push
