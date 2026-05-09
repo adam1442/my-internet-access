@@ -32,7 +32,7 @@ jobs:
             --domains=opentk.net \
             --include-directories=/learn,/styles,/images,/scripts,/fonts \
             --directory-prefix=./mirrored_site \
-            https://dotnet.github.io/Silk.NET/docs/
+            https://dotnet.github.io/Silk.NET/docs/index.html
 
       - name: Copy mirrored files to repository root
         run: |
