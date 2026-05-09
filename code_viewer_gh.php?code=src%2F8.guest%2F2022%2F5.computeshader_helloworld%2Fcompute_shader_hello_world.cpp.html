@@ -1,0 +1,241 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="utf-8"/>
+	<title>Code Viewer. Source code: src/8.guest/2022/5.computeshader_helloworld/compute_shader_hello_world.cpp</title>
+	<link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" type="text/css" href="js/styles/obsidian.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/hoverintent.js"></script>
+    <script src="js/highlight.pack.js"></script>
+    <script src="js/functions.js"></script>
+    <script type="text/javascript" src="js/mathjax/MathJax.js%3Fconfig=TeX-AMS_HTML"> // Has to be loaded last due to content bug </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        window.onload = function() {
+            $("#codez").mousedown(function() { switchNumbering(true); });
+            $("#codez").mouseup(function() { switchNumbering(false); });
+            
+            function switchNumbering(hide)
+            {     
+                if(hide)
+                    $('span.number').hide();
+                else
+                    $('span.number').show();
+            }
+            
+            // Create all function callbacks
+            SetFunctionTagCallbacks();
+        };
+        
+    </script>
+</head>
+<body style="margin:0; padding:0; background-image: none; background-color: #282B2E;">
+
+<pre style="width: 100%; height: 100%;"><code id="codez" style="margin:0; padding:25; border:0; border-radius:0;">#include &lt;glad/glad.h&gt;
+#include &lt;GLFW/glfw3.h&gt;
+
+#include &lt;glm/glm.hpp&gt;
+#include &lt;glm/gtc/matrix_transform.hpp&gt;
+#include &lt;glm/gtc/type_ptr.hpp&gt;
+
+
+#include &lt;<a href='code_viewer_gh.php%3Fcode=includes%252Flearnopengl%252Fshader_m.h.html' target='_blank'>learnopengl/shader_m.h</a>&gt;
+#include &lt;<a href='code_viewer_gh.php%3Fcode=includes%252Flearnopengl%252Fshader_c.h.html' target='_blank'>learnopengl/shader_c.h</a>&gt;
+#include &lt;<a href='code_viewer_gh.php%3Fcode=includes%252Flearnopengl%252Fcamera.h.html' target='_blank'>learnopengl/camera.h</a>&gt;
+
+#include &lt;iostream&gt;
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void renderQuad();
+
+// settings
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
+// texture size
+const unsigned int TEXTURE_WIDTH = 1000, TEXTURE_HEIGHT = 1000;
+
+// timing 
+float deltaTime = 0.0f; // time between current frame and last frame
+float lastFrame = 0.0f; // time of last frame
+
+int main(int argc, char* argv[])
+{
+	// glfw: initialize and configure
+	// ------------------------------
+<function id='17'>	glfwInit(</function>);
+<function id='18'>	glfwWindowHint(</function>GLFW_CONTEXT_VERSION_MAJOR, 4);
+<function id='18'>	glfwWindowHint(</function>GLFW_CONTEXT_VERSION_MINOR, 3);
+<function id='18'>	glfwWindowHint(</function>GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	#ifdef __APPLE__
+	<function id='18'>	glfwWindowHint(</function>GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	#endif
+
+	// glfw window creation
+	// --------------------
+	GLFWwindow* window =<function id='20'> glfwCreateWindow(</function>SCR_WIDTH, SCR_HEIGHT, &quot;LearnOpenGL&quot;, NULL, NULL);
+	if (window == NULL)
+	{
+		std::cout &lt;&lt; &quot;Failed to create GLFW window&quot; &lt;&lt; std::endl;
+	<function id='25'>	glfwTerminate(</function>);
+		return -1;
+	}
+<function id='19'>	glfwMakeContextCurrent(</function>window);
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSwapInterval(0);
+
+	// glad: load all OpenGL function pointers
+	// ---------------------------------------
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cout &lt;&lt; &quot;Failed to initialize GLAD&quot; &lt;&lt; std::endl;
+		return -1;
+	}
+
+	// query limitations
+	// -----------------
+	int max_compute_work_group_count[3];
+	int max_compute_work_group_size[3];
+	int max_compute_work_group_invocations;
+
+	for (int idx = 0; idx &lt; 3; idx++) {
+		glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_COUNT, idx, &amp;max_compute_work_group_count[idx]);
+		glGetIntegeri_v(GL_MAX_COMPUTE_WORK_GROUP_SIZE, idx, &amp;max_compute_work_group_size[idx]);
+	}	
+	glGetIntegerv(GL_MAX_COMPUTE_WORK_GROUP_INVOCATIONS, &amp;max_compute_work_group_invocations);
+
+	std::cout &lt;&lt; &quot;OpenGL Limitations: &quot; &lt;&lt; std::endl;
+	std::cout &lt;&lt; &quot;maximum number of work groups in X dimension &quot; &lt;&lt; max_compute_work_group_count[0] &lt;&lt; std::endl;
+	std::cout &lt;&lt; &quot;maximum number of work groups in Y dimension &quot; &lt;&lt; max_compute_work_group_count[1] &lt;&lt; std::endl;
+	std::cout &lt;&lt; &quot;maximum number of work groups in Z dimension &quot; &lt;&lt; max_compute_work_group_count[2] &lt;&lt; std::endl;
+
+	std::cout &lt;&lt; &quot;maximum size of a work group in X dimension &quot; &lt;&lt; max_compute_work_group_size[0] &lt;&lt; std::endl;
+	std::cout &lt;&lt; &quot;maximum size of a work group in Y dimension &quot; &lt;&lt; max_compute_work_group_size[1] &lt;&lt; std::endl;
+	std::cout &lt;&lt; &quot;maximum size of a work group in Z dimension &quot; &lt;&lt; max_compute_work_group_size[2] &lt;&lt; std::endl;
+
+	std::cout &lt;&lt; &quot;Number of invocations in a single local work group that may be dispatched to a compute shader &quot; &lt;&lt; max_compute_work_group_invocations &lt;&lt; std::endl;
+
+	// build and compile shaders
+	// -------------------------
+	Shader screenQuad("<a href='code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F5.computeshader_helloworld%252FscreenQuad.vs.html' target='_blank'>screenQuad.vs</a>", "<a href='code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F5.computeshader_helloworld%252FscreenQuad.fs.html' target='_blank'>screenQuad.fs</a>");
+	ComputeShader computeShader("<a href='code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F5.computeshader_helloworld%252FcomputeShader.cs.html' target='_blank'>computeShader.cs</a>");
+
+	screenQuad.use();
+	screenQuad.setInt(&quot;tex&quot;, 0);
+
+	// Create texture for opengl operation
+	// -----------------------------------
+	unsigned int texture;
+
+<function id='50'>	glGenTextures(</function>1, &amp;texture);
+<function id='49'>	glActiveTexture(</function>GL_TEXTURE0);
+<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, texture);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+<function id='52'>	glTexImage2D(</function>GL_TEXTURE_2D, 0, GL_RGBA32F, TEXTURE_WIDTH, TEXTURE_HEIGHT, 0, GL_RGBA, GL_FLOAT, NULL);
+
+	glBindImageTexture(0, texture, 0, GL_FALSE, 0, GL_READ_WRITE, GL_RGBA32F);
+
+<function id='49'>	glActiveTexture(</function>GL_TEXTURE0);
+<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, texture);
+
+	// render loop
+	// -----------
+	int fCounter = 0;
+	while (<function id='14'>!glfwWindowShouldClose(</function>window))
+	{
+		// Set frame time
+		float currentFrame =<function id='47'> glfwGetTime(</function>);
+		deltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+		if(fCounter &gt; 500) {
+			std::cout &lt;&lt; &quot;FPS: &quot; &lt;&lt; 1 / deltaTime &lt;&lt; std::endl;
+			fCounter = 0;
+		} else {
+			fCounter++;
+		}		
+
+		computeShader.use();
+		computeShader.setFloat(&quot;t&quot;, currentFrame);
+		glDispatchCompute((unsigned int)TEXTURE_WIDTH/10, (unsigned int)TEXTURE_HEIGHT/10, 1);
+
+		// make sure writing to image has finished before read
+		glMemoryBarrier(GL_SHADER_IMAGE_ACCESS_BARRIER_BIT);
+
+		// render image to quad
+	<function id='10'>	glClear(</function>GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		screenQuad.use();
+		
+		renderQuad();
+
+		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+		// -------------------------------------------------------------------------------
+	<function id='24'>	glfwSwapBuffers(</function>window);
+	<function id='23'>	glfwPollEvents(</function>);
+	}
+
+	// optional: de-allocate all resources once they've outlived their purpose:
+	// ------------------------------------------------------------------------
+	glDeleteTextures(1, &amp;texture);
+	glDeleteProgram(screenQuad.ID);
+	glDeleteProgram(computeShader.ID);
+
+<function id='25'>	glfwTerminate(</function>);
+
+	return EXIT_SUCCESS;
+}
+
+// renderQuad() renders a 1x1 XY quad in NDC
+// -----------------------------------------
+unsigned int quadVAO = 0;
+unsigned int quadVBO;
+void renderQuad()
+{
+	if (quadVAO == 0)
+	{
+		float quadVertices[] = {
+			// positions        // texture Coords
+			-1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
+			-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+			 1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
+			 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+		};
+		// setup plane VAO
+	<function id='33'>	glGenVertexArrays(</function>1, &amp;quadVAO);
+	<function id='12'>	glGenBuffers(</function>1, &amp;quadVBO);
+	<function id='27'>	glBindVertexArray(</function>quadVAO);
+	<function id='32'>	glBindBuffer(</function>GL_ARRAY_BUFFER, quadVBO);
+	<function id='31'>	glBufferData(</function>GL_ARRAY_BUFFER, sizeof(quadVertices), &amp;quadVertices, GL_STATIC_DRAW);
+	<function id='29'><function id='60'>	glEnableV</function>ertexAttribArray(</function>0);
+	<function id='30'>	glVertexAttribPointer(</function>0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	<function id='29'><function id='60'>	glEnableV</function>ertexAttribArray(</function>1);
+	<function id='30'>	glVertexAttribPointer(</function>1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	}
+<function id='27'>	glBindVertexArray(</function>quadVAO);
+<function id='1'>	glDrawArrays(</function>GL_TRIANGLE_STRIP, 0, 4);
+<function id='27'>	glBindVertexArray(</function>0);
+}
+
+// glfw: whenever the window size changed (by OS or user resize) this callback function executes
+// ---------------------------------------------------------------------------------------------
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+	// make sure the viewport matches the new window dimensions; note that width and 
+	// height will be significantly larger than specified on retina displays.
+<function id='22'>	glViewport(</function>0, 0, width, height);
+}
+</pre></code>
+
+<div id="hover">
+        HI
+</div>
+
+</body>
+</html>

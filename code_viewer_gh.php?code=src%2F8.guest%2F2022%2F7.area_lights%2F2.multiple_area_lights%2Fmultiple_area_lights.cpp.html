@@ -1,0 +1,669 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="utf-8"/>
+	<title>Code Viewer. Source code: src/8.guest/2022/7.area_lights/2.multiple_area_lights/multiple_area_lights.cpp</title>
+	<link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" type="text/css" href="js/styles/obsidian.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/hoverintent.js"></script>
+    <script src="js/highlight.pack.js"></script>
+    <script src="js/functions.js"></script>
+    <script type="text/javascript" src="js/mathjax/MathJax.js%3Fconfig=TeX-AMS_HTML"> // Has to be loaded last due to content bug </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        window.onload = function() {
+            $("#codez").mousedown(function() { switchNumbering(true); });
+            $("#codez").mouseup(function() { switchNumbering(false); });
+            
+            function switchNumbering(hide)
+            {     
+                if(hide)
+                    $('span.number').hide();
+                else
+                    $('span.number').show();
+            }
+            
+            // Create all function callbacks
+            SetFunctionTagCallbacks();
+        };
+        
+    </script>
+</head>
+<body style="margin:0; padding:0; background-image: none; background-color: #282B2E;">
+
+<pre style="width: 100%; height: 100%;"><code id="codez" style="margin:0; padding:25; border:0; border-radius:0;">//
+// Implementing Areal Lights with Linearly Transformed Cosines.
+//
+// Inspiration:
+// https://advances.realtimerendering.com/s2016/s2016_ltc_rnd.pdf
+// https://eheitzresearch.wordpress.com/415-2/
+
+// GLAD, GLFW, STB-IMAGE
+#include &lt;glad/glad.h&gt;
+#include &lt;GLFW/glfw3.h&gt;
+#include &lt;stb_image.h&gt;
+
+// GLM
+#include &lt;glm/glm.hpp&gt;
+#include &lt;glm/gtc/matrix_transform.hpp&gt;
+#include &lt;glm/gtc/type_ptr.hpp&gt;
+
+// LEARNOPENGL
+#include &lt;<a href='code_viewer_gh.php%3Fcode=includes%252Flearnopengl%252Fshader.h.html' target='_blank'>learnopengl/shader.h</a>&gt;
+#include &lt;<a href='code_viewer_gh.php%3Fcode=includes%252Flearnopengl%252Fcamera.h.html' target='_blank'>learnopengl/camera.h</a>&gt;
+#include &lt;<a href='code_viewer_gh.php%3Fcode=includes%252Flearnopengl%252Fmodel.h.html' target='_blank'>learnopengl/model.h</a>&gt;
+
+// STANDARD
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;functional&gt;
+#include &lt;chrono&gt;
+#include &lt;random&gt;
+
+// CUSTOM
+#include &quot;../ltc_matrix.hpp&quot;
+#include &quot;../colors.hpp&quot; // LOOK FOR DIFFERENT COLORS!
+
+// FUNCTION PROTOTYPES
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void do_movement(GLfloat deltaTime);
+unsigned int loadTexture(const char *path, bool gammaCorrection);
+void renderQuad();
+void renderCube();
+
+// SETTINGS AND GLOBALS
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+const glm::vec3 LIGHT_COLOR = Color::BurlyWood; // CHANGE AREA LIGHT COLOR HERE!
+bool keys[1024]; // activated keys
+const int NUM_AREA_LIGHTS = 16;
+Shader* ltcShaderPtr;
+
+// camera
+Camera camera(glm::vec3(-0.224556, 10.4038, -18.9259), glm::vec3(0.0f, 1.0f, 0.0f), 89.3999, -34.3001);
+float lastX = (float)SCR_WIDTH / 2.0;
+float lastY = (float)SCR_HEIGHT / 2.0;
+bool firstMouse = true;
+
+// timing
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
+
+
+struct VertexAL {
+	glm::vec3 position;
+	glm::vec3 normal;
+	glm::vec2 texcoord;
+};
+
+struct AreaLight {
+	glm::vec3 offset;
+	float yRotation;
+
+	glm::vec3 color;
+	float intensity = 4.0f;
+	bool twoSided = true;
+};
+
+AreaLight areaLights[NUM_AREA_LIGHTS];
+
+
+//
+// 2---3-5
+// |  / /|
+// | / / |
+// |/ /  |
+// 1-4---6
+//
+const GLfloat psize = 10.0f;
+VertexAL planeVertices[6] = {
+	{ {-psize, 0.0f, -psize}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f} },
+	{ {-psize, 0.0f,  psize}, {0.0f, 1.0f, 0.0f}, {0.0f, 1.0f} },
+	{ { psize, 0.0f,  psize}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f} },
+	{ {-psize, 0.0f, -psize}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f} },
+	{ { psize, 0.0f,  psize}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f} },
+	{ { psize, 0.0f, -psize}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f} }
+};
+VertexAL areaLightVertices[6] = {
+	{ {-8.0f, 2.4f, -1.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f} }, // 0 1 5 4
+	{ {-8.0f, 2.4f,  1.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f} },
+	{ {-8.0f, 0.4f,  1.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f} },
+	{ {-8.0f, 2.4f, -1.0f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f} },
+	{ {-8.0f, 0.4f,  1.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f} },
+	{ {-8.0f, 0.4f, -1.0f}, {1.0f, 0.0f, 0.0f}, {1.0f, 0.0f} }
+};
+
+GLuint planeVBO, planeVAO;
+GLuint areaLightVBO, areaLightVAO;
+
+void configureAreaLights()
+{
+	// CONFIGURE AREA LIGHTS
+	std::uniform_real_distribution&lt;GLfloat&gt; random_floats(0.0f, 1.0f);
+	typedef std::chrono::high_resolution_clock myclock;
+	unsigned seed = myclock::now().time_since_epoch().count();
+	std::default_random_engine generator(seed);
+	std::function&lt;float(void)&gt; fn =
+		[&amp;random_floats, &amp;generator]{ return random_floats(generator); };
+	for (int i = 0; i &lt; NUM_AREA_LIGHTS; i++)
+	{
+		float x = fn(); x = (x &gt; 0.5f) ? x : -x;
+		float z = fn(); z = (z &gt; 0.5f) ? z : -z;
+		areaLights[i].offset = glm::vec3(x, 0.0f, z) * 8.f;
+		areaLights[i].yRotation = fn() * glm::two_pi&lt;float&gt;();
+		areaLights[i].color = glm::vec3(fn(), fn(), fn());
+		// color
+		// intensity
+	}
+
+	// SEND TO GPU
+   <function id='33'> glGenVertexArrays(</function>1, &amp;areaLightVAO);
+   <function id='27'> glBindVertexArray(</function>areaLightVAO);
+
+   <function id='12'> glGenBuffers(</function>1, &amp;areaLightVBO);
+   <function id='32'> glBindBuffer(</function>GL_ARRAY_BUFFER, areaLightVBO);
+   <function id='31'> glBufferData(</function>GL_ARRAY_BUFFER, sizeof(areaLightVertices), areaLightVertices, GL_STATIC_DRAW);
+
+    // position
+   <function id='30'> glVertexAttribPointer(</function>0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat),
+                          (GLvoid*)0);
+   <function id='29'><function id='60'> glEnableV</function>ertexAttribArray(</function>0);
+
+    // normal
+   <function id='30'> glVertexAttribPointer(</function>1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat),
+                          (GLvoid*)(3 * sizeof(GLfloat)));
+   <function id='29'><function id='60'> glEnableV</function>ertexAttribArray(</function>1);
+
+    // texcoord
+   <function id='30'> glVertexAttribPointer(</function>2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat),
+                          (GLvoid*)(6 * sizeof(GLfloat)));
+   <function id='29'><function id='60'> glEnableV</function>ertexAttribArray(</function>2);
+   <function id='27'> glBindVertexArray(</function>0);
+
+   <function id='27'> glBindVertexArray(</function>0);
+}
+
+void configurePlane()
+{
+   <function id='33'> glGenVertexArrays(</function>1, &amp;planeVAO);
+   <function id='12'> glGenBuffers(</function>1, &amp;planeVBO);
+
+   <function id='27'> glBindVertexArray(</function>planeVAO);
+   <function id='32'> glBindBuffer(</function>GL_ARRAY_BUFFER, planeVBO);
+   <function id='31'> glBufferData(</function>GL_ARRAY_BUFFER, sizeof(planeVertices), planeVertices, GL_STATIC_DRAW);
+
+    // position
+   <function id='30'> glVertexAttribPointer(</function>0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat),
+                          (GLvoid*)0);
+   <function id='29'><function id='60'> glEnableV</function>ertexAttribArray(</function>0);
+
+    // normal
+   <function id='30'> glVertexAttribPointer(</function>1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat),
+                          (GLvoid*)(3 * sizeof(GLfloat)));
+   <function id='29'><function id='60'> glEnableV</function>ertexAttribArray(</function>1);
+
+    // texcoord
+   <function id='30'> glVertexAttribPointer(</function>2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat),
+                          (GLvoid*)(6 * sizeof(GLfloat)));
+   <function id='29'><function id='60'> glEnableV</function>ertexAttribArray(</function>2);
+   <function id='27'> glBindVertexArray(</function>0);
+}
+
+void renderPlane()
+{
+<function id='27'>	glBindVertexArray(</function>planeVAO);
+<function id='1'>	glDrawArrays(</function>GL_TRIANGLES, 0, 6);
+<function id='27'>	glBindVertexArray(</function>0);
+}
+
+void renderAreaLight()
+{
+<function id='27'>	glBindVertexArray(</function>areaLightVAO);
+<function id='1'>	glDrawArrays(</function>GL_TRIANGLES, 0, 6);
+<function id='27'>	glBindVertexArray(</function>0);
+}
+
+
+
+struct LTC_matrices {
+	GLuint mat1;
+	GLuint mat2;
+};
+
+GLuint loadMTexture()
+{
+	GLuint texture = 0;
+<function id='50'>	glGenTextures(</function>1, &amp;texture);
+<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, texture);
+
+<function id='52'>	glTexImage2D(</function>GL_TEXTURE_2D, 0, GL_RGBA, 64, 64,
+	             0, GL_RGBA, GL_FLOAT, LTC1);
+
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, 0);
+	return texture;
+}
+
+GLuint loadLUTTexture()
+{
+	GLuint texture = 0;
+<function id='50'>	glGenTextures(</function>1, &amp;texture);
+<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, texture);
+
+<function id='52'>	glTexImage2D(</function>GL_TEXTURE_2D, 0, GL_RGBA, 64, 64,
+	             0, GL_RGBA, GL_FLOAT, LTC2);
+
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+<function id='15'>	glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, 0);
+	return texture;
+}
+
+
+
+void incrementRoughness(float step)
+{
+	static glm::vec3 color = Color::SlateGray;
+	static float roughness = 0.5f;
+	roughness += step;
+	roughness = glm::clamp(roughness, 0.0f, 1.0f);
+	//std::cout &lt;&lt; &quot;roughness: &quot; &lt;&lt; roughness &lt;&lt; '\n';
+	ltcShaderPtr-&gt;use();
+	ltcShaderPtr-&gt;setVec4(&quot;material.albedoRoughness&quot;, glm::vec4(color, roughness));
+<function id='28'>	glUseProgram(</function>0);
+}
+
+void incrementLightIntensity(float step)
+{
+	static float intensity = 4.0f;
+	intensity += step;
+	intensity = glm::clamp(intensity, 0.0f, 10.0f);
+	//std::cout &lt;&lt; &quot;intensity: &quot; &lt;&lt; intensity &lt;&lt; '\n';
+	ltcShaderPtr-&gt;use();
+	ltcShaderPtr-&gt;setFloat(&quot;areaLight.intensity&quot;, intensity);
+<function id='28'>	glUseProgram(</function>0);
+}
+
+void switchTwoSided(bool doSwitch)
+{
+	static bool twoSided = true;
+	if (doSwitch) twoSided = !twoSided;
+	//std::cout &lt;&lt; &quot;twoSided: &quot; &lt;&lt; std::boolalpha &lt;&lt; twoSided &lt;&lt; '\n';
+	ltcShaderPtr-&gt;use();
+	ltcShaderPtr-&gt;setFloat(&quot;areaLight.twoSided&quot;, twoSided);
+<function id='28'>	glUseProgram(</function>0);
+}
+
+
+
+int main()
+{
+    // glfw: initialize and configure
+    // ------------------------------
+   <function id='17'> glfwInit(</function>);
+   <function id='18'> glfwWindowHint(</function>GLFW_CONTEXT_VERSION_MAJOR, 3);
+   <function id='18'> glfwWindowHint(</function>GLFW_CONTEXT_VERSION_MINOR, 3);
+   <function id='18'> glfwWindowHint(</function>GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+#ifdef __APPLE__
+   <function id='18'> glfwWindowHint(</function>GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
+
+    // glfw window creation
+    // --------------------
+    GLFWwindow* window =<function id='20'> glfwCreateWindow(</function>
+	    SCR_WIDTH, SCR_HEIGHT, &quot;LearnOpenGL: Multiple Area Lights&quot;, NULL, NULL);
+    if (window == NULL)
+    {
+        std::cout &lt;&lt; &quot;Failed to create GLFW window&quot; &lt;&lt; std::endl;
+       <function id='25'> glfwTerminate(</function>);
+        return -1;
+    }
+   <function id='19'> glfwMakeContextCurrent(</function>window);
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetCursorPosCallback(window, mouse_callback);
+   <function id='64'> glfwSetScrollCallback(</function>window, scroll_callback);
+   <function id='26'> glfwSetKeyCallback(</function>window, key_callback);
+
+    // tell GLFW to capture our mouse
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    // glad: load all OpenGL function pointers
+    // ---------------------------------------
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        std::cout &lt;&lt; &quot;Failed to initialize GLAD&quot; &lt;&lt; std::endl;
+        return -1;
+    }
+
+    // configure global opengl state
+    // -----------------------------
+   <function id='60'> glEnable(</function>GL_DEPTH_TEST);
+
+    // LUT textures
+    LTC_matrices mLTC;
+    mLTC.mat1 = loadMTexture();
+    mLTC.mat2 = loadLUTTexture();
+
+    // SHADERS
+    Shader shaderLTC("<a href='code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F7.area_lights%252F2.multiple_area_lights%252F7.multi_area_light.vs.html' target='_blank'>7.multi_area_light.vs</a>", "<a href='code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F7.area_lights%252F2.multiple_area_lights%252F7.multi_area_light.fs.html' target='_blank'>7.multi_area_light.fs</a>");
+    ltcShaderPtr = &amp;shaderLTC;
+    Shader shaderLightPlane("<a href='code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F7.area_lights%252F2.multiple_area_lights%252F7.light_plane.vs.html' target='_blank'>7.light_plane.vs</a>", "<a href='code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F7.area_lights%252F2.multiple_area_lights%252F7.light_plane.fs.html' target='_blank'>7.light_plane.fs</a>");
+
+    // TEXTURES
+    unsigned int concreteTexture = loadTexture(
+	    FileSystem::getPath(&quot;resources/textures/concreteTexture.png&quot;).c_str(), true);
+
+    // 3D OBJECTS
+	configurePlane();
+	configureAreaLights();
+
+    // SHADER CONFIGURATION
+    shaderLTC.use();
+    for (int i = 0; i &lt; NUM_AREA_LIGHTS; i++)
+	{
+		glm::mat4 model(1.0f);
+		model =<function id='55'> glm::translate(</function>model, areaLights[i].offset);
+		model =<function id='57'> glm::rotate(</function>model, areaLights[i].yRotation, glm::vec3(0.0f, 1.0f, 0.0f));
+
+		glm::vec3 p0 = glm::vec3(model * glm::vec4(areaLightVertices[0].position, 1.0f));
+		glm::vec3 p1 = glm::vec3(model * glm::vec4(areaLightVertices[1].position, 1.0f));
+		glm::vec3 p2 = glm::vec3(model * glm::vec4(areaLightVertices[4].position, 1.0f));
+		glm::vec3 p3 = glm::vec3(model * glm::vec4(areaLightVertices[5].position, 1.0f));
+
+		std::string str_pos = &quot;areaLights[&quot; + std::to_string(i) + &quot;].points&quot;;
+		std::string str_col = &quot;areaLights[&quot; + std::to_string(i) + &quot;].color&quot;;
+		std::string str_int = &quot;areaLights[&quot; + std::to_string(i) + &quot;].intensity&quot;;
+		std::string str_two = &quot;areaLights[&quot; + std::to_string(i) + &quot;].twoSided&quot;;
+		shaderLTC.setVec3((str_pos + &quot;[0]&quot;).c_str(), p0);
+		shaderLTC.setVec3((str_pos + &quot;[1]&quot;).c_str(), p1);
+		shaderLTC.setVec3((str_pos + &quot;[2]&quot;).c_str(), p2);
+		shaderLTC.setVec3((str_pos + &quot;[3]&quot;).c_str(), p3);
+		shaderLTC.setVec3(str_col.c_str(), areaLights[i].color);
+		shaderLTC.setFloat(str_int.c_str(), 2.0f);
+		shaderLTC.setInt(str_two.c_str(), 1);
+	}
+	shaderLTC.setInt(&quot;numAreaLights&quot;, NUM_AREA_LIGHTS);
+	shaderLTC.setInt(&quot;LTC1&quot;, 0);
+	shaderLTC.setInt(&quot;LTC2&quot;, 1);
+	shaderLTC.setInt(&quot;material.diffuse&quot;, 2);
+	incrementRoughness(0.0f);
+	//incrementLightIntensity(0.0f);
+	//switchTwoSided(false);
+<function id='28'>	glUseProgram(</function>0);
+
+	shaderLightPlane.use();
+	{
+		glm::mat4 model(1.0f);
+		shaderLightPlane.setMat4(&quot;model&quot;, model);
+	}
+	shaderLightPlane.setVec3(&quot;lightColor&quot;, LIGHT_COLOR);
+<function id='28'>	glUseProgram(</function>0);
+
+	// TIME MEASUREMENT
+	GLuint timeQuery;
+	glGenQueries(1, &amp;timeQuery);
+
+	GLuint64 totalQueryTimeNs = 0;
+	GLuint64 numQueries = 0;
+
+
+    // RENDER LOOP
+    while (<function id='14'>!glfwWindowShouldClose(</function>window))
+    {
+        float currentFrame = static_cast&lt;float&gt;<function id='47'>(glfwGetTime(</function>));
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
+
+       <function id='23'> glfwPollEvents(</function>);
+		do_movement(deltaTime);
+
+       <function id='13'><function id='10'> glClearC</function>olor(</function>0.0f, 0.0f, 0.0f, 1.0f);
+       <function id='10'> glClear(</function>GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        shaderLTC.use();
+        glm::mat4 model(1.0f);
+		glm::mat3 normalMatrix = glm::mat3(model);
+		shaderLTC.setMat4(&quot;model&quot;, model);
+		shaderLTC.setMat3(&quot;normalMatrix&quot;, normalMatrix);
+		glm::mat4 view = camera.GetViewMatrix();
+		shaderLTC.setMat4(&quot;view&quot;, view);
+		glm::mat4 projection =<function id='58'> glm::perspective(</function>
+		<function id='63'>	glm::radians(</function>camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+		shaderLTC.setMat4(&quot;projection&quot;, projection);
+		shaderLTC.setVec3(&quot;viewPosition&quot;, camera.Position);
+
+	<function id='49'>	glActiveTexture(</function>GL_TEXTURE0);
+	<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, mLTC.mat1);
+	<function id='49'>	glActiveTexture(</function>GL_TEXTURE1);
+	<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, mLTC.mat2);
+	<function id='49'>	glActiveTexture(</function>GL_TEXTURE2);
+	<function id='48'>	glBindTexture(</function>GL_TEXTURE_2D, concreteTexture);
+
+		// measure time
+		glBeginQuery(GL_TIME_ELAPSED, timeQuery);
+		renderPlane();
+		glEndQuery(GL_TIME_ELAPSED);
+
+	<function id='28'>	glUseProgram(</function>0);
+
+		// draw area light planes
+		shaderLightPlane.use();
+		shaderLightPlane.setMat4(&quot;view&quot;, view);
+		shaderLightPlane.setMat4(&quot;projection&quot;, projection);
+		float sinNowTime = glm::sin(currentFrame);
+		for (int i = 0; i &lt; NUM_AREA_LIGHTS; i++)
+		{
+			model = glm::mat4(1.0f);
+			model =<function id='55'> glm::translate(</function>model, areaLights[i].offset);
+			model =<function id='57'> glm::rotate(</function>model, areaLights[i].yRotation, glm::vec3(0.0f, 1.0f, 0.0f));
+			shaderLightPlane.setMat4(&quot;model&quot;, model);
+			shaderLightPlane.setVec3(&quot;lightColor&quot;, areaLights[i].color);
+			renderAreaLight();
+		}
+	<function id='28'>	glUseProgram(</function>0);
+
+		// fetch timestamp
+		GLuint64 elapsed = 0; // will be in nanoseconds
+		glGetQueryObjectui64v(timeQuery, GL_QUERY_RESULT, &amp;elapsed);
+		numQueries++;
+		totalQueryTimeNs += elapsed;
+
+       <function id='24'> glfwSwapBuffers(</function>window);
+    }
+
+    // compute average frame time
+	double measuredAverageNs = (double)totalQueryTimeNs / (double)numQueries;
+	double measuredAverageMs = measuredAverageNs * 1.0e-6;
+	std::cout &lt;&lt; &quot;Total average time(ms) = &quot; &lt;&lt; measuredAverageMs &lt;&lt; '\n';
+
+	glDeleteQueries(1, &amp;timeQuery);
+    glDeleteVertexArrays(1, &amp;planeVAO);
+    glDeleteBuffers(1, &amp;planeVBO);
+    glDeleteVertexArrays(1, &amp;areaLightVAO);
+    glDeleteBuffers(1, &amp;areaLightVBO);
+
+   <function id='25'> glfwTerminate(</function>);
+    return 0;
+}
+
+
+
+// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
+// ---------------------------------------------------------------------------------------------------------
+void do_movement(GLfloat deltaTime)
+{
+	float cameraSpeed = deltaTime * 3.0f;
+
+    if(keys[GLFW_KEY_W]) {
+        camera.ProcessKeyboard(FORWARD, cameraSpeed);
+    }
+    else if(keys[GLFW_KEY_S]) {
+        camera.ProcessKeyboard(BACKWARD, cameraSpeed);
+    }
+    if(keys[GLFW_KEY_A]) {
+        camera.ProcessKeyboard(LEFT, cameraSpeed);
+    }
+    else if(keys[GLFW_KEY_D]) {
+        camera.ProcessKeyboard(RIGHT, cameraSpeed);
+    }
+
+    if (keys[GLFW_KEY_R]) {
+	    if (keys[GLFW_KEY_LEFT_SHIFT]) incrementRoughness(0.01f);
+	    else incrementRoughness(-0.01f);
+    }
+
+    // if (keys[GLFW_KEY_I]) {
+	//     if (keys[GLFW_KEY_LEFT_SHIFT]) incrementLightIntensity(0.025f);
+	//     else incrementLightIntensity(-0.025f);
+    // }
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+    static unsigned short wireframe = 0;
+
+    if(action == GLFW_PRESS)
+    {
+        switch(key)
+        {
+        case GLFW_KEY_ESCAPE:
+            glfwSetWindowShouldClose(window, GL_TRUE);
+            return;
+        // case GLFW_KEY_B:
+	    //     switchTwoSided(true);
+	    //     break;
+        default:
+            keys[key] = true;
+            break;
+        }
+    }
+
+    if(action == GLFW_RELEASE)
+    {
+        if(key == GLFW_KEY_SPACE) {
+            switch(wireframe)
+            {
+            case 0:
+               <function id='43'> glPolygonMode(</function>GL_FRONT_AND_BACK, GL_LINE);
+                wireframe = 1;
+                break;
+            default:
+               <function id='43'> glPolygonMode(</function>GL_FRONT_AND_BACK, GL_FILL);
+                wireframe = 0;
+                break;
+            }
+        }
+        else {
+            keys[key] = false;
+        }
+    }
+}
+
+// glfw: whenever the window size changed (by OS or user resize) this callback function executes
+// ---------------------------------------------------------------------------------------------
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    // make sure the viewport matches the new window dimensions; note that width and
+    // height will be significantly larger than specified on retina displays.
+   <function id='22'> glViewport(</function>0, 0, width, height);
+}
+
+// glfw: whenever the mouse moves, this callback is called
+// -------------------------------------------------------
+void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+{
+    float xpos = static_cast&lt;float&gt;(xposIn);
+    float ypos = static_cast&lt;float&gt;(yposIn);
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+    lastX = xpos;
+    lastY = ypos;
+
+    camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+// glfw: whenever the mouse scroll wheel scrolls, this callback is called
+// ----------------------------------------------------------------------
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
+{
+    camera.ProcessMouseScroll(static_cast&lt;float&gt;(yoffset));
+}
+
+// utility function for loading a 2D texture from file
+// ---------------------------------------------------
+unsigned int loadTexture(char const * path, bool gammaCorrection)
+{
+    unsigned int textureID;
+   <function id='50'> glGenTextures(</function>1, &amp;textureID);
+
+    int width, height, nrComponents;
+    unsigned char *data = stbi_load(path, &amp;width, &amp;height, &amp;nrComponents, 0);
+    if (data)
+    {
+        GLenum internalFormat;
+        GLenum dataFormat;
+        if (nrComponents == 1)
+        {
+            internalFormat = dataFormat = GL_RED;
+        }
+        else if (nrComponents == 3)
+        {
+            internalFormat = gammaCorrection ? GL_SRGB : GL_RGB;
+            dataFormat = GL_RGB;
+        }
+        else if (nrComponents == 4)
+        {
+            internalFormat = gammaCorrection ? GL_SRGB_ALPHA : GL_RGBA;
+            dataFormat = GL_RGBA;
+        }
+
+       <function id='48'> glBindTexture(</function>GL_TEXTURE_2D, textureID);
+       <function id='52'> glTexImage2D(</function>GL_TEXTURE_2D, 0, internalFormat, width, height, 0, dataFormat, GL_UNSIGNED_BYTE, data);
+       <function id='51'> glGenerateMipmap(</function>GL_TEXTURE_2D);
+
+       <function id='15'> glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+       <function id='15'> glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+       <function id='15'> glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+       <function id='15'> glTexParameteri</function>(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+        stbi_image_free(data);
+    }
+    else
+    {
+        std::cout &lt;&lt; &quot;Texture failed to load at path: &quot; &lt;&lt; path &lt;&lt; std::endl;
+        stbi_image_free(data);
+    }
+
+    return textureID;
+}
+</pre></code>
+
+<div id="hover">
+        HI
+</div>
+
+</body>
+</html>
