@@ -1,0 +1,55 @@
+name: Mirror LearnOpenGL Website
+
+on:
+  workflow_dispatch:          # اجرای دستی
+  schedule:
+    - cron: '0 0 * * 0'      # هر یکشنبه نیمه‌شب به‌روزرسانی شود
+
+permissions:
+  contents: write             # اجازهٔ push به مخزن
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install wget
+        run: sudo apt-get update && sudo apt-get install -y wget
+
+      - name: Mirror website with wget
+        run: |
+          wget \
+            --mirror \
+            --convert-links \
+            --adjust-extension \
+            --page-requisites \
+            --no-parent \
+            --wait=2 \
+            --limit-rate=200k \
+            --random-wait \
+            --tries=3 \
+            --level=20 \
+            --domains=learnopengl.com \
+            --exclude-directories=/demo \
+            --directory-prefix=./mirrored_site \
+            https://learnopengl.com/
+
+      - name: Copy mirrored files to repository root
+        run: |
+          # انتقال محتوای دانلود شده به ریشهٔ مخزن
+          if [ -d "./mirrored_site/learnopengl.com" ]; then
+            rsync -a ./mirrored_site/learnopengl.com/ ./
+          elif [ -d "./mirrored_site" ]; then
+            rsync -a ./mirrored_site/ ./
+          fi
+          rm -rf ./mirrored_site
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git diff --staged --quiet || git commit -m "Mirror LearnOpenGL website"
+          git push
