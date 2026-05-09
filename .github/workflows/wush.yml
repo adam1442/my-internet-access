@@ -1,4 +1,4 @@
-name: Mirror LearnOpenTK Website
+name: Mirror SilkNet Website
 
 on:
   workflow_dispatch:          # اجرای دستی
@@ -32,7 +32,7 @@ jobs:
             --domains=opentk.net \
             --include-directories=/learn,/styles,/images,/scripts,/fonts \
             --directory-prefix=./mirrored_site \
-            https://opentk.net/learn/index.html
+            https://dotnet.github.io/Silk.NET/docs/
 
       - name: Copy mirrored files to repository root
         run: |
