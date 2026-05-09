@@ -1,4 +1,4 @@
-name: Mirror SilkNet Website
+name: Mirror SilkNet Website (Playwright)
 
 on:
   workflow_dispatch:          # اجرای دستی
@@ -15,29 +15,41 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install wget
-        run: sudo apt-get update && sudo apt-get install -y wget
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Mirror website with wget
+      - name: Install Playwright
         run: |
-          wget \
-            --mirror \
-            --convert-links \
-            --adjust-extension \
-            --page-requisites \
-            --no-parent \
-            --wait=2 \
-            --limit-rate=200k \
-            --tries=3 \
-            --domains=dotnet.github.io \
-            --include-directories=/Silk.NET/docs/learn,/Silk.NET/docs/styles,/Silk.NET/docs/images,/Silk.NET/docs/scripts,/Silk.NET/docs/fonts \
-            --directory-prefix=./mirrored_site \
-            https://dotnet.github.io/Silk.NET/docs/index.html
+          npm init -y
+          npm install playwright website-scraper website-scraper-puppeteer
+          npx playwright install --with-deps chromium
+
+      - name: Scrape website with Playwright
+        run: |
+          npx website-scraper \
+            https://dotnet.github.io/Silk.NET/docs/ \
+            --output-directory ./mirrored_site \
+            --plugins website-scraper-puppeteer \
+            --recursive true \
+            --max-depth 20 \
+            --max-recursive-depth 20 \
+            --url-filter "dotnet.github.io" \
+            --prettify-urls true \
+            --sources [
+              {"selector": "link[rel='stylesheet']", "attr": "href"},
+              {"selector": "script", "attr": "src"},
+              {"selector": "img", "attr": "src"}
+            ]
 
       - name: Copy mirrored files to repository root
         run: |
-          # انتقال فایل‌های دانلود شده به ریشهٔ مخزن (بدون حذف پوشهٔ .git)
-          rsync -a ./mirrored_site/ ./
+          if [ -d "./mirrored_site/dotnet.github.io" ]; then
+            rsync -a ./mirrored_site/dotnet.github.io/ ./
+          else
+            rsync -a ./mirrored_site/ ./
+          fi
           rm -rf ./mirrored_site
 
       - name: Commit and push changes
@@ -45,6 +57,5 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git add .
-          # در صورت عدم تغییر، کامیتی انجام نمی‌شود
-          git diff --staged --quiet || git commit -m "Mirror LearnOpenTK website"
+          git diff --staged --quiet || git commit -m "Mirror Silk.NET website (Playwright)"
           git push
