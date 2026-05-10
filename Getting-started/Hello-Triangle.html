@@ -396,7 +396,9 @@ unsigned int VBO;
   The position data of the triangle does not change, is used a lot, and stays the same for every render call so its usage type should best be <var>GL_STATIC_DRAW</var>. If, for instance, one would have a buffer with data that is likely to change frequently, a usage type of <var>GL_DYNAMIC_DRAW</var> ensures the graphics card will place the data in memory that allows for faster writes.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   As of now we stored the vertex data within memory on the graphics card as managed by a vertex buffer object named <var>VBO</var>. Next we want to create a vertex and fragment shader that actually processes this data, so let's start building those.
 </p>
 
@@ -423,9 +425,7 @@ void main()
   As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Next we declare all the input vertex attributes in the vertex shader with the <code>in</code> keyword. Right now we only care about position data so we only need a single vertex attribute. GLSL has a vector datatype that contains 1 to 4 floats based on its postfix digit. Since each vertex has a 3D coordinate we create a <code>vec3</code> input variable with the name <var>aPos</var>. We also specifically set the location of the input variable via <code>layout (location = 0)</code> and you'll later see that why we're going to need that location.
 </p>
 
@@ -556,7 +556,9 @@ fragmentShader = <function id='37'>glCreateShader</function>(GL_FRAGMENT_SHADER)
 <p>
   When linking the shaders into a program it links the outputs of each shader to the inputs of the next shader. This is also where you'll get linking errors if your outputs and inputs do not match. </p>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Creating a program object is easy:
 </p>
 
@@ -575,9 +577,7 @@ shaderProgram = <function id='36'>glCreateProgram</function>();
 <function id='35'>glLinkProgram</function>(shaderProgram);
 </code></pre>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   The code should be pretty self-explanatory, we attach the shaders to the program and link them via <fun><function id='35'>glLinkProgram</function></fun>. 
 </p>
 

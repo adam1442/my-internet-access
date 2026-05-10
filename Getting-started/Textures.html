@@ -416,9 +416,7 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 #include "stb_image.h"
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   By defining <var>STB_IMAGE_IMPLEMENTATION</var> the preprocessor modifies the header file such that it only contains the relevant definition source code, effectively turning the header file into a <code>.cpp</code> file, and that's about it. Now simply include <code>stb_image.h</code> somewhere in your program and compile.
 </p>
 
@@ -454,7 +452,9 @@ unsigned int texture;
 <function id='48'>glBindTexture</function>(GL_TEXTURE_2D, texture);  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Now that the texture is bound, we can start generating a texture using the previously loaded image data. Textures are generated with <fun><function id='52'>glTexImage2D</function></fun>:
 </p>
 

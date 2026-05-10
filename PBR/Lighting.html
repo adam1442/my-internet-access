@@ -473,9 +473,7 @@ vec3 kD = vec3(1.0) - kS;
 kD *= 1.0 - metallic;	
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Seeing as <var>kS</var> represents the energy of light that gets reflected, the remaining ratio of light energy is the light that gets refracted which we store as <var>kD</var>. Furthermore, because metallic surfaces don't refract light and thus have no diffuse reflections we enforce this property by nullifying <var>kD</var> if the surface is metallic.  This gives us the final data we need to calculate each light's outgoing reflectance value:
 </p>
   
@@ -598,7 +596,9 @@ void main()
 }  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Hopefully, with the <a href="Theory.html" target="_blank">theory</a> from the previous chapter and the knowledge of the reflectance equation this shader shouldn't be as daunting anymore. If we take this shader, 4 point lights, and quite a few spheres where we vary both their metallic and roughness values on their vertical and horizontal axis respectively, we'd get something like this:
 </p>
   

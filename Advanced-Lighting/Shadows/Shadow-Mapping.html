@@ -408,9 +408,7 @@ glm::mat4 lightSpaceMatrix = lightProjection * lightView;
 </p>
       
 <h3>Render to depth map</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   When we render the scene from the light's perspective we'd much rather use a simple shader that only transforms the vertices to light space and not much more. For such a simple shader called <var>simpleDepthShader</var> we'll use the following vertex shader:
 </p>
       
@@ -463,7 +461,9 @@ simpleDepthShader.use();
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0);  
 </code></pre>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Here the <fun>RenderScene</fun> function takes a shader program, calls all relevant drawing functions and sets the corresponding model matrices where necessary. 
 </p>
 
@@ -695,9 +695,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
       
 <img src="../../img/advanced-lighting/shadow_mapping_acne_diagram.png" class="clean" alt="Shadow acne explained"/>
         
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Because the shadow map is limited by resolution, multiple fragments can sample the same value from the depth map when they're relatively far away from the light source. The image shows the floor where each yellow tilted panel represents a single texel of the depth map. As you can see, several fragments sample the same depth sample. 
   </p>
   
@@ -720,7 +718,9 @@ float bias = 0.005;
 float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   A shadow bias of <code>0.005</code> solves the issues of our scene by a large extent, but you can imagine the bias value is highly dependent on the angle between the light source and the surface. If the surface would have a steep angle to the light source, the shadows may still display shadow acne. A more solid approach would be to change the amount of bias based on the surface angle towards the light: something we can solve with the dot product:
 </p>
   

@@ -433,7 +433,9 @@ float lerp(float a, float b, float f)
 <img src="../img/advanced-lighting/ssao_kernel_weight.png" class="clean" alt="SSAO Sample kernels (normal oriented hemisphere) with samples more closer aligned to the fragment's center position in OpenGL"/>
   
           
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Each of the kernel samples will be used to offset the view-space fragment position to sample surrounding geometry. We do need quite a lot of samples in view-space in order to get realistic results, which may be too heavy on performance. However, if we can introduce some semi-random rotation/noise on a per-fragment basis, we can significantly reduce the number of samples required.
 </p>
   
@@ -501,9 +503,7 @@ unsigned int ssaoColorBuffer;
 <function id='81'>glFramebufferTexture2D</function>(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, ssaoColorBuffer, 0);  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   As the ambient occlusion result is a single grayscale value we'll only need a texture's red component, so we set the color buffer's internal format to <var>GL_RED</var>. 
 </p>
   

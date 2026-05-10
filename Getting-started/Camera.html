@@ -432,7 +432,9 @@ deltaTime = currentFrame - lastFrame;
 lastFrame = currentFrame;  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Now that we have <var>deltaTime</var> we can take it into account when calculating the velocities:
 </p>
 
@@ -464,9 +466,7 @@ void processInput(GLFWwindow *window)
   Only using the keyboard keys to move around isn't that interesting. Especially since we can't turn around making the movement rather restricted. That's where the mouse comes in!
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   To look around the scene we have to change the <var>cameraFront</var> vector based on the input of the mouse. However, changing the direction vector based on mouse rotations is a little complicated and requires some trigonometry. If you do not understand the trigonometry, don't worry, you can just skip to the code sections and paste them in your code; you can always come back later if you want to know more.
 </p>
 

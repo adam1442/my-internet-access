@@ -594,16 +594,16 @@ void main()
 		 alt="Inner Tessellation" title="Inner Tessellation" class="clean">
 	<caption>Image Source: <a href="https://www.khronos.org/opengl/wiki/Tessellation" target="_blank">OpenGL Wiki</a></caption>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		The abstract patch space spans its dimensions within the range <code>[0, 1]</code>.  Each intermediate point is represented by a fractional coordinate <code>(u, v)</code>
 		that corresponds to its location within the patch.  The tessellation evaluation shader will then be run on every generated intermediate point.
 	</p>
 
 	<h3 id="tes">Tessellation Evaluation Shader</h3>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		The Tessellation Evaluation Shader has a relatively simple job after the above steps have been completed - to specify the <code>(x, y, z)</code>location of the 
 		generated intermediate point.  The presence of the tessellation evaluation shader in the pipeline is what triggers the tessellation primitive generation.  Therefore,
 		the inputs for the tessellation primitive generator are placed in the tessellation evaluation shader as input layout paramaters.  We will need to specify the 

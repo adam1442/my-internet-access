@@ -440,7 +440,9 @@ struct Vertex {
 </code></pre>
             
 <p>Just like before, except now we have added 3 and 4 layout location ids for <code> boneIds</code> and <code>weights</code>. One imporant thing to notice here is how we are passing data for <code>boneIds</code>. We are using <code>glVertexAttribIPointer</code> and we passed GL_INT as third parameter.&nbsp;</p>
-<p>Now we can extract the bone-weight information from the assimp data structure. Let's make some changes in Model class...</p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>Now we can extract the bone-weight information from the assimp data structure. Let's make some changes in Model class...</p>
 
 <pre><code>struct BoneInfo
 {
@@ -586,9 +588,7 @@ private:
 		and extract all vertices indices which will be influenced by this bone along with their 
 		respective weights and call <code>SetVertexBoneData</code> to fill up <code>Vertex.boneIds</code> and <code>Vertex.weights</code> with extracted information. </p>
 		
-		<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>Phew! You deserve a coffee break at this point. </p>  
+		<p>Phew! You deserve a coffee break at this point. </p>  
 
 <h3>Bone,Animation &amp; Animator classes</h3>
 <p>Here's high level view of classes..</p>
