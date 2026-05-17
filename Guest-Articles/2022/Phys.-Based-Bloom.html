@@ -834,9 +834,7 @@ GLuint BloomRenderer::BloomTexture()
 }
 </code></pre>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  The <tt>Destroy</tt> method is for proper cleanup. The <tt>BloomTexture</tt> is
 	  for retrieving the texture handle for the bloom texture after bloom has been
 	  performed - this could e.g. be a sampler2D input for your tonemapping shader.
@@ -936,7 +934,9 @@ void BloomRenderer::RenderUpsamples(float filterRadius)
 	  correct number of fragments for us.
 	</p>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  The upsampling is very similar, except it does things in opposite order:
 	  It starts from the low-resolution mips and then works backwards through the
 	  mip chain. We start by fetching the mip chain and activate the shader.
@@ -1281,7 +1281,9 @@ void main()
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  You may or may not want to invert the lens dirt image around the Y-axis,
 	  depending on how you load the image. By using <tt>blm + blm*drt</tt> we can
 	  achieve a multiplication to the bloom effect which is somewhat linearly scaled
@@ -1353,9 +1355,7 @@ void main()
 		  &nbsp;&nbsp;János Turánszki: <i>Wicked Engine - Render Breakdown</i>,
 		  <a href="https://www.youtube.com/watch?v=53NvFT37HzQ" target="_blank">Youtube</a></li>
 	  </ul>
-	</p><p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div>    </div>
+	</p>    </div>
     
     <div id="hover">
         HI

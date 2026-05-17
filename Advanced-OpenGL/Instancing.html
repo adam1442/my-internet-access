@@ -443,7 +443,9 @@ unsigned int instanceVBO;
   What makes this code interesting is the last line where we call <fun><function id='100'>glVertexAttribDivisor</function></fun>. This function tells OpenGL <strong>when</strong> to update the content of a vertex attribute to the next element. Its first parameter is the vertex attribute in question and the second parameter the <def>attribute divisor</def>. By default, the attribute divisor is <code>0</code> which tells OpenGL to update the content of the vertex attribute each iteration of the vertex shader. By setting this attribute to <code>1</code> we're telling OpenGL that we want to update the content of the vertex attribute when we start to render a new instance. By setting it to <code>2</code> we'd update the content every 2 instances and so on. By setting the attribute divisor to <code>1</code> we're effectively telling OpenGL that the vertex attribute at attribute location <code>2</code> is an instanced array.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   If we now were to render the quads again with <fun><function id='98'><function id='1'>glDrawArrays</function>Instanced</function></fun> we'd get the following output:
 </p>
 
@@ -466,9 +468,7 @@ void main()
 } 
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The result is that the first instances of the quads are drawn extremely small and the further we're in the process of drawing the instances, the closer <var>gl_InstanceID</var> gets to <code>100</code> and thus the more the quads regain their original size. It's perfectly legal to use instanced arrays together with <var>gl_InstanceID</var> like this.
 </p>
 

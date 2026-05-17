@@ -525,7 +525,9 @@ glDisable(GL_BLEND);
         We have to reset our depth function and depth mask for the solid pass at every frame since pipeline changes these states further down the line.
     </p>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
         Now, draw the solid objects using the solid shader. You can draw alpha cutout objects both at this stage and the next stage as well. The solid shader is just a simple shader that transforms the vertices and draws the mesh with the supplied color.
     </p>
 
@@ -561,9 +563,7 @@ solidShader.setVec3("color", glm::vec3(1.0f, 0.0f, 0.0f));
 <function id='10'>glClear</function>Bufferfv(GL_COLOR, 1, &oneFillerVec[0]);
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         Then, draw the transparent surfaces with your preferred alpha values.
     </p>
 

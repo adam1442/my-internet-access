@@ -381,7 +381,9 @@ unsigned int VBO;
   <fun><function id='31'>glBufferData</function></fun> is a function specifically targeted to copy user-defined data into the currently bound buffer. Its first argument is the type of the buffer we want to copy data into: the vertex buffer object currently bound to the <var>GL_ARRAY_BUFFER</var> target. The second argument specifies the size of the data (in bytes) we want to pass to the buffer; a simple <code>sizeof</code> of the vertex data suffices. The third parameter is the actual data we want to send.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The fourth parameter specifies how we want the graphics card to manage the given data. This can take 3 forms:
 </p>
 
@@ -396,9 +398,7 @@ unsigned int VBO;
   The position data of the triangle does not change, is used a lot, and stays the same for every render call so its usage type should best be <var>GL_STATIC_DRAW</var>. If, for instance, one would have a buffer with data that is likely to change frequently, a usage type of <var>GL_DYNAMIC_DRAW</var> ensures the graphics card will place the data in memory that allows for faster writes.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   As of now we stored the vertex data within memory on the graphics card as managed by a vertex buffer object named <var>VBO</var>. Next we want to create a vertex and fragment shader that actually processes this data, so let's start building those.
 </p>
 

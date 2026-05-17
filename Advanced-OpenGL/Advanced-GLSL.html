@@ -384,7 +384,9 @@ void main()
   The input variable <var>gl_FragCoord</var> is an input variable that allows us to read screen-space coordinates and get the depth value of the current fragment, but it is a <def>read-only</def> variable. We can't influence the screen-space coordinates of the fragment, but it is possible to set the depth value of the fragment. GLSL gives us an output variable called <var>gl_FragDepth</var> that we can use to manually set the depth value of the fragment within the shader.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To set the depth value in the shader we write any value between <code>0.0</code> and <code>1.0</code> to the output variable:
 </p>
 
@@ -435,9 +437,7 @@ layout (depth_&ltcondition&gt;) out float gl_FragDepth;
   </tr>
 </table>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   By specifying <code>greater</code> or <code>less</code> as the depth condition, OpenGL can make the assumption that you'll only write depth values larger or smaller than the fragment's depth value. This way OpenGL is still able to do early depth testing when the depth buffer value is part of the other direction of <code>gl_FragCoord.z</code>.  
 </p>
 

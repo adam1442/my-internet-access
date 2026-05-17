@@ -438,9 +438,7 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
     discard;
 </code></pre>
                 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   All fragments with (displaced) texture coordinates outside the default range are discarded and Parallax Mapping then gives proper result around the edges of a surface. Note that this trick doesn't work on all types of surfaces, but when applied to a plane it gives great results:
 </p>
   
@@ -456,7 +454,9 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
     
     <img src="../img/advanced-lighting/parallax_mapping_issues.png" alt="Three images displaying the issues with standard parallax mapping: breaks down at angles and incorrect results with steep height changes."/>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The reason that it doesn't work properly at times is that it's just a crude approximation of displacement mapping. There are some extra tricks however that still allows us to get almost perfect results with steep height changes, even when looking at an angle. For instance, what if we instead of one sample take multiple samples to find the closest point to \(\color{blue}B\)?
 </p>
       

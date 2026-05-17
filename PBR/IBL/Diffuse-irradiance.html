@@ -504,7 +504,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Then what's left to do is capture the equirectangular 2D texture onto the cubemap faces.
 </p>
     
@@ -545,9 +547,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0);  
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We take the color attachment of the framebuffer and switch its texture target around for every face of the cubemap, directly rendering the scene into one of the cubemap's faces. Once this routine has finished (which we only have to do once), the cubemap <var>envCubemap</var> should be the cubemapped environment version of our original HDR image.
 </p>
     

@@ -425,7 +425,9 @@ void main()
 }  
 </code></pre>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This vertex shader takes a per-object model, a vertex, and transforms all vertices to light space using <var>lightSpaceMatrix</var>.
 </p>      
       
@@ -461,9 +463,7 @@ simpleDepthShader.use();
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0);  
 </code></pre>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Here the <fun>RenderScene</fun> function takes a shader program, calls all relevant drawing functions and sets the corresponding model matrices where necessary. 
 </p>
 
@@ -718,9 +718,7 @@ float bias = 0.005;
 float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;  
 </code></pre>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   A shadow bias of <code>0.005</code> solves the issues of our scene by a large extent, but you can imagine the bias value is highly dependent on the angle between the light source and the surface. If the surface would have a steep angle to the light source, the shadows may still display shadow acne. A more solid approach would be to change the amount of bias based on the surface angle towards the light: something we can solve with the dot product:
 </p>
   
@@ -728,7 +726,9 @@ float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
 float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Here we have a maximum bias of <code>0.05</code> and a minimum of <code>0.005</code> based on the surface's normal and light direction. This way, surfaces like the floor that are almost perpendicular to the light source get a small bias, while surfaces like the cube's side-faces get a much larger bias. The following image shows the same scene but now with a shadow bias:
 </p>
   

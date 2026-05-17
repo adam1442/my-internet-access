@@ -254,7 +254,7 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 <img src="../img/in-practice/bitmapfont.png" alt="Sprite sheet of characters"/>
 
 <p>
-  Here you can see how we would render the text 'OpenGL' by taking a bitmap font and sampling the corresponding glyphs from the texture (carefully choosing the texture coordinates) that we render on top of several quads. By enabling <a href="../Advanced-OpenGL/Blending.html" target="_blank">blending</a> and keeping the background transparent, we will end up with just a string of characters rendered to the screen. This particular bitmap font was generated using Codehead's Bitmap <a href="http://www.codehead.co.uk/cbfg/" target="_blank">Font Generator</a>.
+  Here you can see how we would render the text 'OpenGL' by taking a bitmap font and sampling the corresponding glyphs from the texture (carefully choosing the texture coordinates) that we render on top of several quads. By enabling <a href="../Advanced-OpenGL/Blending.html" target="_blank">blending</a> and keeping the background transparent, we will end up with just a string of characters rendered to the screen. This particular bitmap font was generated using Codehead's Bitmap <a href="https://codehead.co.uk/cbfg/" target="_blank">Font Generator</a>.
 </p>
   
 <p>
@@ -448,9 +448,7 @@ FT_Done_FreeType(ft);
 </code></pre>
     
 <h3>Shaders</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   To render the glyphs we'll be using the following vertex shader:
 </p>
     
@@ -491,7 +489,9 @@ void main()
   The fragment shader takes two uniforms: one is the mono-colored bitmap image of the glyph, and the other is a color uniform for adjusting the text's final color. We first sample the color value of the bitmap texture. Because the texture's data is stored in just its red component, we sample the <code>r</code> component of the texture as the sampled alpha value. By varying the output color's alpha value, the resulting pixel will be transparent for all the glyph's background colors and non-transparent for the actual character pixels. We also multiply the RGB colors by the <var>textColor</var> uniform to vary the text color.
 </p>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   We do need to enable <a href="../Advanced-OpenGL/Blending.html" target="_blank">blending</a> for this to work though: 
 </p>
     

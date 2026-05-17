@@ -462,7 +462,9 @@ vec3 specular     = numerator / denominator;
   Note that we add <code>0.0001</code> to the denominator to prevent a divide by zero in case any dot product ends up <code>0.0</code>.
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Now we can finally calculate each light's contribution to the reflectance equation. As the Fresnel value directly corresponds to \(k_S\) we can use <var>F</var> to denote the specular contribution of any light that hits the surface. From \(k_S\) we can then calculate the ratio of refraction \(k_D\):
 </p>
   
@@ -596,9 +598,7 @@ void main()
 }  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Hopefully, with the <a href="Theory.html" target="_blank">theory</a> from the previous chapter and the knowledge of the reflectance equation this shader shouldn't be as daunting anymore. If we take this shader, 4 point lights, and quite a few spheres where we vary both their metallic and roughness values on their vertical and horizontal axis respectively, we'd get something like this:
 </p>
   

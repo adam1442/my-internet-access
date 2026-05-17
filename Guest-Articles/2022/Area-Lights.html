@@ -673,9 +673,7 @@ mat3 Minv = mat3(
 );
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
       In order to compute the solid angle we need two functions: One to compute the integral
       for a single edge, and one to call that function several times, sum up the results, and perform
       the horizon-clipping. The edge integral is the shortest of them, and was shown earlier in this
@@ -789,7 +787,9 @@ mat3 Minv = mat3(
       <li>How fast/slow are the computations?</li>
     </ul>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
     Obviously, both of these questions can have different answers depending on the graphics hardware,
     but in general it's pretty straight-forward to test: We can introduce a uniform array of area
     light sources to our shader, and we can use <a href="https://www.khronos.org/opengl/wiki/Query_Object" target="_blank"><tt></tt>OpenGL timestamp queries</a> for benchmarking. This is an interesting case since area lights

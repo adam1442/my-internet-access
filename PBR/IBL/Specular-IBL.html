@@ -413,7 +413,9 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
     As we'll soon see with importance sampling (which uses a biased estimator), the generated samples  are biased towards specific directions in which case we account for this by multiplying or dividing each sample by its corresponding pdf.
   </p>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Monte Carlo integration is quite prevalent in computer graphics as it's a fairly intuitive way to approximate continuous integrals in a discrete and efficient fashion: take any area/volume to sample over (like the hemisphere \(\Omega\)), generate \(N\) amount of random samples within the area/volume, and sum and weigh every sample contribution to the final result. 
 </p>
             
@@ -423,9 +425,7 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
       
       <img src="../../img/pbr/ibl_low_discrepancy_sequence.png" class="clean" alt="Low discrepancy sequence."/>
         
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   When using a low-discrepancy sequence for generating the Monte Carlo sample vectors, the process is known as <def>Quasi-Monte Carlo integration</def>. Quasi-Monte Carlo methods have a faster <def>rate of convergence</def> which makes them interesting for performance heavy applications.
 </p>
         
@@ -717,7 +717,9 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
 </code></pre>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   And let OpenGL generate the mipmaps <strong>after</strong> the cubemap's base texture is set:
 </p>
 
@@ -745,9 +747,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 		\int\limits_{\Omega} f_r(p, \omega_i, \omega_o) n \cdot \omega_i d\omega_i
 \]
           
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   We've pre-computed the left part of the split sum approximation in the pre-filter map over different roughness levels. The right side requires us to convolute the BRDF equation over the angle \(n \cdot \omega_o\), the surface roughness, and Fresnel's \(F_0\). This is similar to integrating the specular BRDF with a solid-white environment or a constant radiance \(L_i\) of <code>1.0</code>. Convoluting the BRDF over 3 variables is a bit much, but we can try to move \(F_0\) out of the specular BRDF equation:
 </p>
         

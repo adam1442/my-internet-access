@@ -447,7 +447,9 @@ void main()
 }
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Here we take a relatively small sample of Gaussian weights that we each use to assign a specific weight to the horizontal or vertical samples around the current fragment. You can see that we split the blur filter into a horizontal and vertical section based on whatever value we set the <var>horizontal</var> uniform. We base the offset distance on the exact size of a texel obtained by the division of <code>1.0</code> over the size of the texture (a <code>vec2</code> from <fun>textureSize</fun>).
 </p>
     
@@ -547,9 +549,7 @@ void main()
   Interesting to note here is that we add the Bloom effect before we apply tone mapping. This way, the added brightness of bloom is also softly transformed to LDR range with better relative lighting as a result.
 </p>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   With both textures added together, all bright areas of our scene now get a proper glow effect:
 </p>
       

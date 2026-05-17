@@ -394,7 +394,9 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
 float cosTheta = dot(lightDir, N);  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The radiance equation is quite useful as it contains most physical quantities we're interested in. If we consider the solid angle \(\omega\) and the area \(A\) to be infinitely small, we can use radiance to measure the flux of a single ray of light hitting a single point in space. This relation allows us to calculate the radiance of a single light ray influencing a single (fragment) point; we effectively translate the solid angle \(\omega\) into a direction vector \(\omega\), and \(A\) into a point \(p\). This way, we can directly use radiance in our shaders to calculate a single light ray's per-fragment contribution.
 </p>
   
@@ -439,9 +441,7 @@ for(int i = 0; i &lt; steps; ++i)
   By scaling the steps by <code>dW</code>, the sum will equal the total area or volume of the integral function. The <code>dW</code> to scale each discrete step can be thought of as \(d\omega_i\) in the reflectance equation. Mathematically \(d\omega_i\) is the continuous symbol over which we calculate the integral, and while it does not directly relate to <code>dW</code> in code (as this is a discrete step of the Riemann sum), it helps to think of it this way. Keep in mind that taking discrete steps will always give us an approximation of the total area of the function. A careful reader will notice we can increase the <em>accuracy</em> of the Riemann Sum by increasing the number of steps.
   </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The reflectance equation sums up the radiance of all incoming light directions \(\omega_i\) over the hemisphere \(\Omega\) scaled by \(f_r\) that hit point \(p\) and returns the sum of reflected light \(L_o\) in the viewer's direction. The incoming radiance can come from <a href="Lighting.html" target="_blank">light sources</a> as we're familiar with, or from an environment map measuring the radiance of every incoming direction as we'll discuss in the <a href="IBL/Diffuse-irradiance.html" target="_blank">IBL</a> chapters.
 </p>
   
@@ -592,7 +592,9 @@ float DistributionGGX(vec3 N, vec3 H, float a)
     
     <img src="../img/pbr/geometry.png" alt="Visualized Geometry function in OpenGL PBR"/>
     
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   The geometry function is a multiplier between [0.0, 1.0] with 1.0 (or white) measuring no microfacet shadowing, and 0.0 (or black) complete microfacet shadowing. 
 </p>
     
@@ -622,9 +624,7 @@ float GeometrySmith(vec3 N, vec3 V, vec3 L, float k)
   
       
 <h3>Fresnel equation</h3>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
 	The Fresnel equation (pronounced as Freh-nel) describes the ratio of light that gets reflected over the light that gets refracted, which varies over the angle we're looking at a surface. The moment light hits a surface, based on the surface-to-view angle, the Fresnel equation tells us the  percentage of light that gets reflected. From this ratio of reflection and the energy conservation principle we can directly obtain the refracted portion of light.
     </p>
     

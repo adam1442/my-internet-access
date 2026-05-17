@@ -540,9 +540,7 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
   Note that we make the assumption that texture file paths in model files are local to the actual model object e.g. in the same directory as the location of the model itself. We can then simply concatenate the texture location string and the directory string we retrieved earlier (in the <fun>loadModel</fun> function) to get the complete texture path (that's why the <fun>GetTexture</fun> function also needs the directory string).<br/><br/>Some models found over the internet use absolute paths for their texture locations, which won't work on each machine. In that case you probably want to manually edit the file to use local paths for the textures (if possible).
 </note>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   And that is all there is to importing a model with Assimp. 
 </p>
 
@@ -563,7 +561,9 @@ struct Texture {
 };
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Then we store all the loaded textures in another vector declared at the top of the model's class file as a private variable:
 </p>
 

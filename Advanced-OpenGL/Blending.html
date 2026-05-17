@@ -538,9 +538,7 @@ void main()
   Now that we know how OpenGL works with regards to blending it's time to put our knowledge to the test by adding several semi-transparent windows. We'll be using the same scene as in the start of this chapter, but instead of rendering a grass texture we're now going to use the <a href="../img/advanced/blending_transparent_window.png" target="_blank">transparent window</a> texture from the start of this chapter.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   First, during initialization we enable blending and set the appropriate blending function:
 </p>
 
@@ -549,7 +547,9 @@ void main()
 <function id='70'>glBlendFunc</function>(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Since we enabled blending there is no need to discard fragments so we'll reset the fragment shader to its original version:
 </p>
 
