@@ -753,7 +753,9 @@ irradiance = PI * irradiance * (1.0 / float(nrSamples));
   From within both loops, we take both spherical coordinates to convert them to a 3D Cartesian sample vector, convert the sample from tangent to world space oriented around the normal, and use this sample vector to directly sample the HDR environment map.  We add each sample result to <var>irradiance</var> which at the end we divide by the total number of samples taken, giving us the average sampled irradiance. Note that we scale the sampled color value by <code>cos(theta)</code> due to the light being weaker at larger angles and by <code>sin(theta)</code> to account for the smaller sample areas in the higher hemisphere areas.
 </p>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Now what's left to do is to set up the OpenGL rendering code such that we can convolute the earlier captured <var>envCubemap</var>. First we create the irradiance cubemap (again, we only have to do this once before the render loop):
 </p>
       
@@ -773,9 +775,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 </code></pre>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   As the irradiance map averages all surrounding radiance uniformly it doesn't have a lot of high frequency details, so we can store the map at a low resolution (32x32) and let OpenGL's linear filtering do most of the work. Next, we re-scale the capture framebuffer to the new resolution:
 </p>
       

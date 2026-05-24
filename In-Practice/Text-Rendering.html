@@ -489,9 +489,7 @@ void main()
   The fragment shader takes two uniforms: one is the mono-colored bitmap image of the glyph, and the other is a color uniform for adjusting the text's final color. We first sample the color value of the bitmap texture. Because the texture's data is stored in just its red component, we sample the <code>r</code> component of the texture as the sampled alpha value. By varying the output color's alpha value, the resulting pixel will be transparent for all the glyph's background colors and non-transparent for the actual character pixels. We also multiply the RGB colors by the <var>textColor</var> uniform to vary the text color.
 </p>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We do need to enable <a href="../Advanced-OpenGL/Blending.html" target="_blank">blending</a> for this to work though: 
 </p>
     
@@ -500,7 +498,9 @@ void main()
 <function id='70'>glBlendFunc</function>(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   For the projection matrix we'll be using an orthographic projection matrix. For rendering text we (usually) do not need perspective, and using an orthographic projection matrix also allows us to specify all vertex coordinates in screen coordinates if we set it up as follows:
 </p>
     

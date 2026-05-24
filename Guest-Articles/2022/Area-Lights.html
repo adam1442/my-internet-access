@@ -752,7 +752,9 @@ mat3 Minv = mat3(
     </p>
 
     <h2>Results</h2>
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
       The <a href="../../code_viewer_gh.php%3Fcode=src%252F8.guest%252F2022%252F7.area_lights%252F1.area_light%252Farea_lights.cpp.html" target="_blank">attached source</a> code shows the entire cpp-script together with the matrix-table
       headers, and the shader files. I have included some extra functionalities for testing:
     </p>
@@ -787,9 +789,7 @@ mat3 Minv = mat3(
       <li>How fast/slow are the computations?</li>
     </ul>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
     Obviously, both of these questions can have different answers depending on the graphics hardware,
     but in general it's pretty straight-forward to test: We can introduce a uniform array of area
     light sources to our shader, and we can use <a href="https://www.khronos.org/opengl/wiki/Query_Object" target="_blank"><tt></tt>OpenGL timestamp queries</a> for benchmarking. This is an interesting case since area lights

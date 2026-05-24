@@ -367,9 +367,7 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 </p>
 
 <h3>Perspective projection</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   If you ever were to enjoy the graphics the <em>real life</em> has to offer you'll notice that objects that are farther away appear much smaller. This weird effect is something we call  <def>perspective</def>. Perspective is especially noticeable when looking down the end of an infinite motorway or railway as seen in the following image:
 </p>
 
@@ -383,7 +381,9 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
   Each component of the vertex coordinate is divided by its <code>w</code> component giving smaller vertex coordinates the further away a vertex is from the viewer. This is another reason why the <code>w</code> component is important, since it helps us with perspective projection. The resulting coordinates are then in normalized device space. If you're interested to figure out how the orthographic and perspective projection matrices are actually calculated (and aren't too scared of the mathematics) I can recommend <a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank">this excellent article</a> by Songho.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   A perspective projection matrix can be created in GLM as follows:
 </p>
 

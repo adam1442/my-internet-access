@@ -413,9 +413,7 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
     As we'll soon see with importance sampling (which uses a biased estimator), the generated samples  are biased towards specific directions in which case we account for this by multiplying or dividing each sample by its corresponding pdf.
   </p>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Monte Carlo integration is quite prevalent in computer graphics as it's a fairly intuitive way to approximate continuous integrals in a discrete and efficient fashion: take any area/volume to sample over (like the hemisphere \(\Omega\)), generate \(N\) amount of random samples within the area/volume, and sum and weigh every sample contribution to the final result. 
 </p>
             
@@ -469,7 +467,9 @@ vec2 Hammersley(uint i, uint N)
 
 <note>
 <strong>Hammersley sequence without bit operator support</strong><br/>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Not all OpenGL related drivers support bit operators (WebGL and OpenGL ES 2.0 for instance) in which case you may want to use an alternative version of the Van Der Corput Sequence that doesn't rely on bit operators:
 </p>
   
@@ -717,9 +717,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
 </code></pre>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   And let OpenGL generate the mipmaps <strong>after</strong> the cubemap's base texture is set:
 </p>
 
@@ -731,7 +729,9 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 <function id='51'>glGenerateMipmap</function>(GL_TEXTURE_CUBE_MAP);
 </code></pre>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   This works surprisingly well and should remove most, if not all, dots in your pre-filter map on rougher surfaces. 
 </p>
 

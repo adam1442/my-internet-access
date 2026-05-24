@@ -425,9 +425,7 @@ void main()
 }  
 </code></pre>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   This vertex shader takes a per-object model, a vertex, and transforms all vertices to light space using <var>lightSpaceMatrix</var>.
 </p>      
       
@@ -448,7 +446,9 @@ void main()
   This empty fragment shader does no processing whatsoever, and at the end of its run the depth buffer is updated. We could explicitly set the depth by uncommenting its one line, but this is effectively what happens behind the scene anyways.
 </p>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Rendering the depth/shadow map now effectively becomes:
 </p>
       
@@ -678,7 +678,9 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 </p>    
   
 <h2>Improving shadow maps</h2>
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   We managed to get the basics of shadow mapping working, but as you can we're not there yet due to several (clearly visible) artifacts related to shadow mapping we need to fix. We'll focus on fixing these artifacts in the next sections.
 </p> 
     
@@ -726,9 +728,7 @@ float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
 float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);  
 </code></pre>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Here we have a maximum bias of <code>0.05</code> and a minimum of <code>0.005</code> based on the surface's normal and light direction. This way, surfaces like the floor that are almost perpendicular to the light source get a small bias, while surfaces like the cube's side-faces get a much larger bias. The following image shows the same scene but now with a shadow bias:
 </p>
   

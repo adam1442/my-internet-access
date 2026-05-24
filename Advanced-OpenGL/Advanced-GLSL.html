@@ -384,9 +384,7 @@ void main()
   The input variable <var>gl_FragCoord</var> is an input variable that allows us to read screen-space coordinates and get the depth value of the current fragment, but it is a <def>read-only</def> variable. We can't influence the screen-space coordinates of the fragment, but it is possible to set the depth value of the fragment. GLSL gives us an output variable called <var>gl_FragDepth</var> that we can use to manually set the depth value of the fragment within the shader.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   To set the depth value in the shader we write any value between <code>0.0</code> and <code>1.0</code> to the output variable:
 </p>
 
@@ -394,7 +392,9 @@ void main()
 gl_FragDepth = 0.0; // this fragment now has a depth value of 0.0
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   If the shader does not write anything to <var>gl_FragDepth</var>, the variable will automatically take its value from <code>gl_FragCoord.z</code>.
 </p>
 

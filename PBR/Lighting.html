@@ -462,9 +462,7 @@ vec3 specular     = numerator / denominator;
   Note that we add <code>0.0001</code> to the denominator to prevent a divide by zero in case any dot product ends up <code>0.0</code>.
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Now we can finally calculate each light's contribution to the reflectance equation. As the Fresnel value directly corresponds to \(k_S\) we can use <var>F</var> to denote the specular contribution of any light that hits the surface. From \(k_S\) we can then calculate the ratio of refraction \(k_D\):
 </p>
   
@@ -491,7 +489,9 @@ kD *= 1.0 - metallic;
   The resulting <var>Lo</var> value, or the outgoing radiance, is effectively the result of the reflectance equation's integral \(\int\) over \(\Omega\).  We don't really have to try and solve the integral for all possible incoming light directions as we know exactly the 4 incoming light directions that can influence the fragment. Because of this, we can directly loop over these incoming light directions e.g. the number of lights in the scene.
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   What's left is to add an (improvised) ambient term to the direct lighting result <var>Lo</var> and we have the final lit color of the fragment:
 </p>
 

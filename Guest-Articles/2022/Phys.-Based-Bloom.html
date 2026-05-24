@@ -734,7 +734,9 @@ const std::vector&lt;bloomMip&gt;& bloomFBO::MipChain() const
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  After this, we create another class which contains a <tt>bloomFBO</tt> object
 	  and makes a call to it every frame. I chose this design because the framebuffer
 	  and the shaders are two distinct concerns. The code is given below:
@@ -934,9 +936,7 @@ void BloomRenderer::RenderUpsamples(float filterRadius)
 	  correct number of fragments for us.
 	</p>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  The upsampling is very similar, except it does things in opposite order:
 	  It starts from the low-resolution mips and then works backwards through the
 	  mip chain. We start by fetching the mip chain and activate the shader.

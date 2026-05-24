@@ -495,7 +495,9 @@ glDrawBuffers(2, transparentDrawBuffers);
         For the sake of this article, we are creating two separate framebuffers, so it would be easier to understand how the technique unfolds. We could omit the opaque framebuffer and use backbuffer for our solid pass or just create a single framebuffer with four attachments all together (opaque, accumulation, revealage, depth) and render to different render targets at each pass.
     </note>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
         Before rendering, setup some model matrices for your quads. You can set the Z axis however you want since this is an order-independent technique and objects closer or further to the camera would not impose any problem.
     </p>
 
@@ -525,9 +527,7 @@ glDisable(GL_BLEND);
         We have to reset our depth function and depth mask for the solid pass at every frame since pipeline changes these states further down the line.
     </p>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         Now, draw the solid objects using the solid shader. You can draw alpha cutout objects both at this stage and the next stage as well. The solid shader is just a simple shader that transforms the vertices and draws the mesh with the supplied color.
     </p>
 
