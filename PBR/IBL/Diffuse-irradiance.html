@@ -432,7 +432,9 @@ void main()
 }
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   For the fragment shader, we color each part of the cube as if we neatly folded the equirectangular map onto each side of the cube. To accomplish this, we take the fragment's sample direction as interpolated from the cube's local position and then use this direction vector and some trigonometry magic (spherical to cartesian) to sample the equirectangular map as if it's a cubemap itself. We directly store the result onto the cube-face's fragment which should be all we need to do:
 </p>
   
@@ -504,9 +506,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Then what's left to do is capture the equirectangular 2D texture onto the cubemap faces.
 </p>
     
@@ -753,9 +753,7 @@ irradiance = PI * irradiance * (1.0 / float(nrSamples));
   From within both loops, we take both spherical coordinates to convert them to a 3D Cartesian sample vector, convert the sample from tangent to world space oriented around the normal, and use this sample vector to directly sample the HDR environment map.  We add each sample result to <var>irradiance</var> which at the end we divide by the total number of samples taken, giving us the average sampled irradiance. Note that we scale the sampled color value by <code>cos(theta)</code> due to the light being weaker at larger angles and by <code>sin(theta)</code> to account for the smaller sample areas in the higher hemisphere areas.
 </p>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Now what's left to do is to set up the OpenGL rendering code such that we can convolute the earlier captured <var>envCubemap</var>. First we create the irradiance cubemap (again, we only have to do this once before the render loop):
 </p>
       
@@ -810,7 +808,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0);  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Now after this routine we should have a pre-computed irradiance map that we can directly use for our diffuse image based lighting. To see if we successfully convoluted the environment map we'll substitute the environment map for the irradiance map as the skybox's environment sampler:
 </p>
       

@@ -408,7 +408,9 @@ glm::mat4 lightSpaceMatrix = lightProjection * lightView;
 </p>
       
 <h3>Render to depth map</h3>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   When we render the scene from the light's perspective we'd much rather use a simple shader that only transforms the vertices to light space and not much more. For such a simple shader called <var>simpleDepthShader</var> we'll use the following vertex shader:
 </p>
       
@@ -446,9 +448,7 @@ void main()
   This empty fragment shader does no processing whatsoever, and at the end of its run the depth buffer is updated. We could explicitly set the depth by uncommenting its one line, but this is effectively what happens behind the scene anyways.
 </p>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Rendering the depth/shadow map now effectively becomes:
 </p>
       
@@ -678,14 +678,14 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 </p>    
   
 <h2>Improving shadow maps</h2>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   We managed to get the basics of shadow mapping working, but as you can we're not there yet due to several (clearly visible) artifacts related to shadow mapping we need to fix. We'll focus on fixing these artifacts in the next sections.
 </p> 
     
 <h3>Shadow acne</h3>
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
     It is obvious something is wrong from the previous image. A closer zoom shows us a very obvious Moiré-like pattern:
 </p>
     

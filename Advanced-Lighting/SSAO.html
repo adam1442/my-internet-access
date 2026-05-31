@@ -501,7 +501,9 @@ unsigned int ssaoColorBuffer;
 <function id='81'>glFramebufferTexture2D</function>(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, ssaoColorBuffer, 0);  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   As the ambient occlusion result is a single grayscale value we'll only need a texture's red component, so we set the color buffer's internal format to <var>GL_RED</var>. 
 </p>
   
@@ -540,9 +542,7 @@ shaderLightingPass.use();
 RenderQuad();  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The <var>shaderSSAO</var> shader takes as input the relevant G-buffer textures, the noise texture, and the normal-oriented hemisphere kernel samples:
 </p>
   

@@ -577,9 +577,7 @@ void main()
 		 alt="Subdivide Fractional Even" title="Subdivide Fractional Even" class="clean">
 	<caption>Fractional Even Subdivision (Image Source: <a href="https://www.khronos.org/opengl/wiki/Tessellation" target="_blank">OpenGL Wiki</a>)</caption>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		The tessellation is performed in a two-step process - first the inner patch is recursively tessellated and then the outer edges are subdivided.  The image below shows 
 		different tessellations that would result based on different values of the inner tessellation levels.
 	</p>
@@ -625,7 +623,9 @@ void main()
 		<li>the 2D tessellation coordinate for the generated point through the built-in <def>gl_TessCoord</def></li>
 	</ul>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		We then use the <code>gl_TessCoord</code> values as the parameters to interpolate the patch vertices as desired.  Here, we will apply the same quad subdivision as 
 		we did CPU side in the previous chapter.  The difference being that we are now determining the interpolated texture coordinate and final vertex position within the GPU 
 		in parallel, opposed to on the CPU in sequence.  The process is also simplified since our code is performing only a single interpolation opposed to having to generate 

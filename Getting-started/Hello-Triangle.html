@@ -381,7 +381,9 @@ unsigned int VBO;
   <fun><function id='31'>glBufferData</function></fun> is a function specifically targeted to copy user-defined data into the currently bound buffer. Its first argument is the type of the buffer we want to copy data into: the vertex buffer object currently bound to the <var>GL_ARRAY_BUFFER</var> target. The second argument specifies the size of the data (in bytes) we want to pass to the buffer; a simple <code>sizeof</code> of the vertex data suffices. The third parameter is the actual data we want to send.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The fourth parameter specifies how we want the graphics card to manage the given data. This can take 3 forms:
 </p>
 
@@ -392,9 +394,7 @@ unsigned int VBO;
 
   </ul>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The position data of the triangle does not change, is used a lot, and stays the same for every render call so its usage type should best be <var>GL_STATIC_DRAW</var>. If, for instance, one would have a buffer with data that is likely to change frequently, a usage type of <var>GL_DYNAMIC_DRAW</var> ensures the graphics card will place the data in memory that allows for faster writes.
 </p>
 
@@ -565,9 +565,7 @@ unsigned int shaderProgram;
 shaderProgram = <function id='36'>glCreateProgram</function>();
 </code></pre>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   The <fun><function id='36'>glCreateProgram</function></fun> function creates a program and returns the ID reference to the newly created program object. Now we need to attach the previously compiled shaders to the program object and then link them with <fun><function id='35'>glLinkProgram</function></fun>:
 </p>
 
@@ -619,7 +617,9 @@ if(!success) {
 </p>
 
 <h2>Linking Vertex Attributes</h2>
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   The vertex shader allows us to specify any input we want in the form of vertex attributes and while this allows for great flexibility, it does mean we have to manually specify what part of our input data goes to which vertex attribute in the vertex shader. This means we have to specify how OpenGL should interpret the vertex data before rendering.
 </p>
 

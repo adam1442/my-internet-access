@@ -453,9 +453,7 @@ struct Vertex {
 };
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p> This <code> BoneInfo </code> will store our offset matrix and also a unique id which will 
+<p> This <code> BoneInfo </code> will store our offset matrix and also a unique id which will 
 	be used as an index to store it in <code>finalBoneMatrices</code> array we saw earlier in our shader.
 Now we will add bone weight extraction support in <code>Model</code>... </p>
             
@@ -581,7 +579,9 @@ private:
 	 its scope. So we take it's Id and proceed further to know which vertices it affects. 
             </p>
 	 
-	 <p> One thing to notice that we are calling <code>AssimpGLMHelpers::ConvertMatrixToGLMFormat</code>. 
+	 <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p> One thing to notice that we are calling <code>AssimpGLMHelpers::ConvertMatrixToGLMFormat</code>. 
 	 Assimp store its matrix data in different format than GLM so this function just gives us our matrix in GLM format.
     </p>
 	<p>We have extracted the offsetMatrix for the bone and now we will simply iterate its <code>aiVertexWeight</code>array 

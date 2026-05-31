@@ -643,15 +643,15 @@ if(projCoords.z &gt; 1.0)
 return shadow;
 </code></pre>
       
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		And that's it! If we did everything correctly we should see that the renderer switches between shadow maps based on the distance. Try setting some unreasonable cascade plane distances (for example only one, which is a few units from the camera) to see if the code really does work. You should see a noticable degradation in shadow quality between the two sides of the plane. If you see moire artifacts on the screen try changing around bias parameters a bit.
 	</p>
       
       <img src="../../img/guest/2021/CSM/demoscene.png" width="800px">
         
-        <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+        <p>
           You can find the full source code for the cascaded shadow mapping demo <a href="../../code_viewer_gh.php%3Fcode=src%252F8.guest%252F2021%252F2.csm%252Fshadow_mapping.cpp.html" target="_blank">here</a>.
         </p>
 

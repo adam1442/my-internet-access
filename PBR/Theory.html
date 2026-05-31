@@ -368,9 +368,7 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
   
   <img src="../img/pbr/radiant_intensity.png" class="clean" alt="Radiant intensity"/>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The equation to describe the radiant intensity is defined as follows:
 </p>
   
@@ -413,7 +411,9 @@ float cosTheta = dot(lightDir, N);
   We now know that \(L\) in the render equation represents the radiance of some point \(p\) and some incoming infinitely small solid angle \(\omega_i\) which can be thought of as an incoming direction vector \(\omega_i\). Remember that \(\cos \theta\) scales the energy based on the light's incident angle to the surface, which we find in the reflectance equation as \(n \cdot \omega_i\). The reflectance equation calculates the sum of reflected radiance \(L_o(p, \omega_o)\) of a point \(p\) in direction \(\omega_o\) which is the outgoing direction to the viewer. Or to put it differently: \(L_o\) measures the reflected sum of the lights' irradiance onto point \(p\) as viewed from \(\omega_o\).
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The reflectance equation is based around irradiance, which is the sum of all incoming radiance we measure light of. Not just of a single incoming light direction, but of all incoming light directions within a hemisphere \(\Omega\) centered around point \(p\). A <def>hemisphere</def> can be described as half a sphere aligned around a surface's normal \(n\):
   </p>
   
@@ -585,16 +585,16 @@ float DistributionGGX(vec3 N, vec3 H, float a)
   	G(n, v, l, k) = G_{sub}(n, v, k) G_{sub}(n, l, k)  
 \]
     
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Using Smith's method with Schlick-GGX as \(G_{sub}\) gives the following visual appearance over varying roughness <code>R</code>:
 </p>
     
     
     <img src="../img/pbr/geometry.png" alt="Visualized Geometry function in OpenGL PBR"/>
     
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   The geometry function is a multiplier between [0.0, 1.0] with 1.0 (or white) measuring no microfacet shadowing, and 0.0 (or black) complete microfacet shadowing. 
 </p>
     

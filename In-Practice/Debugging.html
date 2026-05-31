@@ -532,9 +532,7 @@ glDebugMessageControl(GL_DEBUG_SOURCE_API,
   
   <img src="../img/in-practice/debugging_debug_output_breakpoint.png" alt="Setting a breaking and using the callstack in OpenGL to catch the line of an error with debug output."/>    
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   It requires some manual intervention, but if you roughly know what you're looking for it's incredibly useful to quickly determine which call causes an error.
 </p>
   
@@ -548,7 +546,9 @@ glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_ERROR, 0,
                      GL_DEBUG_SEVERITY_MEDIUM, -1, "error message here"); 
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This is especially useful if you're hooking into other application or OpenGL code that makes use of a debug output context. Other developers can quickly figure out any <em>reported</em> bug that occurs in your custom OpenGL code.
 </p>
     

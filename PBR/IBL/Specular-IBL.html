@@ -461,15 +461,15 @@ vec2 Hammersley(uint i, uint N)
 }  
 </code></pre>
         
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The GLSL <fun>Hammersley</fun> function gives us the low-discrepancy sample <var>i</var> of the total sample set of size <var>N</var>. 
 </p>
 
 <note>
 <strong>Hammersley sequence without bit operator support</strong><br/>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Not all OpenGL related drivers support bit operators (WebGL and OpenGL ES 2.0 for instance) in which case you may want to use an alternative version of the Van Der Corput Sequence that doesn't rely on bit operators:
 </p>
   
@@ -717,7 +717,9 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
 </code></pre>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   And let OpenGL generate the mipmaps <strong>after</strong> the cubemap's base texture is set:
 </p>
 
@@ -729,9 +731,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 <function id='51'>glGenerateMipmap</function>(GL_TEXTURE_CUBE_MAP);
 </code></pre>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   This works surprisingly well and should remove most, if not all, dots in your pre-filter map on rougher surfaces. 
 </p>
 

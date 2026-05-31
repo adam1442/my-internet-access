@@ -489,9 +489,7 @@ kD *= 1.0 - metallic;
   The resulting <var>Lo</var> value, or the outgoing radiance, is effectively the result of the reflectance equation's integral \(\int\) over \(\Omega\).  We don't really have to try and solve the integral for all possible incoming light directions as we know exactly the 4 incoming light directions that can influence the fragment. Because of this, we can directly loop over these incoming light directions e.g. the number of lights in the scene.
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   What's left is to add an (improvised) ambient term to the direct lighting result <var>Lo</var> and we have the final lit color of the fragment:
 </p>
 
@@ -501,7 +499,9 @@ vec3 color   = ambient + Lo;
 </code></pre>
   
 <h3>Linear and HDR rendering</h3>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   So far we've assumed all our calculations to be in linear color space and to account for this we need to <a href="../Advanced-Lighting/Gamma-Correction.html" target="_blank">gamma correct</a> at the end of the shader. Calculating lighting in linear space is incredibly important as PBR requires all inputs to be linear. Not taking this into account will result in incorrect lighting. Additionally, we want light inputs to be close to their physical equivalents such that their radiance or color values can vary wildly over a high spectrum of values. As a result, <var>Lo</var> can rapidly grow really high which then gets clamped between <code>0.0</code> and <code>1.0</code> due to the default low dynamic range (LDR) output. We fix this by taking <var>Lo</var> and tone or exposure map the <a href="../Advanced-Lighting/HDR.html" target="_blank">high dynamic range</a> (HDR) value correctly to LDR before gamma correction: 
 </p>
   

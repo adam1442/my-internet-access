@@ -485,9 +485,7 @@ void main()
   Imagine a scene where we have one large planet that's at the center of a large asteroid ring. Such an asteroid ring could contain thousands or tens of thousands of rock formations and quickly becomes un-renderable on any decent graphics card. This scenario proves itself particularly useful for instanced rendering, since all the asteroids can be represented with a single model. Each single asteroid then gets its variation from a transformation matrix unique to each asteroid.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   To demonstrate the impact of instanced rendering we're first going to render a scene of asteroids hovering around a planet <em>without</em> instanced rendering. The scene will contain a large planet model that can be downloaded from <a href="../data/models/planet.zip" target="_blank">here</a> and a large set of asteroid rocks that we properly position around the planet. The asteroid rock model can be downloaded <a href="../data/models/rock.zip" target="_blank">here</a>.
 </p>
 
@@ -495,7 +493,9 @@ void main()
   Within the code samples we load the models using the model loader we've previously defined in the <a href="../Model-Loading/Assimp.html" target="_blank">model loading</a> chapters. 
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To achieve the effect we're looking for we'll be generating a model transformation matrix for each asteroid. The transformation matrix first translates the rock somewhere in the asteroid ring - then we'll add a small random displacement value to the offset to make the ring look more natural. From there we also apply a random scale and a random rotation. The result is a transformation matrix that translates each asteroid somewhere around the planet while also giving it a more natural and unique look compared to the other asteroids. 
 </p>
 

@@ -705,7 +705,9 @@ private:
 	  chain.
 	</p>
 
-	  <p>
+	  <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		The other methods in the class are given below:
 	  </p>
 
@@ -734,9 +736,7 @@ const std::vector&lt;bloomMip&gt;& bloomFBO::MipChain() const
 }
 </code></pre>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  After this, we create another class which contains a <tt>bloomFBO</tt> object
 	  and makes a call to it every frame. I chose this design because the framebuffer
 	  and the shaders are two distinct concerns. The code is given below:
@@ -1215,7 +1215,9 @@ default:
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  The variable <tt>mipLevel</tt> is a uniform int, set to 0 for the first
 	  downsampling and non-zero for the others. If you notice fireflies in your
 	  renders then you should probably add a Karis average to the first bloom
@@ -1281,9 +1283,7 @@ void main()
 }
 </code></pre>
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  You may or may not want to invert the lens dirt image around the Y-axis,
 	  depending on how you load the image. By using <tt>blm + blm*drt</tt> we can
 	  achieve a multiplication to the bloom effect which is somewhat linearly scaled

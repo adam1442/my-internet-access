@@ -456,7 +456,9 @@ geometryShader = <function id='37'>glCreateShader</function>(GL_GEOMETRY_SHADER)
 <function id='35'>glLinkProgram</function>(program);  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The shader compilation code is the same as the vertex and fragment shaders. Be sure to check for compile or linking errors!
 </p>
 
@@ -522,9 +524,7 @@ void main() {
 
 <img src="../img/advanced/geometry_shader_houses.png" class="clean" alt="Houses drawn with points using geometry shader in OpenGL"/>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   You can see that each house indeed consists of 3 triangles - all drawn using a single point in space. The green houses do look a bit boring though, so let's liven it up a bit by giving each house a unique color. To do this we're going to add an extra vertex attribute in the vertex shader with color information per vertex and direct it to the geometry shader that further forwards it to the fragment shader. 
 </p>
 

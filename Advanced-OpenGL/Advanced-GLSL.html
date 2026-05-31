@@ -392,13 +392,13 @@ void main()
 gl_FragDepth = 0.0; // this fragment now has a depth value of 0.0
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   If the shader does not write anything to <var>gl_FragDepth</var>, the variable will automatically take its value from <code>gl_FragCoord.z</code>.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Setting the depth value manually has a major disadvantage however. That is because OpenGL disables <def>early depth testing</def> (as discussed in the <a href="Depth-testing.html" target="_blank">depth testing</a> chapter) as soon as we write to <var>gl_FragDepth</var> in the fragment shader. It is disabled, because OpenGL cannot know what depth value the fragment will have <em>before</em> we run the fragment shader, since the fragment shader may actually change this value.
 </p>
 
