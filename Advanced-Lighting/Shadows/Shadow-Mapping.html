@@ -683,9 +683,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 </p> 
     
 <h3>Shadow acne</h3>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
     It is obvious something is wrong from the previous image. A closer zoom shows us a very obvious Moiré-like pattern:
 </p>
     
@@ -711,7 +709,9 @@ float ShadowCalculation(vec4 fragPosLightSpace)
   
  <img src="../../img/advanced-lighting/shadow_mapping_acne_bias.png" class="clean" alt="Shadow mapping, with shadow acne fixed using shadow bias."/>
    
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   With the bias applied, all the samples get a depth smaller than the surface's depth and thus the entire surface is correctly lit without any shadows. We can implement such a bias as follows:
 </p>
   

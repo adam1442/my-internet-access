@@ -423,7 +423,9 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
       
       <img src="../../img/pbr/ibl_low_discrepancy_sequence.png" class="clean" alt="Low discrepancy sequence."/>
         
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   When using a low-discrepancy sequence for generating the Monte Carlo sample vectors, the process is known as <def>Quasi-Monte Carlo integration</def>. Quasi-Monte Carlo methods have a faster <def>rate of convergence</def> which makes them interesting for performance heavy applications.
 </p>
         
@@ -461,9 +463,7 @@ vec2 Hammersley(uint i, uint N)
 }  
 </code></pre>
         
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The GLSL <fun>Hammersley</fun> function gives us the low-discrepancy sample <var>i</var> of the total sample set of size <var>N</var>. 
 </p>
 
@@ -687,7 +687,9 @@ vec3 envColor = textureLod(environmentMap, WorldPos, 1.2).rgb;
 </p>
             
 <h3>Bright dots in the pre-filter convolution</h3>
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Due to high frequency details and wildly varying light intensities in specular reflections, convoluting the specular reflections requires a large number of samples to properly account for the wildly varying nature of HDR environmental reflections. We already take a very large number of samples, but on some environments it may still not be enough at some of the rougher mip levels in which case you'll start seeing dotted patterns emerge around bright areas:
 </p>
             
@@ -717,9 +719,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR); 
 </code></pre>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   And let OpenGL generate the mipmaps <strong>after</strong> the cubemap's base texture is set:
 </p>
 

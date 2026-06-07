@@ -432,9 +432,7 @@ void main()
 }
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   For the fragment shader, we color each part of the cube as if we neatly folded the equirectangular map onto each side of the cube. To accomplish this, we take the fragment's sample direction as interpolated from the cube's local position and then use this direction vector and some trigonometry magic (spherical to cartesian) to sample the equirectangular map as if it's a cubemap itself. We directly store the result onto the cube-face's fragment which should be all we need to do:
 </p>
   
@@ -506,7 +504,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Then what's left to do is capture the equirectangular 2D texture onto the cubemap faces.
 </p>
     
@@ -702,7 +702,9 @@ void main()
         k_d\frac{c}{\pi} \int_{\phi = 0}^{2\pi} \int_{\theta = 0}^{\frac{1}{2}\pi} L_i(p,\phi_i, \theta_i) \cos(\theta) \sin(\theta)  d\phi d\theta
 \]
         
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Solving the integral requires us to take a fixed number of discrete samples within the hemisphere \(\Omega\) and averaging their results. This translates the integral to the following discrete version as based on the <a href="https://en.wikipedia.org/wiki/Riemann_sum" target="_blank">Riemann sum</a> given \(n1\) and \(n2\) discrete samples on each spherical coordinate respectively:
 </p>
         
@@ -808,9 +810,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0);  
 </code></pre>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Now after this routine we should have a pre-computed irradiance map that we can directly use for our diffuse image based lighting. To see if we successfully convoluted the environment map we'll substitute the environment map for the irradiance map as the skybox's environment sampler:
 </p>
       

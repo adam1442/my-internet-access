@@ -482,7 +482,9 @@ unsigned int noiseTexture;
 </p>
   
 <h2>The SSAO shader</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
    The SSAO shader runs on a 2D screen-filled quad that calculates the occlusion value for each of its fragments. As we need to store the result of the SSAO stage (for use in the final lighting shader), we create yet another framebuffer object:
   </p>
   
@@ -501,9 +503,7 @@ unsigned int ssaoColorBuffer;
 <function id='81'>glFramebufferTexture2D</function>(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, ssaoColorBuffer, 0);  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   As the ambient occlusion result is a single grayscale value we'll only need a texture's red component, so we set the color buffer's internal format to <var>GL_RED</var>. 
 </p>
   

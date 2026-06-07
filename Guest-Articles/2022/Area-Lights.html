@@ -646,9 +646,7 @@ const float LUT_BIAS = 0.5/LUT_SIZE;
       the surface as well, as is found in most PBR pipelines.
     </note>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
       We then figure out where in the textures we need to lookup, construct the uv-coordinates,
       and recreate the transformation matrix:
     </p>
@@ -789,7 +787,9 @@ mat3 Minv = mat3(
       <li>How fast/slow are the computations?</li>
     </ul>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
     Obviously, both of these questions can have different answers depending on the graphics hardware,
     but in general it's pretty straight-forward to test: We can introduce a uniform array of area
     light sources to our shader, and we can use <a href="https://www.khronos.org/opengl/wiki/Query_Object" target="_blank"><tt></tt>OpenGL timestamp queries</a> for benchmarking. This is an interesting case since area lights

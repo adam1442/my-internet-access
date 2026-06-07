@@ -498,9 +498,7 @@ void main()
 <function id='70'>glBlendFunc</function>(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   For the projection matrix we'll be using an orthographic projection matrix. For rendering text we (usually) do not need perspective, and using an orthographic projection matrix also allows us to specify all vertex coordinates in screen coordinates if we set it up as follows:
 </p>
     
@@ -534,7 +532,9 @@ unsigned int VAO, VBO;
 </p>
     
 <h3>Render line of text</h3>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To render a character, we extract the corresponding <fun>Character</fun> struct of the <var>Characters</var> map and calculate the quad's dimensions using the character's metrics. With the quad's calculated dimensions we dynamically generate a set of 6 vertices that we use to update the content of the memory managed by the VBO using <fun><function id='90'>glBufferSubData</function></fun>.
 </p>
  

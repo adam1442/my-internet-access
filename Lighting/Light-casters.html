@@ -471,7 +471,9 @@ else if(lightVector.w == 1.0)
 </p>
   
 <h3>Implementing attenuation</h3>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
     To implement attenuation we'll be needing 3 extra values in the fragment shader: namely the constant, linear and quadratic terms of the equation. These are best stored in the <fun>Light</fun> struct we defined earlier. Note that we need to calculate <var>lightDir</var> again using <var>position</var> as this is a point light (as we did in the previous chapter) and not a directional light.
 </p>
 
@@ -542,9 +544,7 @@ specular *= attenuation;
   </p>
 
 <h1>Spotlight</h1>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The last type of light we're going to discuss is a <def>spotlight</def>. A spotlight is a light source that is located somewhere in the environment that, instead of shooting light rays in all directions, only shoots them in a specific direction. The result is that only the objects within a certain radius of the spotlight's direction are lit and everything else stays dark. A good example of a spotlight would be a street lamp or a flashlight.
 </p>
   
