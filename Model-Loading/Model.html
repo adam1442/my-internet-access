@@ -532,9 +532,7 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
 }  
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We first check the amount of textures stored in the material via its <fun>GetTextureCount</fun> function that expects one of the texture types we've given. We retrieve each of the texture's file locations via the <fun>GetTexture</fun> function that stores the result in an <code>aiString</code>. We then use another helper function called <fun>TextureFromFile</fun> that loads a texture (with <code>stb_image.h</code>) for us and returns the texture's ID. You can check the complete code listing at the end for its content if you're not sure how such a function is written.
 </p>
 
@@ -563,7 +561,9 @@ struct Texture {
 };
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Then we store all the loaded textures in another vector declared at the top of the model's class file as a private variable:
 </p>
 

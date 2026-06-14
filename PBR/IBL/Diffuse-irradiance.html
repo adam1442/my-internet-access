@@ -504,9 +504,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Then what's left to do is capture the equirectangular 2D texture onto the cubemap faces.
 </p>
     
@@ -551,7 +549,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
   We take the color attachment of the framebuffer and switch its texture target around for every face of the cubemap, directly rendering the scene into one of the cubemap's faces. Once this routine has finished (which we only have to do once), the cubemap <var>envCubemap</var> should be the cubemapped environment version of our original HDR image.
 </p>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Let's test the cubemap by writing a very simple skybox shader to display the cubemap around us:
 </p>
     
@@ -702,9 +702,7 @@ void main()
         k_d\frac{c}{\pi} \int_{\phi = 0}^{2\pi} \int_{\theta = 0}^{\frac{1}{2}\pi} L_i(p,\phi_i, \theta_i) \cos(\theta) \sin(\theta)  d\phi d\theta
 \]
         
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Solving the integral requires us to take a fixed number of discrete samples within the hemisphere \(\Omega\) and averaging their results. This translates the integral to the following discrete version as based on the <a href="https://en.wikipedia.org/wiki/Riemann_sum" target="_blank">Riemann sum</a> given \(n1\) and \(n2\) discrete samples on each spherical coordinate respectively:
 </p>
         
@@ -816,7 +814,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
       
       <img src="../../img/pbr/ibl_irradiance_map_background.png" alt="Displaying a PBR irradiance map as the skybox background."/>
         
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   If it looks like a heavily blurred version of the environment map you've successfully convoluted the environment map.
 </p>
         

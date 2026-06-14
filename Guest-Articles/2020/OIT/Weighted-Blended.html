@@ -504,9 +504,7 @@ glm::mat4 greenModelMat = calculate_model_matrix(glm::vec3(0.0f, 0.0f, 1.0f));
 glm::mat4 blueModelMat = calculate_model_matrix(glm::vec3(0.0f, 0.0f, 2.0f));
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         At this point, we have to perform our solid pass, so configure the render states and bind the opaque framebuffer.
     </p>
 
@@ -610,7 +608,9 @@ void main()
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		Note that, we are directly using the color passed to the shader as our final fragment color. Normally, if you are in a lighting shader, you want to use the final result of the lighting to store in accumulation and revealage render targets.
 	</p>
 

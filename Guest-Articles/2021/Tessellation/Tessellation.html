@@ -623,7 +623,9 @@ void main()
 		<li>the 2D tessellation coordinate for the generated point through the built-in <def>gl_TessCoord</def></li>
 	</ul>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		We then use the <code>gl_TessCoord</code> values as the parameters to interpolate the patch vertices as desired.  Here, we will apply the same quad subdivision as 
 		we did CPU side in the previous chapter.  The difference being that we are now determining the interpolated texture coordinate and final vertex position within the GPU 
 		in parallel, opposed to on the CPU in sequence.  The process is also simplified since our code is performing only a single interpolation opposed to having to generate 
@@ -631,9 +633,7 @@ void main()
 		generator.
 	</p>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		The full tessellation evaluation shader is displayed below with equivalent steps from the CPU tessellation subdivision.
 	</p>
 

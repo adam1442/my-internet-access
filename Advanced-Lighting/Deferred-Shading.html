@@ -506,7 +506,9 @@ void main()
         
         <img src="../img/advanced-lighting/deferred_shading.png" class="clean" alt="Example of Deferred Shading in OpenGL"/>
                     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   One of the disadvantages of deferred shading is that it is not possible to do <a href="../Advanced-OpenGL/Blending.html" target="_blank">blending</a> as all values in the G-buffer are from single fragments, and blending operates on the combination of multiple fragments. Another disadvantage is that deferred shading forces you to use the same lighting algorithm for most of your scene's lighting; you can somehow alleviate this a bit by including more material-specific data in the G-buffer.
 </p>
           
@@ -549,9 +551,7 @@ for (unsigned int i = 0; i &lt; lightPositions.size(); i++)
   What we need to do, is first copy the depth information stored in the geometry pass into the default framebuffer's depth buffer and only then render the light cubes. This way the light cubes' fragments are only rendered when on top of the previously rendered geometry.
 </p>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We can copy the content of a framebuffer to the content of another framebuffer with the help of <fun><function id='103'>glBlitFramebuffer</function></fun>, a function we also used in the <a href="../Advanced-OpenGL/Anti-Aliasing.html" target="_blank">anti-aliasing</a> chapter to resolve multisampled framebuffers. The <fun><function id='103'>glBlitFramebuffer</function></fun> function allows us to copy a user-defined region of a framebuffer to a user-defined region of another framebuffer. 
 </p>
     

@@ -408,9 +408,7 @@ glm::mat4 lightSpaceMatrix = lightProjection * lightView;
 </p>
       
 <h3>Render to depth map</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   When we render the scene from the light's perspective we'd much rather use a simple shader that only transforms the vertices to light space and not much more. For such a simple shader called <var>simpleDepthShader</var> we'll use the following vertex shader:
 </p>
       
@@ -427,7 +425,9 @@ void main()
 }  
 </code></pre>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This vertex shader takes a per-object model, a vertex, and transforms all vertices to light space using <var>lightSpaceMatrix</var>.
 </p>      
       
@@ -695,7 +695,9 @@ float ShadowCalculation(vec4 fragPosLightSpace)
       
 <img src="../../img/advanced-lighting/shadow_mapping_acne_diagram.png" class="clean" alt="Shadow acne explained"/>
         
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Because the shadow map is limited by resolution, multiple fragments can sample the same value from the depth map when they're relatively far away from the light source. The image shows the floor where each yellow tilted panel represents a single texel of the depth map. As you can see, several fragments sample the same depth sample. 
   </p>
   
@@ -709,9 +711,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
   
  <img src="../../img/advanced-lighting/shadow_mapping_acne_bias.png" class="clean" alt="Shadow mapping, with shadow acne fixed using shadow bias."/>
    
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   With the bias applied, all the samples get a depth smaller than the surface's depth and thus the entire surface is correctly lit without any shadows. We can implement such a bias as follows:
 </p>
   

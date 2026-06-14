@@ -420,9 +420,7 @@ unsigned int rbo;
 <function id='88'>glRenderbufferStorage</function>(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, 800, 600);
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Creating a renderbuffer object is similar to texture objects, the difference being that this object is specifically designed to be used as a framebuffer attachment, instead of a general purpose data buffer like a texture. Here we've chosen <var>GL_DEPTH24_STENCIL8</var> as the internal format, which holds both the depth and stencil buffer with 24 and 8 bits respectively.
 </p>
 
@@ -471,7 +469,9 @@ unsigned int textureColorbuffer;
 <function id='81'>glFramebufferTexture2D</function>(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   We also want to make sure OpenGL is able to do depth testing (and optionally stencil testing) so we have to make sure to add a depth (and stencil) attachment to the framebuffer. Since we'll only be sampling the color buffer and not the other buffers we can create a renderbuffer object for this purpose. 
 </p>
 

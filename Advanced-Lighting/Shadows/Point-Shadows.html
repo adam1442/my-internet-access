@@ -491,7 +491,9 @@ void main()
 </p>
   
 <h2>Omnidirectional shadow maps</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   With everything set up it is time to render the actual omnidirectional shadows. The procedure is similar to the directional shadow mapping chapter, although this time we bind a cubemap texture instead of a 2D texture and also pass the light projection's far plane variable to the shaders.
 </p>
   
@@ -514,9 +516,7 @@ RenderScene();
   The vertex and fragment shader are mostly similar to the original shadow mapping shaders: the difference being that the fragment shader no longer requires a fragment position in light space as we can now sample the depth values with a direction vector. 
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Because of this, the vertex shader doesn't needs to transform its position vectors to light space so we can remove the <var>FragPosLightSpace</var> variable:
 </p>
 
