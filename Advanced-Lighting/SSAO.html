@@ -426,7 +426,9 @@ float lerp(float a, float b, float f)
 }  
 </code></pre>
         
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This gives us a kernel distribution that places most samples closer to its origin.
 </p>
         
@@ -442,9 +444,7 @@ float lerp(float a, float b, float f)
   By introducing some randomness onto the sample kernels we largely reduce the number of samples necessary to get good results. We could create a random rotation vector for each fragment of a scene, but that quickly eats up memory. It makes more sense to create a small texture of random rotation vectors that we tile over the screen.
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We create a 4x4 array of random rotation vectors oriented around the tangent-space surface normal:
 </p>
   

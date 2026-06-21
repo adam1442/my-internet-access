@@ -436,13 +436,13 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
 </p>
         
 <h3>A low-discrepancy sequence</h3>
-<p>
-  In this chapter we'll pre-compute the specular portion of the indirect reflectance equation using importance sampling given a random low-discrepancy sequence based on the Quasi-Monte Carlo method. The sequence we'll be using is known as the <def>Hammersley Sequence</def> as carefully described by <a href="http://holger.dammertz.org/stuff/notes_HammersleyOnHemisphere.html" target="_blank">Holger Dammertz</a>. The Hammersley sequence is based on the <def>Van Der Corput</def> sequence which mirrors a decimal binary representation around its decimal point.
-</p>
-        
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  In this chapter we'll pre-compute the specular portion of the indirect reflectance equation using importance sampling given a random low-discrepancy sequence based on the Quasi-Monte Carlo method. The sequence we'll be using is known as the <def>Hammersley Sequence</def> as carefully described by <a href="http://holger.dammertz.org/stuff/notes_HammersleyOnHemisphere.html" target="_blank">Holger Dammertz</a>. The Hammersley sequence is based on the <def>Van Der Corput</def> sequence which mirrors a decimal binary representation around its decimal point.
+</p>
+        
+<p>
   Given some neat bit tricks, we can quite efficiently generate the Van Der Corput sequence in a shader program which we'll use to get a Hammersley sequence sample <var>i</var> over <code>N</code> total samples:
 </p>
         
@@ -729,9 +729,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 <function id='51'>glGenerateMipmap</function>(GL_TEXTURE_CUBE_MAP);
 </code></pre>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   This works surprisingly well and should remove most, if not all, dots in your pre-filter map on rougher surfaces. 
 </p>
 
@@ -755,7 +753,9 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 	\int\limits_{\Omega} f_r(p, \omega_i, \omega_o) n \cdot \omega_i d\omega_i = \int\limits_{\Omega} f_r(p, \omega_i, \omega_o) \frac{F(\omega_o, h)}{F(\omega_o, h)} n \cdot \omega_i d\omega_i 
 \]
           
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   With \(F\) being the Fresnel equation. Moving the Fresnel denominator to the BRDF gives us the following equivalent equation: 
 </p>
   

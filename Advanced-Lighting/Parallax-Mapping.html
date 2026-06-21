@@ -444,13 +444,13 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
   
   <img src="../img/advanced-lighting/parallax_mapping_edge_fix.png" class="clean" alt="Parallax mapping with fragments discarded at the borders, fixing edge artifacts in OpenGL"/>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   You can find the source code <a href="../code_viewer_gh.php%3Fcode=src%252F5.advanced_lighting%252F5.1.parallax_mapping%252Fparallax_mapping.cpp.html" target="_blank">here</a>.
 </p>
           
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   It looks great and is quite fast as well as we only need a single extra texture sample for parallax mapping to work. It does come with a few issues though as it sort of breaks down when looking at it from an angle (similar to normal mapping) and gives incorrect results with steep height changes, as you can see below:
 </p>
     

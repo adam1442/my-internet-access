@@ -381,7 +381,9 @@ unsigned int VBO;
   <fun><function id='31'>glBufferData</function></fun> is a function specifically targeted to copy user-defined data into the currently bound buffer. Its first argument is the type of the buffer we want to copy data into: the vertex buffer object currently bound to the <var>GL_ARRAY_BUFFER</var> target. The second argument specifies the size of the data (in bytes) we want to pass to the buffer; a simple <code>sizeof</code> of the vertex data suffices. The third parameter is the actual data we want to send.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The fourth parameter specifies how we want the graphics card to manage the given data. This can take 3 forms:
 </p>
 
@@ -401,9 +403,7 @@ unsigned int VBO;
 </p>
 
 <h2>Vertex shader</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The vertex shader is one of the shaders that are programmable by people like us. Modern OpenGL requires that we at least set up a vertex and fragment shader if we want to do some rendering so we will briefly introduce shaders and configure two very simple shaders for drawing our first triangle. In the next chapter we'll discuss shaders in more detail.
 </p>
 
@@ -603,9 +603,7 @@ if(!success) {
   Every shader and rendering call after <fun><function id='28'>glUseProgram</function></fun> will now use this program object (and thus the shaders).
 </p>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Oh yeah, and don't forget to delete the shader objects once we've linked them into the program object; we no longer need them anymore:
 </p>
 
@@ -623,7 +621,9 @@ if(!success) {
   The vertex shader allows us to specify any input we want in the form of vertex attributes and while this allows for great flexibility, it does mean we have to manually specify what part of our input data goes to which vertex attribute in the vertex shader. This means we have to specify how OpenGL should interpret the vertex data before rendering.
 </p>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Our vertex buffer data is formatted as follows:
 </p>
 

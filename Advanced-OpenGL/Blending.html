@@ -517,9 +517,7 @@ void main()
   This function sets the RGB components as we've set them previously, but only lets the resulting alpha component be influenced by the source's alpha value.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   OpenGL gives us even more flexibility by allowing us to change the operator between the source and destination part of the equation. Right now, the source and destination components are added together, but we could also subtract them if we want. <fun><function id='72'>glBlendEquation</function>(GLenum mode)</fun> allows us to set this operation and has 5 possible options:
 </p>
 
@@ -549,7 +547,9 @@ void main()
 <function id='70'>glBlendFunc</function>(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Since we enabled blending there is no need to discard fragments so we'll reset the fragment shader to its original version:
 </p>
 

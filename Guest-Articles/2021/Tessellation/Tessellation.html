@@ -623,9 +623,7 @@ void main()
 		<li>the 2D tessellation coordinate for the generated point through the built-in <def>gl_TessCoord</def></li>
 	</ul>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		We then use the <code>gl_TessCoord</code> values as the parameters to interpolate the patch vertices as desired.  Here, we will apply the same quad subdivision as 
 		we did CPU side in the previous chapter.  The difference being that we are now determining the interpolated texture coordinate and final vertex position within the GPU 
 		in parallel, opposed to on the CPU in sequence.  The process is also simplified since our code is performing only a single interpolation opposed to having to generate 
@@ -724,7 +722,9 @@ void main()
 	<img src="../../../img/guest/2021/tessellation/tessellation/gpu_overworld.png" width="600"
 		 alt="GPU Terrain Overworld" title="GPU Terrain Overworld" class="clean">
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		When we view the wireframe of the full terrain, we can see the tessellation of each patch.
 	</p>
 

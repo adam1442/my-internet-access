@@ -369,7 +369,9 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 </p>
 
 <h2>Off-screen MSAA</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Because GLFW takes care of creating the multisampled buffers, enabling MSAA is quite easy. If we want to use our own framebuffers however, we have to generate the multisampled buffers ourselves; now we <strong>do</strong> need to take care of creating multisampled buffers.
 </p>
 
@@ -405,9 +407,7 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 </p>
 
 <h3>Multisampled renderbuffer objects</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Like textures, creating a multisampled renderbuffer object isn't difficult. It is even quite easy since all we need to change is <fun><function id='88'>glRenderbufferStorage</function></fun> to <fun><function id='102'><function id='88'>glRenderbufferStorage</function>Multisample</function></fun> when we configure the (currently bound) renderbuffer's memory storage:
 </p>
 
