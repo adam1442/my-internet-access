@@ -394,9 +394,7 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
 float cosTheta = dot(lightDir, N);  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The radiance equation is quite useful as it contains most physical quantities we're interested in. If we consider the solid angle \(\omega\) and the area \(A\) to be infinitely small, we can use radiance to measure the flux of a single ray of light hitting a single point in space. This relation allows us to calculate the radiance of a single light ray influencing a single (fragment) point; we effectively translate the solid angle \(\omega\) into a direction vector \(\omega\), and \(A\) into a point \(p\). This way, we can directly use radiance in our shaders to calculate a single light ray's per-fragment contribution.
 </p>
   
@@ -419,7 +417,9 @@ float cosTheta = dot(lightDir, N);
   
   <img src="../img/pbr/hemisphere.png" class="clean" alt="Hemisphere"/>
   
-<p>  
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>  
   To calculate the total of values inside an area or (in the case of a hemisphere) a volume, we use a mathematical construct called an <def>integral</def> denoted in the reflectance equation as \(\int\) over all incoming directions \(d\omega_i\) within the hemisphere \(\Omega\) . An integral measures the area of a function, which can either be calculated analytically or numerically. As there is no analytical solution to both the render and reflectance equation, we'll want to numerically solve the integral discretely. This translates to taking the result of small discrete steps of the reflectance equation over the hemisphere \(\Omega\) and averaging their results over the step size. This is known as the <def>Riemann sum</def> that we can roughly visualize in code as follows:
 </p>
 

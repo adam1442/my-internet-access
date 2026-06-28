@@ -643,7 +643,9 @@ if(projCoords.z &gt; 1.0)
 return shadow;
 </code></pre>
       
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		And that's it! If we did everything correctly we should see that the renderer switches between shadow maps based on the distance. Try setting some unreasonable cascade plane distances (for example only one, which is a few units from the camera) to see if the code really does work. You should see a noticable degradation in shadow quality between the two sides of the plane. If you see moire artifacts on the screen try changing around bias parameters a bit.
 	</p>
       
@@ -663,9 +665,7 @@ return shadow;
 	<p>
 		In the code example the cube positions and rotations are randomized. If you want to try the example with static geometry I suggest you seed the <a href="https://en.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine" target="_blank">random number generator</a>.
 	</p>
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		If you are going through the sources given below you might notice that the NVIDIA article is tackling the light projection matrix creation in a roundabout way compared to what is given in this article. However, what they are doing is mathematically equivalent to what we are doing in respect to the x-y coordinates in light view space, which is what matters. This can be seen by plugging stuff into the matrix given in <a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank">this</a> article by songho.
 	</p>
       

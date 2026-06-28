@@ -486,9 +486,7 @@ void main()
   The fragment shader takes as input the <var>FragPos</var> from the geometry shader, the light's position vector, and the frustum's far plane value. Here we take the distance between the fragment and the light source, map it to the [<code>0</code>,<code>1</code>] range and write it as the fragment's depth value. 
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Rendering the scene with these shaders and the cubemap-attached framebuffer object active should give you a completely filled depth cubemap for the second pass's shadow calculations.
 </p>
   
@@ -516,7 +514,9 @@ RenderScene();
   The vertex and fragment shader are mostly similar to the original shadow mapping shaders: the difference being that the fragment shader no longer requires a fragment position in light space as we can now sample the depth values with a direction vector. 
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Because of this, the vertex shader doesn't needs to transform its position vectors to light space so we can remove the <var>FragPosLightSpace</var> variable:
 </p>
 

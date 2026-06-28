@@ -392,9 +392,7 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   A common mistake is to set one of the mipmap filtering options as the magnification filter. This doesn't have any effect since mipmaps are primarily used for when textures get downscaled: texture magnification doesn't use mipmaps and giving it a mipmap filtering option will generate an OpenGL <var>GL_INVALID_ENUM</var> error code.
 </p>
 
@@ -418,7 +416,9 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 #include "stb_image.h"
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   By defining <var>STB_IMAGE_IMPLEMENTATION</var> the preprocessor modifies the header file such that it only contains the relevant definition source code, effectively turning the header file into a <code>.cpp</code> file, and that's about it. Now simply include <code>stb_image.h</code> somewhere in your program and compile.
 </p>
 

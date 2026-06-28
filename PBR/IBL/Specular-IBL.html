@@ -431,14 +431,14 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
   Given our newly obtained knowledge of Monte Carlo and Quasi-Monte Carlo integration, there is an interesting property we can use for an even faster rate of convergence known as <def>importance sampling</def>. We've mentioned it before in this chapter, but when it comes to specular reflections of light, the reflected light vectors are constrained in a specular lobe with its size determined by the roughness of the surface. Seeing as any (quasi-)randomly generated sample outside the specular lobe isn't relevant to the specular integral it makes sense to focus the sample generation to within the specular lobe, at the cost of making the Monte Carlo estimator biased.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This is in essence what importance sampling is about: generate sample vectors in some region constrained by the roughness oriented around the microfacet's halfway vector. By combining Quasi-Monte Carlo sampling with a low-discrepancy sequence and biasing the sample vectors using importance sampling, we get a high rate of convergence. Because we reach the solution at a faster rate, we'll need significantly fewer samples to reach an approximation that is sufficient enough. 
 </p>
         
 <h3>A low-discrepancy sequence</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   In this chapter we'll pre-compute the specular portion of the indirect reflectance equation using importance sampling given a random low-discrepancy sequence based on the Quasi-Monte Carlo method. The sequence we'll be using is known as the <def>Hammersley Sequence</def> as carefully described by <a href="http://holger.dammertz.org/stuff/notes_HammersleyOnHemisphere.html" target="_blank">Holger Dammertz</a>. The Hammersley sequence is based on the <def>Van Der Corput</def> sequence which mirrors a decimal binary representation around its decimal point.
 </p>
         
@@ -674,7 +674,9 @@ vec3 envColor = textureLod(environmentMap, WorldPos, 1.2).rgb;
           
 <img src="../../img/pbr/ibl_prefilter_seams.png" alt="Visible cubemap seams in the pre-filter map."/>
             
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Luckily for us, OpenGL gives us the option to properly filter across cubemap faces by enabling <var>GL_TEXTURE_CUBE_MAP_SEAMLESS</var>:
 </p>
             
@@ -753,9 +755,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 	\int\limits_{\Omega} f_r(p, \omega_i, \omega_o) n \cdot \omega_i d\omega_i = \int\limits_{\Omega} f_r(p, \omega_i, \omega_o) \frac{F(\omega_o, h)}{F(\omega_o, h)} n \cdot \omega_i d\omega_i 
 \]
           
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   With \(F\) being the Fresnel equation. Moving the Fresnel denominator to the BRDF gives us the following equivalent equation: 
 </p>
   

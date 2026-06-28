@@ -471,9 +471,7 @@ geometryShader = <function id='37'>glCreateShader</function>(GL_GEOMETRY_SHADER)
 </p>
 
 <h2>Let's build houses</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Drawing points and lines isn't <strong>that</strong> interesting so we're going to get a little creative by using the geometry shader to draw a house for us at the location of each point. We can accomplish this by setting the output of the geometry shader to <def>triangle_strip</def> and draw a total of three triangles: two for the square house and one for the roof.
 </p>
 
@@ -518,7 +516,9 @@ void main() {
 }  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This geometry shader generates 5 vertices, with each vertex being the point's position plus an offset to form one large triangle strip. The resulting primitive is then rasterized and the fragment shader runs on the entire triangle strip, resulting in a green house for each point we've rendered:
 </p>
 

@@ -483,7 +483,9 @@ unsigned int captureFBO, captureRBO;
 <function id='89'>glFramebufferRenderbuffer</function>(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);  
 </code></pre>  
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Of course, we then also generate the corresponding cubemap color textures, pre-allocating memory for each of its 6 faces:
 </p>
   
@@ -508,9 +510,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
   Then what's left to do is capture the equirectangular 2D texture onto the cubemap faces.
 </p>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   I won't go over the details as the code details topics previously discussed in the <a href="../../Advanced-OpenGL/Framebuffers.html" target="_blank">framebuffer</a> and <a href="../../Advanced-Lighting/Shadows/Point-Shadows.html" target="_blank">point shadows</a> chapters, but it effectively boils down to setting up 6 different view matrices (facing  each side of the cube), set up a projection matrix with a fov of <code>90</code> degrees to capture the entire face, and render a cube 6 times storing the results in a floating point framebuffer: 
 </p>
     
@@ -716,7 +716,9 @@ void main()
    As we sample both spherical values discretely, each sample will approximate or average an area on the hemisphere as the image before shows. Note that (due to the general properties of a spherical shape) the hemisphere's discrete sample area gets smaller the higher the zenith angle \(\theta\) as the sample regions converge towards the center top. To compensate for the smaller areas, we weigh its contribution by scaling the area by \(\sin \theta\).
 </p>
       
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Discretely sampling the hemisphere given the integral's spherical coordinates translates to the following fragment code:
 </p>
       
@@ -753,9 +755,7 @@ irradiance = PI * irradiance * (1.0 / float(nrSamples));
   From within both loops, we take both spherical coordinates to convert them to a 3D Cartesian sample vector, convert the sample from tangent to world space oriented around the normal, and use this sample vector to directly sample the HDR environment map.  We add each sample result to <var>irradiance</var> which at the end we divide by the total number of samples taken, giving us the average sampled irradiance. Note that we scale the sampled color value by <code>cos(theta)</code> due to the light being weaker at larger angles and by <code>sin(theta)</code> to account for the smaller sample areas in the higher hemisphere areas.
 </p>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Now what's left to do is to set up the OpenGL rendering code such that we can convolute the earlier captured <var>envCubemap</var>. First we create the irradiance cubemap (again, we only have to do this once before the render loop):
 </p>
       

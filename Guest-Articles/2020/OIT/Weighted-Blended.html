@@ -409,9 +409,7 @@ color = vec4(accum.rgb / max(accum.a, 1e-5), reveal);
 
     <h3>Details</h3>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         To get started, we would have to setup a quad for our solid and transparent surfaces. The red quad will be the solid one, and the green and blue will be the transparent one. Since we're using the same quad for our screen quad as well, here we define UV values for texture mapping purposes at the screen pass.
     </p>
 
@@ -614,7 +612,9 @@ void main()
 		Note that, we are directly using the color passed to the shader as our final fragment color. Normally, if you are in a lighting shader, you want to use the final result of the lighting to store in accumulation and revealage render targets.
 	</p>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
         Now that everything has been rendered, we have to <def>composite</def> these two images so we can have the finished result.
     </p>
 

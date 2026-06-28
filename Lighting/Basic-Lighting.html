@@ -465,9 +465,7 @@ FragColor = vec4(result, 1.0);
 </p>
 
 <h2>One last thing</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   in the previous section we passed the normal vector directly from the vertex shader to the fragment shader. However, the calculations in the fragment shader are all done in world space, so shouldn't we transform the normal vectors to world space coordinates as well? Basically yes, but it's not as simple as simply multiplying it with a model matrix. 
 </p>
 
@@ -485,7 +483,9 @@ FragColor = vec4(result, 1.0);
   Whenever we apply a non-uniform scale (note: a uniform scale only changes the normal's magnitude, not its direction, which is easily fixed by normalizing it) the normal vectors are not perpendicular to the corresponding surface anymore which distorts the lighting.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The trick of fixing this behavior is to use a different model matrix specifically tailored for normal vectors. This matrix is called the <def>normal matrix</def> and uses a few linear algebraic operations to remove the effect of wrongly scaling the normal vectors. If you want to know how this matrix is calculated I suggest the following <a href="http://www.lighthouse3d.com/tutorials/glsl-tutorial/the-normal-matrix/" target="_blank">article</a>. 
 </p>
 

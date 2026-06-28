@@ -381,9 +381,7 @@ unsigned int VBO;
   <fun><function id='31'>glBufferData</function></fun> is a function specifically targeted to copy user-defined data into the currently bound buffer. Its first argument is the type of the buffer we want to copy data into: the vertex buffer object currently bound to the <var>GL_ARRAY_BUFFER</var> target. The second argument specifies the size of the data (in bytes) we want to pass to the buffer; a simple <code>sizeof</code> of the vertex data suffices. The third parameter is the actual data we want to send.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The fourth parameter specifies how we want the graphics card to manage the given data. This can take 3 forms:
 </p>
 
@@ -425,7 +423,9 @@ void main()
   As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Next we declare all the input vertex attributes in the vertex shader with the <code>in</code> keyword. Right now we only care about position data so we only need a single vertex attribute. GLSL has a vector datatype that contains 1 to 4 floats based on its postfix digit. Since each vertex has a 3D coordinate we create a <code>vec3</code> input variable with the name <var>aPos</var>. We also specifically set the location of the input variable via <code>layout (location = 0)</code> and you'll later see that why we're going to need that location.
 </p>
 
@@ -603,7 +603,9 @@ if(!success) {
   Every shader and rendering call after <fun><function id='28'>glUseProgram</function></fun> will now use this program object (and thus the shaders).
 </p>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Oh yeah, and don't forget to delete the shader objects once we've linked them into the program object; we no longer need them anymore:
 </p>
 
@@ -621,9 +623,7 @@ if(!success) {
   The vertex shader allows us to specify any input we want in the form of vertex attributes and while this allows for great flexibility, it does mean we have to manually specify what part of our input data goes to which vertex attribute in the vertex shader. This means we have to specify how OpenGL should interpret the vertex data before rendering.
 </p>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Our vertex buffer data is formatted as follows:
 </p>
 

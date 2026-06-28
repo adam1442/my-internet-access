@@ -697,7 +697,9 @@ private:
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  The code should speak for itself. One thing to note is that we must enable
 	  linear filtering and edge-clamping for all mips. Since we don't need an <!--' -->
 	  alpha channel, we can have some extra color precision by using the internal
@@ -923,9 +925,7 @@ void BloomRenderer::RenderUpsamples(float filterRadius)
 }
 </code></pre>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  For both methods we're<!--'--> relying on <tt>quadVAO</tt>, which is created
 	  before-hand (code snippet below this paragraph). During the downsampling
 	  we fetch the mip chain, activate the shader, and then run a loop through
@@ -1215,9 +1215,7 @@ default:
 }
 </code></pre>
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  The variable <tt>mipLevel</tt> is a uniform int, set to 0 for the first
 	  downsampling and non-zero for the others. If you notice fireflies in your
 	  renders then you should probably add a Karis average to the first bloom
@@ -1229,7 +1227,9 @@ default:
 	</p>
 
 	<h2>Bonus material 3: Lens dirt</h2>
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  Another extension commonly attached to bloom is lens dirt. Where bloom
 	  aims to model the scattering of light in the lens, lens dirt is an overlay
 	  which controls the bloom effect in certain fixed areas of the lens. As you

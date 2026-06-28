@@ -471,9 +471,7 @@ else if(lightVector.w == 1.0)
 </p>
   
 <h3>Implementing attenuation</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
     To implement attenuation we'll be needing 3 extra values in the fragment shader: namely the constant, linear and quadratic terms of the equation. These are best stored in the <fun>Light</fun> struct we defined earlier. Note that we need to calculate <var>lightDir</var> again using <var>position</var> as this is a point light (as we did in the previous chapter) and not a directional light.
 </p>
 
@@ -491,7 +489,9 @@ struct Light {
 }; 
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Then we set the terms in our application: we want the light to cover a distance of <code>50</code> so we'll use the appropriate constant, linear and quadratic terms from the table:
 </p>
   
