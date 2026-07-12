@@ -425,13 +425,13 @@ void main()
 }  
 </code></pre>
       
-<p>
-  This vertex shader takes a per-object model, a vertex, and transforms all vertices to light space using <var>lightSpaceMatrix</var>.
-</p>      
-      
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  This vertex shader takes a per-object model, a vertex, and transforms all vertices to light space using <var>lightSpaceMatrix</var>.
+</p>      
+      
+<p>
   Since we have no color buffer and disabled the draw and read buffers, the resulting fragments do not require any processing so we can simply use an empty fragment shader:
 </p>
 
@@ -689,7 +689,9 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     
     <img src="../../img/advanced-lighting/shadow_mapping_acne.png" alt="Image of shadow acne as Moiré pattern with shadow mapping"/>
       
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   We can see a large part of the floor quad rendered with obvious black lines in an alternating fashion. This shadow mapping artifact is called <def>shadow acne</def> and can be explained by the following image:
 </p>
       
@@ -718,9 +720,7 @@ float bias = 0.005;
 float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;  
 </code></pre>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   A shadow bias of <code>0.005</code> solves the issues of our scene by a large extent, but you can imagine the bias value is highly dependent on the angle between the light source and the surface. If the surface would have a steep angle to the light source, the shadows may still display shadow acne. A more solid approach would be to change the amount of bias based on the surface angle towards the light: something we can solve with the dot product:
 </p>
   

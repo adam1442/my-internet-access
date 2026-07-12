@@ -496,9 +496,7 @@ void main()
   The lighting pass shader accepts 3 uniform textures that represent the G-buffer and hold all the data we've stored in the geometry pass. If we were to sample these with the current fragment's texture coordinates we'd get the exact same fragment values as if we were rendering the geometry directly. Note that we retrieve both the <var>Albedo</var> color and the <var>Specular</var> intensity from the single <var>gAlbedoSpec</var> texture.
 </p>
         
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   As we now have the per-fragment variables (and the relevant uniform variables) necessary to calculate Blinn-Phong lighting, we don't have to make any changes to the lighting code. The only thing we change in deferred shading here is the method of obtaining lighting input variables.
 </p>
         
@@ -551,7 +549,9 @@ for (unsigned int i = 0; i &lt; lightPositions.size(); i++)
   What we need to do, is first copy the depth information stored in the geometry pass into the default framebuffer's depth buffer and only then render the light cubes. This way the light cubes' fragments are only rendered when on top of the previously rendered geometry.
 </p>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   We can copy the content of a framebuffer to the content of another framebuffer with the help of <fun><function id='103'>glBlitFramebuffer</function></fun>, a function we also used in the <a href="../Advanced-OpenGL/Anti-Aliasing.html" target="_blank">anti-aliasing</a> chapter to resolve multisampled framebuffers. The <fun><function id='103'>glBlitFramebuffer</function></fun> function allows us to copy a user-defined region of a framebuffer to a user-defined region of another framebuffer. 
 </p>
     

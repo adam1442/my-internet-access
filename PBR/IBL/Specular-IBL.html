@@ -404,7 +404,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
   From this graph we can see that if we take any random sample of the population, there is a higher chance of picking a sample of someone of height 1.70, compared to the lower probability of the sample being of height 1.50.
   </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 When it comes to Monte Carlo integration, some samples may have a higher probability of being generated than others. This is why for any general Monte Carlo estimation we divide or multiply the sampled value by the sample probability according to a pdf. So far, in each of our cases of estimating an integral, the samples we've generated were uniform, having the exact same chance of being generated. Our estimations so far were <def>unbiased</def>, meaning that given an ever-increasing amount of samples we will eventually <def>converge</def> to the <strong>exact</strong> solution of the integral. 
 </p>
 
@@ -431,9 +433,7 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
   Given our newly obtained knowledge of Monte Carlo and Quasi-Monte Carlo integration, there is an interesting property we can use for an even faster rate of convergence known as <def>importance sampling</def>. We've mentioned it before in this chapter, but when it comes to specular reflections of light, the reflected light vectors are constrained in a specular lobe with its size determined by the roughness of the surface. Seeing as any (quasi-)randomly generated sample outside the specular lobe isn't relevant to the specular integral it makes sense to focus the sample generation to within the specular lobe, at the cost of making the Monte Carlo estimator biased.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   This is in essence what importance sampling is about: generate sample vectors in some region constrained by the roughness oriented around the microfacet's halfway vector. By combining Quasi-Monte Carlo sampling with a low-discrepancy sequence and biasing the sample vectors using importance sampling, we get a high rate of convergence. Because we reach the solution at a faster rate, we'll need significantly fewer samples to reach an approximation that is sufficient enough. 
 </p>
         
@@ -674,9 +674,7 @@ vec3 envColor = textureLod(environmentMap, WorldPos, 1.2).rgb;
           
 <img src="../../img/pbr/ibl_prefilter_seams.png" alt="Visible cubemap seams in the pre-filter map."/>
             
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Luckily for us, OpenGL gives us the option to properly filter across cubemap faces by enabling <var>GL_TEXTURE_CUBE_MAP_SEAMLESS</var>:
 </p>
             
@@ -747,7 +745,9 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 		\int\limits_{\Omega} f_r(p, \omega_i, \omega_o) n \cdot \omega_i d\omega_i
 \]
           
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   We've pre-computed the left part of the split sum approximation in the pre-filter map over different roughness levels. The right side requires us to convolute the BRDF equation over the angle \(n \cdot \omega_o\), the surface roughness, and Fresnel's \(F_0\). This is similar to integrating the specular BRDF with a solid-white environment or a constant radiance \(L_i\) of <code>1.0</code>. Convoluting the BRDF over 3 variables is a bit much, but we can try to move \(F_0\) out of the specular BRDF equation:
 </p>
         

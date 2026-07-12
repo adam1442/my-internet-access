@@ -643,9 +643,7 @@ if(projCoords.z &gt; 1.0)
 return shadow;
 </code></pre>
       
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		And that's it! If we did everything correctly we should see that the renderer switches between shadow maps based on the distance. Try setting some unreasonable cascade plane distances (for example only one, which is a few units from the camera) to see if the code really does work. You should see a noticable degradation in shadow quality between the two sides of the plane. If you see moire artifacts on the screen try changing around bias parameters a bit.
 	</p>
       
@@ -656,7 +654,9 @@ return shadow;
         </p>
 
 	<h2>Closing thoughts</h2>
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		In the sample project provided you can toggle depthmap visualization by pressing <kbd>F</kbd>. When in depthmap visualization mode you can press the <kbd>+</kbd> key to swap between the different layers.
 	</p>
 	<p>

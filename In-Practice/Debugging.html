@@ -592,13 +592,13 @@ void main()
 </p>
   
 <h2>OpenGL GLSL reference compiler</h2>
-<p>
-  Each driver has its own quirks and tidbits; for instance, NVIDIA drivers are more flexible and tend to overlook some restrictions on the specification, while ATI/AMD drivers tend to better enforce the OpenGL specification (which is the better approach in my opinion). The result of this is that shaders on one machine may not work on the other due to driver differences. 
-</p>
-  
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  Each driver has its own quirks and tidbits; for instance, NVIDIA drivers are more flexible and tend to overlook some restrictions on the specification, while ATI/AMD drivers tend to better enforce the OpenGL specification (which is the better approach in my opinion). The result of this is that shaders on one machine may not work on the other due to driver differences. 
+</p>
+  
+<p>
   With years of experience you'll eventually get to learn the minor differences between GPU vendors, but if you want to be sure your shader code runs on all kinds of machines you can directly check your shader code against the official specification using OpenGL's GLSL <a href="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/" target="_blank">reference compiler</a>. You can download the so called <def>GLSL lang validator</def> binaries from <a href="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/" target="_blank">here</a> or its complete source code from <a href="https://github.com/KhronosGroup/glslang" target="_blank">here</a>.
 </p>
   

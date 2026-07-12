@@ -514,9 +514,7 @@ RenderScene();
   The vertex and fragment shader are mostly similar to the original shadow mapping shaders: the difference being that the fragment shader no longer requires a fragment position in light space as we can now sample the depth values with a direction vector. 
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Because of this, the vertex shader doesn't needs to transform its position vectors to light space so we can remove the <var>FragPosLightSpace</var> variable:
 </p>
 
@@ -604,7 +602,9 @@ void main()
   There are a few subtle differences: the lighting code is the same, but we now have a <code>samplerCube</code> uniform and the <fun>ShadowCalculation</fun> function takes the current fragment's position as its argument instead of the fragment position in light space. We now also include the light frustum's <var>far_plane</var> value that we'll later need.
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The biggest difference is in the content of the <fun>ShadowCalculation</fun> function that now samples depth values from a cubemap instead of a 2D texture. Let's discuss its content step by step.
 </p>
   
