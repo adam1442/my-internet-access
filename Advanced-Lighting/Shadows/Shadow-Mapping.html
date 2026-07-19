@@ -425,9 +425,7 @@ void main()
 }  
 </code></pre>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   This vertex shader takes a per-object model, a vertex, and transforms all vertices to light space using <var>lightSpaceMatrix</var>.
 </p>      
       
@@ -473,7 +471,9 @@ simpleDepthShader.use();
       
 <img src="../../img/advanced-lighting/shadow_mapping_depth_map.png" class="clean" alt="Depth (or shadow) map of shadow mapping technique"/>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   For rendering the depth map onto a quad we used the following fragment shader:
 </p>
   
@@ -689,9 +689,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
     
     <img src="../../img/advanced-lighting/shadow_mapping_acne.png" alt="Image of shadow acne as Moiré pattern with shadow mapping"/>
       
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   We can see a large part of the floor quad rendered with obvious black lines in an alternating fashion. This shadow mapping artifact is called <def>shadow acne</def> and can be explained by the following image:
 </p>
       
@@ -701,7 +699,9 @@ float ShadowCalculation(vec4 fragPosLightSpace)
   Because the shadow map is limited by resolution, multiple fragments can sample the same value from the depth map when they're relatively far away from the light source. The image shows the floor where each yellow tilted panel represents a single texel of the depth map. As you can see, several fragments sample the same depth sample. 
   </p>
   
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   While this is generally okay, it becomes an issue when the light source looks at an angle towards the surface as in that case the depth map is also rendered from an angle. Several fragments then access the same tilted depth texel while some are above and some below the floor; we get a shadow discrepancy. Because of this, some fragments are considered to be in shadow and some are not, giving the striped pattern from the image.
 </p>
   

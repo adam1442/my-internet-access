@@ -416,7 +416,9 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
 #include "stb_image.h"
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   By defining <var>STB_IMAGE_IMPLEMENTATION</var> the preprocessor modifies the header file such that it only contains the relevant definition source code, effectively turning the header file into a <code>.cpp</code> file, and that's about it. Now simply include <code>stb_image.h</code> somewhere in your program and compile.
 </p>
 
@@ -430,9 +432,7 @@ int width, height, nrChannels;
 unsigned char *data = stbi_load("container.jpg", &amp;width, &amp;height, &amp;nrChannels, 0); 
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The function first takes as input the location of an image file. It then expects you to give three <code>ints</code> as its second, third and fourth argument that <code>stb_image.h</code> will fill with the resulting image's <em>width</em>, <em>height</em> and <em>number</em> of color channels. We need the image's width and height for generating textures later on. <!--The last argument allows us to force a number of channels. Let's say the image has 4 channels (RGBA) and we only want to load the 3 color channels (RGB) without alpha, we set its last argument to <code>3</code>. -->
 </p>
 

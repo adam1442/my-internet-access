@@ -497,7 +497,9 @@ void main()
   </tr>
 </table>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To get the blending result of our little two square example, we want to take the \(alpha\) of the source color vector for the source factor and \(1 - alpha\) of the same color vector for the destination factor. This translates to <fun><function id='70'>glBlendFunc</function></fun> as follows:
 </p>
 
@@ -529,9 +531,7 @@ void main()
   <li><code>GL_MAX</code>: takes the component-wise maximum of both colors: \(\bar{C}_{result} = max(\color{red}{Dst}, \color{green}{Src})\).</li>
 </ul>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Usually we can simply omit a call to <fun><function id='72'>glBlendEquation</function></fun> because <var>GL_FUNC_ADD</var> is the preferred blending equation for most operations, but if you're really trying your best to break the mainstream circuit any of the other equations could suit your needs.
 </p>
 

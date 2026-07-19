@@ -378,7 +378,9 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
   Where \(I\) is the radiant flux \(\Phi\) over the solid angle \(\omega\). 
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   With knowledge of radiant flux, radiant intensity, and the solid angle, we can finally describe the equation for <strong>radiance</strong>. Radiance is described as the total observed energy in an area \(A\) over the solid angle \(\omega\) of a light of radiant intensity \(\Phi\):
 </p>
   
@@ -398,9 +400,7 @@ float cosTheta = dot(lightDir, N);
   The radiance equation is quite useful as it contains most physical quantities we're interested in. If we consider the solid angle \(\omega\) and the area \(A\) to be infinitely small, we can use radiance to measure the flux of a single ray of light hitting a single point in space. This relation allows us to calculate the radiance of a single light ray influencing a single (fragment) point; we effectively translate the solid angle \(\omega\) into a direction vector \(\omega\), and \(A\) into a point \(p\). This way, we can directly use radiance in our shaders to calculate a single light ray's per-fragment contribution.
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   In fact, when it comes to radiance we generally care about <strong>all</strong> incoming light onto a point \(p\), which is the sum of all radiance known as <def>irradiance</def>. With knowledge of both radiance and irradiance we can get back to the reflectance equation:
 </p>
   
@@ -523,7 +523,9 @@ for(int i = 0; i &lt; steps; ++i)
    When the roughness is low (thus the surface is smooth), a highly concentrated number of microfacets are aligned to halfway vectors over a small radius. Due to this high concentration, the NDF displays a very bright spot. On a rough surface however, where the microfacets are aligned in much more random directions, you'll find a much larger number of halfway vectors \(h\) somewhat aligned to the microfacets (but less concentrated), giving us the more grayish results.
 </p>
     
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   In GLSL the Trowbridge-Reitz GGX normal distribution function translates to the following code:
 </p>
     
@@ -592,9 +594,7 @@ float DistributionGGX(vec3 N, vec3 H, float a)
     
     <img src="../img/pbr/geometry.png" alt="Visualized Geometry function in OpenGL PBR"/>
     
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   The geometry function is a multiplier between [0.0, 1.0] with 1.0 (or white) measuring no microfacet shadowing, and 0.0 (or black) complete microfacet shadowing. 
 </p>
     

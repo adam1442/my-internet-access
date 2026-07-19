@@ -451,9 +451,7 @@ void main()
   Here we take a relatively small sample of Gaussian weights that we each use to assign a specific weight to the horizontal or vertical samples around the current fragment. You can see that we split the blur filter into a horizontal and vertical section based on whatever value we set the <var>horizontal</var> uniform. We base the offset distance on the exact size of a texel obtained by the division of <code>1.0</code> over the size of the texture (a <code>vec2</code> from <fun>textureSize</fun>).
 </p>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   For blurring an image we create two basic framebuffers, each with only a color buffer texture: 
 </p>
     
@@ -517,7 +515,9 @@ for (unsigned int i = 0; i &lt; amount; i++)
 </p>
       
 <h2>Blending both textures</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
    With the scene's HDR texture and a blurred brightness texture of the scene we only need to combine the two to achieve the infamous Bloom or glow effect. In the final fragment shader (largely similar to the one we used in the <a href="HDR.html" target="_blank">HDR</a> chapter) we additively blend both textures:
 </p>
       

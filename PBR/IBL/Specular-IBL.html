@@ -404,9 +404,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
   From this graph we can see that if we take any random sample of the population, there is a higher chance of picking a sample of someone of height 1.70, compared to the lower probability of the sample being of height 1.50.
   </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
 When it comes to Monte Carlo integration, some samples may have a higher probability of being generated than others. This is why for any general Monte Carlo estimation we divide or multiply the sampled value by the sample probability according to a pdf. So far, in each of our cases of estimating an integral, the samples we've generated were uniform, having the exact same chance of being generated. Our estimations so far were <def>unbiased</def>, meaning that given an ever-increasing amount of samples we will eventually <def>converge</def> to the <strong>exact</strong> solution of the integral. 
 </p>
 
@@ -463,7 +461,9 @@ vec2 Hammersley(uint i, uint N)
 }  
 </code></pre>
         
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The GLSL <fun>Hammersley</fun> function gives us the low-discrepancy sample <var>i</var> of the total sample set of size <var>N</var>. 
 </p>
 
@@ -674,7 +674,9 @@ vec3 envColor = textureLod(environmentMap, WorldPos, 1.2).rgb;
           
 <img src="../../img/pbr/ibl_prefilter_seams.png" alt="Visible cubemap seams in the pre-filter map."/>
             
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Luckily for us, OpenGL gives us the option to properly filter across cubemap faces by enabling <var>GL_TEXTURE_CUBE_MAP_SEAMLESS</var>:
 </p>
             
@@ -745,9 +747,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 		\int\limits_{\Omega} f_r(p, \omega_i, \omega_o) n \cdot \omega_i d\omega_i
 \]
           
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   We've pre-computed the left part of the split sum approximation in the pre-filter map over different roughness levels. The right side requires us to convolute the BRDF equation over the angle \(n \cdot \omega_o\), the surface roughness, and Fresnel's \(F_0\). This is similar to integrating the specular BRDF with a solid-white environment or a constant radiance \(L_i\) of <code>1.0</code>. Convoluting the BRDF over 3 variables is a bit much, but we can try to move \(F_0\) out of the specular BRDF equation:
 </p>
         
