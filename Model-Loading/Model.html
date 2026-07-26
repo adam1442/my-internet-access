@@ -532,9 +532,7 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
 }  
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We first check the amount of textures stored in the material via its <fun>GetTextureCount</fun> function that expects one of the texture types we've given. We retrieve each of the texture's file locations via the <fun>GetTexture</fun> function that stores the result in an <code>aiString</code>. We then use another helper function called <fun>TextureFromFile</fun> that loads a texture (with <code>stb_image.h</code>) for us and returns the texture's ID. You can check the complete code listing at the end for its content if you're not sure how such a function is written.
 </p>
 
@@ -616,7 +614,9 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
 </p>
 
 <h1>No more containers!</h1>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   So let's give our implementation a spin by actually importing a model created by genuine artists, not something done by the creative genius that I am. Because I don't want to give myself too much credit, I'll occasionally allow some other artists to join the ranks and this time we're going to load this amazing  <a href="https://sketchfab.com/3d-models/survival-guitar-backpack-low-poly-799f8c4511f84fab8c3f12887f7e6b36" target="_blank">Survival Guitar Backpack</a> by Berk Gedik. I've modified the material and paths a bit so it works directly with the way we've set up the model loading. The model is exported as a <code>.obj</code> file together with a <code>.mtl</code> file that links to the model's diffuse, specular, and normal maps (we'll get to those later). You can download the adjusted model for this chapter <a href="../data/models/backpack.zip" target="_blank">here</a>. Note that there's a few extra texture types we won't be using yet, and that all the textures and the model file(s) should be located in the same directory for the textures to load.
 </p>
 

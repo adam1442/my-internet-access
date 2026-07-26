@@ -459,9 +459,7 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
 </p>
       
 <h2>Steep Parallax Mapping</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Steep Parallax Mapping is an extension on top of Parallax Mapping in that it uses the same principles, but instead of 1 sample it takes multiple samples to better pinpoint vector \(\color{brown}{\bar{P}}\) to \(\color{blue}B\). This gives much better results, even with steep height changes, as the accuracy of the technique is improved by the number of samples.
 </p>
       
@@ -504,7 +502,9 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
   Here we first set things up: we specify the number of layers, calculate the depth offset of each layer, and finally calculate the texture coordinate offset that we have to shift along the direction of \(\color{brown}{\bar{P}}\) per layer.
 </p>
         
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   We then iterate through all the layers, starting from the top, until we find a depthmap value less than the layer's depth value:
 </p>
         

@@ -510,14 +510,14 @@ for (unsigned int i = 0; i &lt; amount; i++)
     
     <img src="../img/advanced-lighting/bloom_blurred_large.png"  class="clean" alt="Blurred image using Gaussian Blur of extracted brightness regions for the glow or bloom effect in OpenGL"/>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The last step to complete the Bloom effect is to combine this blurred brightness texture with the original scene's HDR texture.
 </p>
       
 <h2>Blending both textures</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
    With the scene's HDR texture and a blurred brightness texture of the scene we only need to combine the two to achieve the infamous Bloom or glow effect. In the final fragment shader (largely similar to the one we used in the <a href="HDR.html" target="_blank">HDR</a> chapter) we additively blend both textures:
 </p>
       

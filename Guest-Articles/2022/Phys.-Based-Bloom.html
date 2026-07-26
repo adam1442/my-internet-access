@@ -697,7 +697,9 @@ private:
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  The code should speak for itself. One thing to note is that we must enable
 	  linear filtering and edge-clamping for all mips. Since we don't need an <!--' -->
 	  alpha channel, we can have some extra color precision by using the internal
@@ -934,9 +936,7 @@ void BloomRenderer::RenderUpsamples(float filterRadius)
 	  correct number of fragments for us.
 	</p>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  The upsampling is very similar, except it does things in opposite order:
 	  It starts from the low-resolution mips and then works backwards through the
 	  mip chain. We start by fetching the mip chain and activate the shader.
@@ -1144,9 +1144,7 @@ void configureQuad() {
 	  a solution:
 	</p>
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  <ol>
 		<li>For each group of 4 pixels (described in figure 3), compute the Luma value.</li>
 		<li>Calculate the Karis average from the Luma values and divide by 4.</li>
@@ -1309,7 +1307,9 @@ void main()
 	  this would not work, and we would have to blend in the lens dirt in some other way.
 	</p>
 
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  The effect is exaggerated for the sake of visibility, but should probably be used
 	  with more subtlety in a game. It adds a lot of realism and immersion, especially for
 	  action games or desert environments. Feel tree to experiment!
