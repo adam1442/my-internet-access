@@ -473,7 +473,9 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
   We traverse the depth layers from the top down and for each layer we compare its depth value to the depth value stored in the depthmap. If the layer's depth value is less than the depthmap's value it means this layer's part of vector \(\color{brown}{\bar{P}}\) is not below the surface. We continue this process until the layer's depth is higher than the value stored in the depthmap: this point is then below the (displaced) geometric surface. 
 </p>
         
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   In this example we can see that the depthmap value at the second layer (D(2) = 0.73) is lower than the second layer's depth value <code>0.4</code> so we continue. In the next iteration, the layer's depth value <code>0.6</code> is higher than the depthmap's sampled depth value (D(3) = 0.37). We can thus assume vector \(\color{brown}{\bar{P}}\) at the third layer to be the most viable position of the displaced geometry. We then take the texture coordinate offset \(T_3\) from vector \(\color{brown}{\bar{P_3}}\) to displace the fragment's texture coordinates. You can see how the accuracy increases with more depth layers. 
 </p>
         
@@ -502,9 +504,7 @@ vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
   Here we first set things up: we specify the number of layers, calculate the depth offset of each layer, and finally calculate the texture coordinate offset that we have to shift along the direction of \(\color{brown}{\bar{P}}\) per layer.
 </p>
         
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We then iterate through all the layers, starting from the top, until we find a depthmap value less than the layer's depth value:
 </p>
         

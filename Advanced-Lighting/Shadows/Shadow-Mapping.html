@@ -471,9 +471,7 @@ simpleDepthShader.use();
       
 <img src="../../img/advanced-lighting/shadow_mapping_depth_map.png" class="clean" alt="Depth (or shadow) map of shadow mapping technique"/>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   For rendering the depth map onto a quad we used the following fragment shader:
 </p>
   
@@ -496,7 +494,9 @@ void main()
   Note that there are some subtle changes when displaying depth using a perspective projection matrix instead of an orthographic projection matrix as depth is non-linear when using perspective projection. At the end of this chapter we'll discuss some of these subtle differences.
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   You can find the source code for rendering a scene to a depth map <a href="../../code_viewer_gh.php%3Fcode=src%252F5.advanced_lighting%252F3.1.1.shadow_mapping_depth%252Fshadow_mapping_depth.cpp.html" target="_blank">here</a>.
 </p>
       
@@ -678,9 +678,7 @@ float ShadowCalculation(vec4 fragPosLightSpace)
 </p>    
   
 <h2>Improving shadow maps</h2>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   We managed to get the basics of shadow mapping working, but as you can we're not there yet due to several (clearly visible) artifacts related to shadow mapping we need to fix. We'll focus on fixing these artifacts in the next sections.
 </p> 
     
@@ -728,7 +726,9 @@ float shadow = currentDepth - bias > closestDepth  ? 1.0 : 0.0;
 float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Here we have a maximum bias of <code>0.05</code> and a minimum of <code>0.005</code> based on the surface's normal and light direction. This way, surfaces like the floor that are almost perpendicular to the light source get a small bias, while surfaces like the cube's side-faces get a much larger bias. The following image shows the same scene but now with a shadow bias:
 </p>
   

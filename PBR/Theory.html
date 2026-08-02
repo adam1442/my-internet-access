@@ -368,9 +368,7 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
   
   <img src="../img/pbr/radiant_intensity.png" class="clean" alt="Radiant intensity"/>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The equation to describe the radiant intensity is defined as follows:
 </p>
   
@@ -388,7 +386,9 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
   
   <img src="../img/pbr/radiance.png" class="clean" alt="Diagram of radiance"/>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Radiance is a radiometric measure of the amount of light in an area, scaled by the <def>incident</def> (or incoming) angle \(\theta\) of the light to the surface's normal as \(\cos \theta\): light is weaker the less it directly radiates onto the surface, and strongest when it is directly perpendicular to the surface. This is similar to our perception of diffuse lighting from the <a href="../Lighting/Basic-lighting.html" target="_blank">basic lighting</a> chapter as \(\cos\theta\) directly corresponds to the dot product between the light's direction vector and the surface normal:
 </p>
   
@@ -592,9 +592,7 @@ float DistributionGGX(vec3 N, vec3 H, float a)
     
     <img src="../img/pbr/geometry.png" alt="Visualized Geometry function in OpenGL PBR"/>
     
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   The geometry function is a multiplier between [0.0, 1.0] with 1.0 (or white) measuring no microfacet shadowing, and 0.0 (or black) complete microfacet shadowing. 
 </p>
     
@@ -628,7 +626,9 @@ float GeometrySmith(vec3 N, vec3 V, vec3 L, float k)
 	The Fresnel equation (pronounced as Freh-nel) describes the ratio of light that gets reflected over the light that gets refracted, which varies over the angle we're looking at a surface. The moment light hits a surface, based on the surface-to-view angle, the Fresnel equation tells us the  percentage of light that gets reflected. From this ratio of reflection and the energy conservation principle we can directly obtain the refracted portion of light.
     </p>
     
- <p>
+ <p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
    Every surface or material has a level of <def>base reflectivity</def> when looking straight at its surface, but when looking at the surface from an angle <a href="http://filmicworlds.com/blog/everything-has-fresnel/" target="_blank">all</a> reflections become more apparent compared to the surface's base reflectivity. You can check this for yourself by looking at your (presumably) wooden/metallic desk which has a certain level of base reflectivity from a perpendicular view angle, but by looking at your desk from an almost 90 degree angle you'll see the reflections become much more apparent. All surfaces theoretically fully reflect light if seen from perfect 90-degree angles. This phenomenon is known as <def>Fresnel</def> and is described by the Fresnel equation. 
 </p>
         

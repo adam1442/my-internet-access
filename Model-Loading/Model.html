@@ -545,7 +545,9 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
 </p>
 
 <h1>An optimization</h1>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   We're not completely done yet, since there is still a large (but not completely necessary) optimization we want to make. Most scenes re-use several of their textures onto several meshes; think of a house again that has a granite texture for its walls. This texture could also be applied to the floor, its ceilings, the staircase, perhaps a table, and maybe even a small well close by. Loading textures is not a cheap operation and in our current implementation a new texture is loaded and generated for each mesh, even though the exact same texture could have been loaded several times before. This quickly becomes the bottleneck of your model loading implementation.
 </p>
 
@@ -614,9 +616,7 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
 </p>
 
 <h1>No more containers!</h1>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   So let's give our implementation a spin by actually importing a model created by genuine artists, not something done by the creative genius that I am. Because I don't want to give myself too much credit, I'll occasionally allow some other artists to join the ranks and this time we're going to load this amazing  <a href="https://sketchfab.com/3d-models/survival-guitar-backpack-low-poly-799f8c4511f84fab8c3f12887f7e6b36" target="_blank">Survival Guitar Backpack</a> by Berk Gedik. I've modified the material and paths a bit so it works directly with the way we've set up the model loading. The model is exported as a <code>.obj</code> file together with a <code>.mtl</code> file that links to the model's diffuse, specular, and normal maps (we'll get to those later). You can download the adjusted model for this chapter <a href="../data/models/backpack.zip" target="_blank">here</a>. Note that there's a few extra texture types we won't be using yet, and that all the textures and the model file(s) should be located in the same directory for the textures to load.
 </p>
 

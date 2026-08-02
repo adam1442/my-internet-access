@@ -408,7 +408,9 @@ void main()
   This does mean we need to blur an image at least two times and this works best with the use of framebuffer objects. Specifically for the two-pass Gaussian blur we're going to implement <em>ping-pong</em> framebuffers. That is a pair of framebuffers where we render and swap, a given number of times, the other framebuffer's color buffer into the current framebuffer's color buffer with an alternating shader effect. We basically continuously switch the framebuffer to render to and the texture to draw with. This allows us to first blur the scene's texture in the first framebuffer, then blur the first framebuffer's color buffer into the second framebuffer, and then the second framebuffer's color buffer into the first, and so on.
 </p>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Before we delve into the framebuffers let's first discuss the Gaussian blur's fragment shader:
 </p>
     
@@ -510,9 +512,7 @@ for (unsigned int i = 0; i &lt; amount; i++)
     
     <img src="../img/advanced-lighting/bloom_blurred_large.png"  class="clean" alt="Blurred image using Gaussian Blur of extracted brightness regions for the glow or bloom effect in OpenGL"/>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The last step to complete the Bloom effect is to combine this blurred brightness texture with the original scene's HDR texture.
 </p>
       

@@ -412,7 +412,9 @@ unsigned int rbo;
   Since renderbuffer objects are write-only they are often used as depth and stencil attachments, since most of the time we don't really need to read values from them, but we do care about depth and stencil testing. We <strong>need</strong> the depth and stencil values for testing, but don't need to <em>sample</em> these values so a renderbuffer object suits this perfectly. When we're not sampling from these buffers, a renderbuffer object is generally preferred. 
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Creating a depth and stencil renderbuffer object is done by calling the <fun><function id='88'>glRenderbufferStorage</function></fun> function:
 </p>
 
@@ -451,9 +453,7 @@ unsigned int framebuffer;
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, framebuffer);    
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Next we create a texture image that we attach as a color attachment to the framebuffer. We set the texture's dimensions equal to the width and height of the window and keep its data uninitialized:
 </p>
 

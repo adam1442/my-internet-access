@@ -405,9 +405,7 @@ unsigned int VBO;
   The vertex shader is one of the shaders that are programmable by people like us. Modern OpenGL requires that we at least set up a vertex and fragment shader if we want to do some rendering so we will briefly introduce shaders and configure two very simple shaders for drawing our first triangle. In the next chapter we'll discuss shaders in more detail.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The first thing we need to do is write the vertex shader in the shader language GLSL (OpenGL Shading Language) and then compile this shader so we can use it in our application. Below you'll find the source code of a very basic vertex shader in GLSL:
 </p>
 
@@ -438,7 +436,9 @@ void main()
   To set the output of the vertex shader we have to assign the position data to the predefined <var>gl_Position</var> variable which is a <code>vec4</code> behind the scenes. At the end of the <fun>main</fun> function, whatever we set <var>gl_Position</var> to will be used as the output of the  vertex shader. Since our input is a vector of size 3 we have to cast this to a vector of size 4. We can do this by inserting the <code>vec3</code> values inside the constructor of <code>vec4</code> and set its <code>w</code> component to <code>1.0f</code> (we will explain why in a later chapter).
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The current vertex shader is probably the most simple vertex shader we can imagine because we did no processing whatsoever on the input data and simply forwarded it to the shader's output. In real applications the input data is usually not already in normalized device coordinates so we first have to transform the input data to coordinates that fall within OpenGL's visible region.
 </p>
 
@@ -612,9 +612,7 @@ if(!success) {
 <function id='46'>glDeleteShader</function>(fragmentShader);  
 </code></pre>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Right now we sent the input vertex data to the GPU and instructed the GPU how it should process the vertex data within a vertex and fragment shader. We're almost there, but not quite yet. OpenGL does not yet know how it should interpret the vertex data in memory and how it should connect the vertex data to the vertex shader's attributes. We'll be nice and tell OpenGL how to do that.
 </p>
 
@@ -636,7 +634,9 @@ if(!success) {
     <li>The first value in the data is at the beginning of the buffer.</li>
   </ul>
   
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
    With this knowledge we can tell OpenGL how it should interpret the vertex data (per vertex attribute) using <fun><function id='30'>glVertexAttribPointer</function></fun>:
 </p>
 
