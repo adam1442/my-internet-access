@@ -386,9 +386,7 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
   
   <img src="../img/pbr/radiance.png" class="clean" alt="Diagram of radiance"/>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Radiance is a radiometric measure of the amount of light in an area, scaled by the <def>incident</def> (or incoming) angle \(\theta\) of the light to the surface's normal as \(\cos \theta\): light is weaker the less it directly radiates onto the surface, and strongest when it is directly perpendicular to the surface. This is similar to our perception of diffuse lighting from the <a href="../Lighting/Basic-lighting.html" target="_blank">basic lighting</a> chapter as \(\cos\theta\) directly corresponds to the dot product between the light's direction vector and the surface normal:
 </p>
   
@@ -396,7 +394,9 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
 float cosTheta = dot(lightDir, N);  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The radiance equation is quite useful as it contains most physical quantities we're interested in. If we consider the solid angle \(\omega\) and the area \(A\) to be infinitely small, we can use radiance to measure the flux of a single ray of light hitting a single point in space. This relation allows us to calculate the radiance of a single light ray influencing a single (fragment) point; we effectively translate the solid angle \(\omega\) into a direction vector \(\omega\), and \(A\) into a point \(p\). This way, we can directly use radiance in our shaders to calculate a single light ray's per-fragment contribution.
 </p>
   

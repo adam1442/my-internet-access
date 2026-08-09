@@ -499,9 +499,7 @@ lightingShader.setFloat("light.linear",    0.09f);
 lightingShader.setFloat("light.quadratic", 0.032f);	    
 </code></pre>
     
-  <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+  <p>
     Implementing attenuation in the fragment shader is relatively straightforward: we simply calculate an attenuation value based on the equation and multiply this with the ambient, diffuse and specular components. 
   </p>
   
@@ -554,7 +552,9 @@ specular *= attenuation;
   
   <img src="../img/lighting/light_casters_spotlight_angles.png" class="clean"/>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   <ul>
     <li><code>LightDir</code>: the vector pointing from the fragment to the light source.</li>
     <li><code>SpotDir</code>: the direction the spotlight is aiming at.</li>

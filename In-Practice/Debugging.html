@@ -546,9 +546,7 @@ glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_ERROR, 0,
                      GL_DEBUG_SEVERITY_MEDIUM, -1, "error message here"); 
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   This is especially useful if you're hooking into other application or OpenGL code that makes use of a debug output context. Other developers can quickly figure out any <em>reported</em> bug that occurs in your custom OpenGL code.
 </p>
     
@@ -561,7 +559,9 @@ glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_ERROR, 0,
   When it comes to GLSL, we unfortunately don't have access to a function like <fun>glGetError</fun> nor the ability to step through the shader code. When you end up with a black screen or the completely wrong visuals, it's often difficult to figure out if something's wrong with the shader code. Yes, we have the compilation error reports that report syntax errors, but catching the semantic errors is another beast.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   One frequently used trick to figure out what is wrong with a shader is to evaluate all the relevant variables in a shader program by sending them directly to the fragment shader's output channel. By outputting shader variables directly to the output color channels, we can convey interesting information by inspecting the visual results. For instance, let's say we want to check if a model has correct normal vectors. We can pass them (either transformed or untransformed) from the vertex shader to the fragment shader where we'd then output the normals as follows:
 </p>
 

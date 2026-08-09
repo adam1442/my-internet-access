@@ -368,7 +368,9 @@ unsigned int VBO;
 <function id='32'>glBindBuffer</function>(GL_ARRAY_BUFFER, VBO);  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   From that point on any buffer calls we make (on the <var>GL_ARRAY_BUFFER</var> target) will be used to configure the currently bound buffer, which is <var>VBO</var>. Then we can make a call to the 
   <fun><function id='31'>glBufferData</function></fun> function that copies the previously defined vertex data into the buffer's memory:
 </p>
@@ -436,9 +438,7 @@ void main()
   To set the output of the vertex shader we have to assign the position data to the predefined <var>gl_Position</var> variable which is a <code>vec4</code> behind the scenes. At the end of the <fun>main</fun> function, whatever we set <var>gl_Position</var> to will be used as the output of the  vertex shader. Since our input is a vector of size 3 we have to cast this to a vector of size 4. We can do this by inserting the <code>vec3</code> values inside the constructor of <code>vec4</code> and set its <code>w</code> component to <code>1.0f</code> (we will explain why in a later chapter).
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The current vertex shader is probably the most simple vertex shader we can imagine because we did no processing whatsoever on the input data and simply forwarded it to the shader's output. In real applications the input data is usually not already in normalized device coordinates so we first have to transform the input data to coordinates that fall within OpenGL's visible region.
 </p>
 
@@ -621,7 +621,9 @@ if(!success) {
   The vertex shader allows us to specify any input we want in the form of vertex attributes and while this allows for great flexibility, it does mean we have to manually specify what part of our input data goes to which vertex attribute in the vertex shader. This means we have to specify how OpenGL should interpret the vertex data before rendering.
 </p>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Our vertex buffer data is formatted as follows:
 </p>
 
@@ -634,9 +636,7 @@ if(!success) {
     <li>The first value in the data is at the beginning of the buffer.</li>
   </ul>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
    With this knowledge we can tell OpenGL how it should interpret the vertex data (per vertex attribute) using <fun><function id='30'>glVertexAttribPointer</function></fun>:
 </p>
 

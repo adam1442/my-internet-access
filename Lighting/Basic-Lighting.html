@@ -427,9 +427,7 @@ vec3 lightDir = normalize(lightPos - FragPos);
   When calculating lighting we usually do not care about the magnitude of a vector or their position; we only care about their direction. Because we only care about their direction almost all the calculations are done with unit vectors since it simplifies most calculations (like the dot product). So when doing lighting calculations, make sure you always normalize the relevant vectors to ensure they're actual unit vectors. Forgetting to normalize a vector is a popular mistake.
 </note>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Next we need to calculate the diffuse impact of the light on the current fragment by taking the dot product between the <var>norm</var> and <var>lightDir</var> vectors. The resulting value is then multiplied with the light's color to get the diffuse component, resulting in a darker diffuse component the greater the angle between both vectors:
 </p>
 
@@ -462,7 +460,9 @@ FragColor = vec4(result, 1.0);
   You can see that with diffuse lighting the cube starts to look like an actual cube again. Try visualizing the normal vectors in your head and move the camera around the cube to see that the larger the angle between the normal vector and the light's direction vector, the darker the fragment becomes.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Feel free to compare your source code with the complete source code <a href="../code_viewer_gh.php%3Fcode=src%252F2.lighting%252F2.1.basic_lighting_diffuse%252Fbasic_lighting_diffuse.cpp.html" target="_blank">here</a> if you're stuck.
 </p>
 

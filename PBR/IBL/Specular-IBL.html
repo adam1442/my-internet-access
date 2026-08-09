@@ -417,15 +417,15 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
   Monte Carlo integration is quite prevalent in computer graphics as it's a fairly intuitive way to approximate continuous integrals in a discrete and efficient fashion: take any area/volume to sample over (like the hemisphere \(\Omega\)), generate \(N\) amount of random samples within the area/volume, and sum and weigh every sample contribution to the final result. 
 </p>
             
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Monte Carlo integration is an extensive mathematical topic and I won't delve much further into the specifics, but we'll mention that there are multiple ways of generating the <em>random samples</em>. By default, each sample is completely (pseudo)random as we're used to, but by utilizing certain properties of semi-random sequences we can generate sample vectors that are still random, but have interesting properties. For instance, we can do Monte Carlo integration on something called <def>low-discrepancy sequences</def> which still generate random samples, but each sample is more evenly distributed (image courtesy of James Heald):
 </p>
       
       <img src="../../img/pbr/ibl_low_discrepancy_sequence.png" class="clean" alt="Low discrepancy sequence."/>
         
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   When using a low-discrepancy sequence for generating the Monte Carlo sample vectors, the process is known as <def>Quasi-Monte Carlo integration</def>. Quasi-Monte Carlo methods have a faster <def>rate of convergence</def> which makes them interesting for performance heavy applications.
 </p>
         
@@ -693,7 +693,9 @@ vec3 envColor = textureLod(environmentMap, WorldPos, 1.2).rgb;
             
             <img src="../../img/pbr/ibl_prefilter_dots.png" alt="Visible dots on high frequency HDR maps in the deeper mip LOD levels of a pre-filter map."/>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   One option is to further increase the sample count, but this won't be enough for all environments. As described by <a href="https://chetanjags.wordpress.com/2015/08/26/image-based-lighting/" target="_blank">Chetan Jags</a> we can reduce this artifact by (during the pre-filter convolution) not directly sampling the environment map, but sampling a mip level of the environment map based on the integral's PDF and the roughness:
 </p>
               
@@ -734,9 +736,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 </p>
 
 <h2>Pre-computing the BRDF</h2>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   With the pre-filtered environment up and running, we can focus on the second part of the split-sum approximation: the BRDF. Let's briefly review the specular split sum approximation again:
 </p>
           
