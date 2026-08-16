@@ -734,7 +734,9 @@ const std::vector&lt;bloomMip&gt;& bloomFBO::MipChain() const
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  After this, we create another class which contains a <tt>bloomFBO</tt> object
 	  and makes a call to it every frame. I chose this design because the framebuffer
 	  and the shaders are two distinct concerns. The code is given below:
@@ -834,9 +836,7 @@ GLuint BloomRenderer::BloomTexture()
 }
 </code></pre>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  The <tt>Destroy</tt> method is for proper cleanup. The <tt>BloomTexture</tt> is
 	  for retrieving the texture handle for the bloom texture after bloom has been
 	  performed - this could e.g. be a sampler2D input for your tonemapping shader.
@@ -1152,7 +1152,9 @@ void configureQuad() {
 	  </ol>
 	</p>
 
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  Luma is equal to how we would compute Luminance from RGB, but Luma is computed
 	  from sRGB. The below code shows the procedure:
 	</p>
@@ -1178,9 +1180,7 @@ float KarisAverage(vec3 col)
 }
 </code></pre>
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  Luminance measures the brightness of a pixel, and has the per-channel weights as
 	  shown in the <tt>RGBToLuminance</tt> function, because we perceive green much
 	  more bright than the other primaries. I multiply Luma with 0.25f because

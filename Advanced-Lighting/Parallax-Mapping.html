@@ -448,15 +448,15 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
   You can find the source code <a href="../code_viewer_gh.php%3Fcode=src%252F5.advanced_lighting%252F5.1.parallax_mapping%252Fparallax_mapping.cpp.html" target="_blank">here</a>.
 </p>
           
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   It looks great and is quite fast as well as we only need a single extra texture sample for parallax mapping to work. It does come with a few issues though as it sort of breaks down when looking at it from an angle (similar to normal mapping) and gives incorrect results with steep height changes, as you can see below:
 </p>
     
     <img src="../img/advanced-lighting/parallax_mapping_issues.png" alt="Three images displaying the issues with standard parallax mapping: breaks down at angles and incorrect results with steep height changes."/>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The reason that it doesn't work properly at times is that it's just a crude approximation of displacement mapping. There are some extra tricks however that still allows us to get almost perfect results with steep height changes, even when looking at an angle. For instance, what if we instead of one sample take multiple samples to find the closest point to \(\color{blue}B\)?
 </p>
       

@@ -559,9 +559,7 @@ glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_ERROR, 0,
   When it comes to GLSL, we unfortunately don't have access to a function like <fun>glGetError</fun> nor the ability to step through the shader code. When you end up with a black screen or the completely wrong visuals, it's often difficult to figure out if something's wrong with the shader code. Yes, we have the compilation error reports that report syntax errors, but catching the semantic errors is another beast.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   One frequently used trick to figure out what is wrong with a shader is to evaluate all the relevant variables in a shader program by sending them directly to the fragment shader's output channel. By outputting shader variables directly to the output color channels, we can convey interesting information by inspecting the visual results. For instance, let's say we want to check if a model has correct normal vectors. We can pass them (either transformed or untransformed) from the vertex shader to the fragment shader where we'd then output the normals as follows:
 </p>
 
@@ -585,7 +583,9 @@ void main()
 
 <img src="../img/in-practice/debugging_glsl_output.png" alt="The image of a 3D model with its normal vectors displayed as the fragment shader output in OpenGL for debugging"/>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   From the visual results we can see the world-space normal vectors appear to be correct as the right sides of the backpack model is mostly colored red (which would mean the normals roughly point (correctly) towards the positive x axis). Similarly, the front side of the backpack is mostly colored towards the positive z axis (blue). 
 </p>
   

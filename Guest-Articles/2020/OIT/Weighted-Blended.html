@@ -439,9 +439,7 @@ unsigned int quadVAO, quadVBO;
 <function id='27'>glBindVertexArray</function>(0);
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         Next, we will create two framebuffers for our solid and transparent passes. Our solid pass needs a color buffer and a depth buffer to store color and depth information. Our transparent pass needs two color buffers to store color accumulation and pixel revealage threshold. We will also attach the opaque framebuffer's depth texture to our transparent framebuffer, to utilize it for depth testing when rendering our transparent surfaces.
     </p>
 
@@ -614,7 +612,9 @@ void main()
 		Note that, we are directly using the color passed to the shader as our final fragment color. Normally, if you are in a lighting shader, you want to use the final result of the lighting to store in accumulation and revealage render targets.
 	</p>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
         Now that everything has been rendered, we have to <def>composite</def> these two images so we can have the finished result.
     </p>
 
