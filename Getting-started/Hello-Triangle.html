@@ -419,13 +419,13 @@ void main()
 }
 </code></pre>
 
-<p>
-  As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
-</p>
-
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
+</p>
+
+<p>
   Next we declare all the input vertex attributes in the vertex shader with the <code>in</code> keyword. Right now we only care about position data so we only need a single vertex attribute. GLSL has a vector datatype that contains 1 to 4 floats based on its postfix digit. Since each vertex has a 3D coordinate we create a <code>vec3</code> input variable with the name <var>aPos</var>. We also specifically set the location of the input variable via <code>layout (location = 0)</code> and you'll later see that why we're going to need that location.
 </p>
 
@@ -565,9 +565,7 @@ unsigned int shaderProgram;
 shaderProgram = <function id='36'>glCreateProgram</function>();
 </code></pre>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   The <fun><function id='36'>glCreateProgram</function></fun> function creates a program and returns the ID reference to the newly created program object. Now we need to attach the previously compiled shaders to the program object and then link them with <fun><function id='35'>glLinkProgram</function></fun>:
 </p>
 
@@ -577,7 +575,9 @@ shaderProgram = <function id='36'>glCreateProgram</function>();
 <function id='35'>glLinkProgram</function>(shaderProgram);
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   The code should be pretty self-explanatory, we attach the shaders to the program and link them via <fun><function id='35'>glLinkProgram</function></fun>. 
 </p>
 

@@ -697,7 +697,9 @@ private:
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  The code should speak for itself. One thing to note is that we must enable
 	  linear filtering and edge-clamping for all mips. Since we don't need an <!--' -->
 	  alpha channel, we can have some extra color precision by using the internal
@@ -734,9 +736,7 @@ const std::vector&lt;bloomMip&gt;& bloomFBO::MipChain() const
 }
 </code></pre>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  After this, we create another class which contains a <tt>bloomFBO</tt> object
 	  and makes a call to it every frame. I chose this design because the framebuffer
 	  and the shaders are two distinct concerns. The code is given below:
@@ -1144,7 +1144,9 @@ void configureQuad() {
 	  a solution:
 	</p>
 
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  <ol>
 		<li>For each group of 4 pixels (described in figure 3), compute the Luma value.</li>
 		<li>Calculate the Karis average from the Luma values and divide by 4.</li>
@@ -1152,9 +1154,7 @@ void configureQuad() {
 	  </ol>
 	</p>
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  Luma is equal to how we would compute Luminance from RGB, but Luma is computed
 	  from sRGB. The below code shows the procedure:
 	</p>

@@ -441,14 +441,14 @@ int vertexColorLocation = <function id='45'>glGetUniformLocation</function>(shad
     First, we retrieve the running time in seconds via <fun><function id='47'>glfwGetTime</function>()</fun>. Then we vary the color in the range of <code>0.0</code> - <code>1.0</code> by using the <fun>sin</fun> function and store the result in <var>greenValue</var>. 
   </p>
   
-  <p>
+  <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
     Then we query for the location of the <var>ourColor</var> uniform using <fun><function id='45'>glGetUniformLocation</function></fun>. We supply the shader program and the name of the uniform (that we want to retrieve the location from) to the query function. If <fun><function id='45'>glGetUniformLocation</function></fun> returns <code>-1</code>, it could not find the location. Lastly we can set the uniform value using the <fun><function id='44'>glUniform</function>4f</fun> function. Note that finding the uniform location does not require you to use the shader program first, but updating a uniform <strong>does</strong> require you to first use the program (by calling <fun><function id='28'>glUseProgram</function></fun>), because it sets the uniform on the currently active shader program.
   </p>
   
 <note>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
     Because OpenGL is in its core a C library it does not have native support for function overloading, so wherever a function can be called with different types OpenGL defines new functions for each type required; <fun><function id='44'>glUniform</function></fun> is a perfect example of this. The function requires a specific postfix for the type of the uniform you want to set. A few of the possible postfixes are:
   <ul>
     <li><code>f</code>: the function expects a <code>float</code> as its value.</li>  

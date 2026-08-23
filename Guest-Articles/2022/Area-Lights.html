@@ -577,9 +577,7 @@ unsigned int m2 = loadMTexture(LTC2);
 <function id='48'>glBindTexture</function>(GL_TEXTURE_2D, m2);
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
       We also need to construct a vertex buffer for the vertices of the light polygon, as well as
       some geometry on which to reflect the light. For simplicity, and for showcasing the technique
       in a ”pure” environment, the best is to probably start with a flat plane situated horizontally
@@ -589,7 +587,9 @@ unsigned int m2 = loadMTexture(LTC2);
 
     <h2>The fragment shader</h2>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
       The fragment shader is where the magic happens. Here, we perform the texture lookup to
       construct the inverse matrix, and to retrieve the form factor. We also construct an
       orthonormal basis in tangent space to the fragment’s world position, and compute and sum up the

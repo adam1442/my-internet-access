@@ -513,7 +513,9 @@ float attenuation = 1.0 / (light.constant + light.linear * distance +
     		    light.quadratic * (distance * distance));    
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Then we include this attenuation value in the lighting calculations by multiplying the attenuation value with the ambient, diffuse and specular colors.
   </p>
   
@@ -527,9 +529,7 @@ diffuse  *= attenuation;
 specular *= attenuation;   
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
     If you'd run the application you'd get something like this:
 </p>
   
