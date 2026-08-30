@@ -462,9 +462,7 @@ vec3 specular     = numerator / denominator;
   Note that we add <code>0.0001</code> to the denominator to prevent a divide by zero in case any dot product ends up <code>0.0</code>.
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Now we can finally calculate each light's contribution to the reflectance equation. As the Fresnel value directly corresponds to \(k_S\) we can use <var>F</var> to denote the specular contribution of any light that hits the surface. From \(k_S\) we can then calculate the ratio of refraction \(k_D\):
 </p>
   
@@ -604,7 +602,9 @@ void main()
   
   <img src="../img/pbr/lighting_result.png" alt="Render of PBR spheres with varying roughness and metallic values in OpenGL."/>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   From bottom to top the metallic value ranges from <code>0.0</code> to <code>1.0</code>, with roughness increasing left to right from <code>0.0</code> to <code>1.0</code>. You can see that by only changing these two simple to understand parameters we can already display a wide array of different materials.
 </p>
 

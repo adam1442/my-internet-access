@@ -381,7 +381,9 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
   Each component of the vertex coordinate is divided by its <code>w</code> component giving smaller vertex coordinates the further away a vertex is from the viewer. This is another reason why the <code>w</code> component is important, since it helps us with perspective projection. The resulting coordinates are then in normalized device space. If you're interested to figure out how the orthographic and perspective projection matrices are actually calculated (and aren't too scared of the mathematics) I can recommend <a href="http://www.songho.ca/opengl/gl_projectionmatrix.html" target="_blank">this excellent article</a> by Songho.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   A perspective projection matrix can be created in GLM as follows:
 </p>
 
@@ -428,9 +430,7 @@ Note that the order of matrix multiplication is reversed (remember that we need 
   The output of the vertex shader requires the coordinates to be in clip-space which is what we just did with the transformation matrices. OpenGL then performs <em>perspective division</em> on the <em>clip-space coordinates</em> to transform them to <em>normalized-device coordinates</em>. OpenGL then uses the parameters from <fun><function id='22'>glViewPort</function></fun> to map the normalized-device coordinates to <em>screen coordinates</em> where each coordinate corresponds to a point on your screen (in our case a 800x600 screen). This process is called the <em>viewport transform</em>. 
 </note>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   This is a difficult topic to understand so if you're still not exactly sure about what each space is used for you don't have to worry. Below you'll see how we can actually put these coordinate spaces to good use and enough examples will follow in the upcoming chapters.
 </p>
 

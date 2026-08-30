@@ -450,9 +450,7 @@ layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
 		We have to use <var>image2d</var> as this represents a single image from a texture. While <var>sampler</var> variables use the entire texture including mipmap levels  and array layers, images only have a single image from a texture. <i>Note</i> while most texture sampling functions use normalized texture coordinates [0,1], for images we need the absolute integer <def>texel</def> coordinates. Images and <var>samplers</var> are completely separated including their bindings. While <var>samplers</var> can only read data from textures, image variables can read and/or write data.
       </p>
       
-      <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+      <p>
 		With this set up, we can now write our main function in the shader where we fill the <var>imgOutput</var> with color values. To determine on which pixel we are currently operating in our shader execution we can use the following GLSL Built-in variables shown in the table below:
 	</p>
 
@@ -483,7 +481,9 @@ layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
 		</tr>
 	</table>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		Using the built-in variables from the table above we will create a simple color gradient (st-map) on our image.
 	</p>
 

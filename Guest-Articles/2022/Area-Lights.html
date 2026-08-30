@@ -587,9 +587,7 @@ unsigned int m2 = loadMTexture(LTC2);
 
     <h2>The fragment shader</h2>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
       The fragment shader is where the magic happens. Here, we perform the texture lookup to
       construct the inverse matrix, and to retrieve the form factor. We also construct an
       orthonormal basis in tangent space to the fragment’s world position, and compute and sum up the
@@ -745,7 +743,9 @@ mat3 Minv = mat3(
 }
 </code></pre>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
       As you can see, it’s quite lengthy, but if you followed along the theory reasonably well
       nothing should be too surprising. One thing not yet mentioned is the addition of a variable
       <var>twoSided</var>, given as a uniform together with the light polygon’s vertices,

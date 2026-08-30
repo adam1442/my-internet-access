@@ -545,7 +545,9 @@ void main()
 }  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The fragment shader's Blinn-Phong lighting code is exactly the same as we had before with a shadow multiplication at the end:
 </p>
   
@@ -598,9 +600,7 @@ void main()
 }  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   There are a few subtle differences: the lighting code is the same, but we now have a <code>samplerCube</code> uniform and the <fun>ShadowCalculation</fun> function takes the current fragment's position as its argument instead of the fragment position in light space. We now also include the light frustum's <var>far_plane</var> value that we'll later need.
 </p>
   

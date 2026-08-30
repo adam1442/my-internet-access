@@ -369,9 +369,7 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 </p>
 
 <h2>Off-screen MSAA</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Because GLFW takes care of creating the multisampled buffers, enabling MSAA is quite easy. If we want to use our own framebuffers however, we have to generate the multisampled buffers ourselves; now we <strong>do</strong> need to take care of creating multisampled buffers.
 </p>
 
@@ -380,7 +378,9 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 </p>
 
 <h3>Multisampled texture attachments</h3>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To create a texture that supports storage of multiple sample points we use <fun><function id='101'><function id='52'>glTexImage2D</function>Multisample</function></fun> instead of <fun><function id='52'>glTexImage2D</function></fun> that accepts <var>GL_TEXTURE_2D_MULTISAPLE</var> as its texture target:
 </p>
 

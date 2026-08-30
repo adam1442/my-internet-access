@@ -430,9 +430,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 </p>
 
 <h2>Matrix-matrix multiplication</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Multiplying matrices is not necessarily complex, but rather difficult to get comfortable with. Matrix multiplication basically means to follow a set of pre-defined rules when multiplying. There are a few restrictions though: 
   
   <ol>
@@ -441,7 +439,9 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   </ol>
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Let's get started with an example of a matrix multiplication of 2 <code>2x2</code> matrices:
   
   \[ \begin{bmatrix} \color{red}1 & \color{red}2 \\ \color{green}3 & \color{green}4 \end{bmatrix} \cdot \begin{bmatrix} \color{blue}5 & \color{purple}6 \\ \color{blue}7 & \color{purple}8 \end{bmatrix} = \begin{bmatrix} \color{red}1 \cdot \color{blue}5 + \color{red}2 \cdot \color{blue}7 & \color{red}1 \cdot \color{purple}6 + \color{red}2 \cdot \color{purple}8 \\ \color{green}3 \cdot \color{blue}5 + \color{green}4 \cdot \color{blue}7 & \color{green}3 \cdot \color{purple}6 + \color{green}4 \cdot \color{purple}8 \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} \]
@@ -633,14 +633,14 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   </p>
   
 <h1>In practice</h1>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Now that we've explained all the theory behind transformations, it's time to see how we can actually use this knowledge to our advantage. OpenGL does not have any form of matrix or vector knowledge built in, so we have to define our own mathematics classes and functions. In this book we'd rather abstract from all the tiny mathematical details and simply use pre-made mathematics libraries. Luckily, there is an easy-to-use and tailored-for-OpenGL mathematics library called GLM.
   </p>
 
   <h2>GLM</h2>
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   <img src="../img/getting-started/glm.png" class="right"/>
   GLM stands for Open<strong>GL</strong> <strong>M</strong>athematics and is a <em>header-only</em> library, which means that we only have to include the proper header files and we're done; no linking and compiling necessary.
   GLM can be downloaded from their <a href="https://glm.g-truc.net/0.9.8/index.html" target="_blank">website</a>. Copy the root directory of the header files into your <em>includes</em> folder and let's get rolling.

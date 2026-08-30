@@ -447,7 +447,9 @@ void main()
 }
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Here we take a relatively small sample of Gaussian weights that we each use to assign a specific weight to the horizontal or vertical samples around the current fragment. You can see that we split the blur filter into a horizontal and vertical section based on whatever value we set the <var>horizontal</var> uniform. We base the offset distance on the exact size of a texel obtained by the division of <code>1.0</code> over the size of the texture (a <code>vec2</code> from <fun>textureSize</fun>).
 </p>
     
@@ -500,9 +502,7 @@ for (unsigned int i = 0; i &lt; amount; i++)
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0); 
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Each iteration we bind one of the two framebuffers based on whether we want to blur horizontally or vertically and bind the other framebuffer's color buffer as the texture to blur. The first iteration we specifically bind the texture we'd like to blur (<var>brightnessTexture</var>) as both color buffers would else end up empty. By repeating this process 10 times, the brightness image ends up with a complete Gaussian blur that was repeated 5 times. This construct allows us to blur any image as often as we'd like; the more Gaussian blur iterations, the stronger the blur.
 </p>
     

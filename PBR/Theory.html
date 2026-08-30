@@ -378,7 +378,9 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
   Where \(I\) is the radiant flux \(\Phi\) over the solid angle \(\omega\). 
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   With knowledge of radiant flux, radiant intensity, and the solid angle, we can finally describe the equation for <strong>radiance</strong>. Radiance is described as the total observed energy in an area \(A\) over the solid angle \(\omega\) of a light of radiant intensity \(\Phi\):
 </p>
   
@@ -394,9 +396,7 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
 float cosTheta = dot(lightDir, N);  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The radiance equation is quite useful as it contains most physical quantities we're interested in. If we consider the solid angle \(\omega\) and the area \(A\) to be infinitely small, we can use radiance to measure the flux of a single ray of light hitting a single point in space. This relation allows us to calculate the radiance of a single light ray influencing a single (fragment) point; we effectively translate the solid angle \(\omega\) into a direction vector \(\omega\), and \(A\) into a point \(p\). This way, we can directly use radiance in our shaders to calculate a single light ray's per-fragment contribution.
 </p>
   
@@ -577,7 +577,9 @@ float DistributionGGX(vec3 N, vec3 H, float a)
   Note that the value of \(\alpha\) may differ based on how your engine translates roughness to \(\alpha\). In the following chapters we'll extensively discuss how and where this remapping becomes relevant. 
     </p>
   
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   To effectively approximate the geometry we need to take account of both the view direction (geometry obstruction) and the light direction vector (geometry shadowing). We can take both into account using <def>Smith's method</def>:
 </p>
     
@@ -622,9 +624,7 @@ float GeometrySmith(vec3 N, vec3 V, vec3 L, float k)
   
       
 <h3>Fresnel equation</h3>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
 	The Fresnel equation (pronounced as Freh-nel) describes the ratio of light that gets reflected over the light that gets refracted, which varies over the angle we're looking at a surface. The moment light hits a surface, based on the surface-to-view angle, the Fresnel equation tells us the  percentage of light that gets reflected. From this ratio of reflection and the energy conservation principle we can directly obtain the refracted portion of light.
     </p>
     

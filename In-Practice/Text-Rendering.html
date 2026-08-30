@@ -506,7 +506,9 @@ void main()
 glm::mat4 projection = <function id='59'>glm::ortho</function>(0.0f, 800.0f, 0.0f, 600.0f);
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   We set the projection matrix's bottom parameter to <code>0.0f</code> and its top parameter equal to the window's height. The result is that we specify coordinates with <code>y</code> values ranging from the bottom part of the screen (<code>0.0f</code>) to the top part of the screen (<code>600.0f</code>). This means that the point (<code>0.0</code>, <code>0.0</code>) now corresponds to the bottom-left corner.
 </p>
      
@@ -532,9 +534,7 @@ unsigned int VAO, VBO;
 </p>
     
 <h3>Render line of text</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   To render a character, we extract the corresponding <fun>Character</fun> struct of the <var>Characters</var> map and calculate the quad's dimensions using the character's metrics. With the quad's calculated dimensions we dynamically generate a set of 6 vertices that we use to update the content of the memory managed by the VBO using <fun><function id='90'>glBufferSubData</function></fun>.
 </p>
  
