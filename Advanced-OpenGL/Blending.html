@@ -431,9 +431,7 @@ void main()
   So this is great and all, but how do we actually tell OpenGL to use factors like that? Well it just so happens that there is a function for this called <fun><function id='70'>glBlendFunc</function></fun>.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The <fun><function id='70'>glBlendFunc</function>(GLenum sfactor, GLenum dfactor)</fun> function expects two parameters that set the option for the <def>source</def> and <def>destination factor</def>. OpenGL defined quite a few options for us to set of which we'll list the most common options below. Note that the constant color vector \(\bar{\color{blue}C}_{constant}\) can be separately set via the <fun><function id='73'>glBlendColor</function></fun> function. 
 </p>
 
@@ -549,7 +547,9 @@ void main()
 <function id='70'>glBlendFunc</function>(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Since we enabled blending there is no need to discard fragments so we'll reset the fragment shader to its original version:
 </p>
 

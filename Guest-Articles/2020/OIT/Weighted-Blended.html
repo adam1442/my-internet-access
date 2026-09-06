@@ -521,7 +521,9 @@ glDisable(GL_BLEND);
 <function id='10'>glClear</function>(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 </code></pre>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
         We have to reset our depth function and depth mask for the solid pass at every frame since pipeline changes these states further down the line.
     </p>
 
@@ -540,9 +542,7 @@ solidShader.setVec3("color", glm::vec3(1.0f, 0.0f, 0.0f));
 <function id='1'>glDrawArrays</function>(GL_TRIANGLES, 0, 6);
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         So far so good. For our transparent pass, like in the solid pass, configure the render states to blend to these render targets as below, then bind the transparent framebuffer and clear its two color buffers to <var>vec4(0.0f)</var> and <var>vec4(1.0)</var>.
     </p>
 

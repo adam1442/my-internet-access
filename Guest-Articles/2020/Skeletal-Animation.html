@@ -381,7 +381,9 @@ void main()
 }
 </code></pre>
             
-<p>Fragment shader remains 
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>Fragment shader remains 
 	the same from the <a href="../../Model-Loading/Model.html" target="_blank">this tutorial.</a> 
 	Starting from the top you see two new attributes layout declaration. 
 	First <code>boneIds</code> and second is <code>weights</code>. we also have 
@@ -440,9 +442,7 @@ struct Vertex {
 </code></pre>
             
 <p>Just like before, except now we have added 3 and 4 layout location ids for <code> boneIds</code> and <code>weights</code>. One imporant thing to notice here is how we are passing data for <code>boneIds</code>. We are using <code>glVertexAttribIPointer</code> and we passed GL_INT as third parameter.&nbsp;</p>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>Now we can extract the bone-weight information from the assimp data structure. Let's make some changes in Model class...</p>
+<p>Now we can extract the bone-weight information from the assimp data structure. Let's make some changes in Model class...</p>
 
 <pre><code>struct BoneInfo
 {

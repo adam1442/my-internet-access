@@ -439,9 +439,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   </ol>
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Let's get started with an example of a matrix multiplication of 2 <code>2x2</code> matrices:
   
   \[ \begin{bmatrix} \color{red}1 & \color{red}2 \\ \color{green}3 & \color{green}4 \end{bmatrix} \cdot \begin{bmatrix} \color{blue}5 & \color{purple}6 \\ \color{blue}7 & \color{purple}8 \end{bmatrix} = \begin{bmatrix} \color{red}1 \cdot \color{blue}5 + \color{red}2 \cdot \color{blue}7 & \color{red}1 \cdot \color{purple}6 + \color{red}2 \cdot \color{purple}8 \\ \color{green}3 \cdot \color{blue}5 + \color{green}4 \cdot \color{blue}7 & \color{green}3 \cdot \color{purple}6 + \color{green}4 \cdot \color{purple}8 \end{bmatrix} = \begin{bmatrix} 19 & 22 \\ 43 & 50 \end{bmatrix} \]
@@ -463,7 +461,9 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
    The result is then a matrix that has dimensions of  (<code>n,m</code>) where <code>n</code> is equal to the number of rows of the left-hand side matrix and <code>m</code> is equal to the columns of the right-hand side matrix.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Don't worry if you have difficulties imagining the multiplications inside your head. Just keep trying to do the calculations by hand and return to this page whenever you have difficulties. Over time, matrix multiplication becomes second nature to you.
 </p>
 
@@ -593,7 +593,9 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   \[\begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}{\cos \theta} & - \color{green}{\sin \theta} & \color{green}0 \\ \color{blue}0 & \color{blue}{\sin \theta} & \color{blue}{\cos \theta} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x \\ \color{green}{\cos \theta} \cdot y - \color{green}{\sin \theta} \cdot z \\ \color{blue}{\sin \theta} \cdot y + \color{blue}{\cos \theta} \cdot z \\ 1 \end{pmatrix}\]
   </p>
        
-   <p>
+   <p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
     Rotation around the Y-axis:
   
   \[\begin{bmatrix} \color{red}{\cos \theta} & \color{red}0 & \color{red}{\sin \theta} & \color{red}0 \\ \color{green}0 & \color{green}1 & \color{green}0 & \color{green}0 \\ - \color{blue}{\sin \theta} & \color{blue}0 & \color{blue}{\cos \theta} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} \color{red}{\cos \theta} \cdot x + \color{red}{\sin \theta} \cdot z \\ y \\ - \color{blue}{\sin \theta} \cdot x + \color{blue}{\cos \theta} \cdot z \\ 1 \end{pmatrix} \]
@@ -638,9 +640,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   </p>
 
   <h2>GLM</h2>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   <img src="../img/getting-started/glm.png" class="right"/>
   GLM stands for Open<strong>GL</strong> <strong>M</strong>athematics and is a <em>header-only</em> library, which means that we only have to include the proper header files and we're done; no linking and compiling necessary.
   GLM can be downloaded from their <a href="https://glm.g-truc.net/0.9.8/index.html" target="_blank">website</a>. Copy the root directory of the header files into your <em>includes</em> folder and let's get rolling.

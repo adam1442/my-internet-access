@@ -401,13 +401,13 @@ unsigned int VBO;
 </p>
 
 <h2>Vertex shader</h2>
-<p>
-  The vertex shader is one of the shaders that are programmable by people like us. Modern OpenGL requires that we at least set up a vertex and fragment shader if we want to do some rendering so we will briefly introduce shaders and configure two very simple shaders for drawing our first triangle. In the next chapter we'll discuss shaders in more detail.
-</p>
-
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  The vertex shader is one of the shaders that are programmable by people like us. Modern OpenGL requires that we at least set up a vertex and fragment shader if we want to do some rendering so we will briefly introduce shaders and configure two very simple shaders for drawing our first triangle. In the next chapter we'll discuss shaders in more detail.
+</p>
+
+<p>
   The first thing we need to do is write the vertex shader in the shader language GLSL (OpenGL Shading Language) and then compile this shader so we can use it in our application. Below you'll find the source code of a very basic vertex shader in GLSL:
 </p>
 
@@ -556,7 +556,9 @@ fragmentShader = <function id='37'>glCreateShader</function>(GL_FRAGMENT_SHADER)
 <p>
   When linking the shaders into a program it links the outputs of each shader to the inputs of the next shader. This is also where you'll get linking errors if your outputs and inputs do not match. </p>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Creating a program object is easy:
 </p>
 
@@ -599,9 +601,7 @@ if(!success) {
 <function id='28'>glUseProgram</function>(shaderProgram);
 </code></pre>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Every shader and rendering call after <fun><function id='28'>glUseProgram</function></fun> will now use this program object (and thus the shaders).
 </p>
 

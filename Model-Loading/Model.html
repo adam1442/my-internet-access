@@ -569,7 +569,9 @@ struct Texture {
 vector&lt;Texture&gt; textures_loaded; 
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   In the <fun>loadMaterialTextures</fun> function, we want to compare the texture path with all the textures in the <var>textures_loaded</var> vector to see if the current texture path equals any of those. If so, we skip the texture loading/generation part and simply use the located texture struct as the mesh's texture. The (updated) function is shown below:
 </p>
 
@@ -609,9 +611,7 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
   Some versions of Assimp tend to load models quite slow when using the debug version and/or the debug mode of your IDE, so be sure to test it out with release versions as well if you run into slow loading times.
 </warning>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   You can find the complete source code of the <fun>Model</fun> class <a href="../code_viewer_gh.php%3Fcode=includes%252Flearnopengl%252Fmodel.h.html" target="_blank">here</a>.
 </p>
 

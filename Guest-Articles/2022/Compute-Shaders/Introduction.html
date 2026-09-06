@@ -481,9 +481,7 @@ layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
 		</tr>
 	</table>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		Using the built-in variables from the table above we will create a simple color gradient (st-map) on our image.
 	</p>
 
@@ -502,7 +500,9 @@ layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
 		We will setup the execution of the compute shader that every <def>invocation</def> corresponds to one pixel, though the global x and y size will be equal to the image's x and y dimension. Therefore, the <var>gl_GlobalInvocationID</var> gives us the absolute coordinate of the current pixel.Remember that we only have one single <def>invocation</def> per <def>work group</def> as we set all local dimensions to 1. Using the <var>gl_NumWorkGroups</var> variable, we can calculate the relative coordinate of the image in the range [0, 1] per dimension.
 	</p>
 
-	<p>	
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>	
 		We can then write our calculated pixel data to the image using the <fun>imageStore</fun> function. The <fun>imageStore</fun> function takes the image unit to write to as first argument, the <b>absolute</b> <def>texel</def> coordinate as second argument and the data value to store at this <def>texel</def> as third.
 	</p>
 

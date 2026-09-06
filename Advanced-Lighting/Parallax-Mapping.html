@@ -448,9 +448,7 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
   You can find the source code <a href="../code_viewer_gh.php%3Fcode=src%252F5.advanced_lighting%252F5.1.parallax_mapping%252Fparallax_mapping.cpp.html" target="_blank">here</a>.
 </p>
           
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   It looks great and is quite fast as well as we only need a single extra texture sample for parallax mapping to work. It does come with a few issues though as it sort of breaks down when looking at it from an angle (similar to normal mapping) and gives incorrect results with steep height changes, as you can see below:
 </p>
     
@@ -465,7 +463,9 @@ if(texCoords.x &gt; 1.0 || texCoords.y &gt; 1.0 || texCoords.x &lt; 0.0 || texCo
   Steep Parallax Mapping is an extension on top of Parallax Mapping in that it uses the same principles, but instead of 1 sample it takes multiple samples to better pinpoint vector \(\color{brown}{\bar{P}}\) to \(\color{blue}B\). This gives much better results, even with steep height changes, as the accuracy of the technique is improved by the number of samples.
 </p>
       
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The general idea of Steep Parallax Mapping is that it divides the total depth range into multiple layers of the same height/depth. For each of these layers we sample the depthmap, shifting the texture coordinates along the direction of \(\color{brown}{\bar{P}}\), until we find a sampled depth value that is less than the depth value of the current layer. Take a look at the following image:
 </p>
       

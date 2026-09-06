@@ -500,7 +500,9 @@ void main()
   As we now have the per-fragment variables (and the relevant uniform variables) necessary to calculate Blinn-Phong lighting, we don't have to make any changes to the lighting code. The only thing we change in deferred shading here is the method of obtaining lighting input variables.
 </p>
         
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Running a simple demo with a total of <code>32</code> small lights looks a bit like this:
 </p>
         
@@ -553,9 +555,7 @@ for (unsigned int i = 0; i &lt; lightPositions.size(); i++)
   We can copy the content of a framebuffer to the content of another framebuffer with the help of <fun><function id='103'>glBlitFramebuffer</function></fun>, a function we also used in the <a href="../Advanced-OpenGL/Anti-Aliasing.html" target="_blank">anti-aliasing</a> chapter to resolve multisampled framebuffers. The <fun><function id='103'>glBlitFramebuffer</function></fun> function allows us to copy a user-defined region of a framebuffer to a user-defined region of another framebuffer. 
 </p>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We stored the depth of all the objects rendered in the deferred geometry pass in the <var>gBuffer</var> FBO. If we were to copy the content of its depth buffer to the depth buffer of the default framebuffer, the light cubes would then render as if all of the scene's geometry was rendered with forward rendering. As briefly explained in the anti-aliasing chapter, we have to specify a framebuffer as the read framebuffer and similarly specify a framebuffer as the write framebuffer:
 </p>
     

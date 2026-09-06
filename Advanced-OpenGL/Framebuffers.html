@@ -451,7 +451,9 @@ unsigned int framebuffer;
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, framebuffer);    
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Next we create a texture image that we attach as a color attachment to the framebuffer. We set the texture's dimensions equal to the width and height of the window and keep its data uninitialized:
 </p>
 
@@ -469,9 +471,7 @@ unsigned int textureColorbuffer;
 <function id='81'>glFramebufferTexture2D</function>(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorbuffer, 0);  
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We also want to make sure OpenGL is able to do depth testing (and optionally stencil testing) so we have to make sure to add a depth (and stencil) attachment to the framebuffer. Since we'll only be sampling the color buffer and not the other buffers we can create a renderbuffer object for this purpose. 
 </p>
 

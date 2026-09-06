@@ -555,7 +555,9 @@ glDebugMessageInsert(GL_DEBUG_SOURCE_APPLICATION, GL_DEBUG_TYPE_ERROR, 0,
 </p>
 
 <h2>Debugging shader output</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   When it comes to GLSL, we unfortunately don't have access to a function like <fun>glGetError</fun> nor the ability to step through the shader code. When you end up with a black screen or the completely wrong visuals, it's often difficult to figure out if something's wrong with the shader code. Yes, we have the compilation error reports that report syntax errors, but catching the semantic errors is another beast.
 </p>
 
@@ -596,9 +598,7 @@ void main()
   Each driver has its own quirks and tidbits; for instance, NVIDIA drivers are more flexible and tend to overlook some restrictions on the specification, while ATI/AMD drivers tend to better enforce the OpenGL specification (which is the better approach in my opinion). The result of this is that shaders on one machine may not work on the other due to driver differences. 
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   With years of experience you'll eventually get to learn the minor differences between GPU vendors, but if you want to be sure your shader code runs on all kinds of machines you can directly check your shader code against the official specification using OpenGL's GLSL <a href="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/" target="_blank">reference compiler</a>. You can download the so called <def>GLSL lang validator</def> binaries from <a href="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/" target="_blank">here</a> or its complete source code from <a href="https://github.com/KhronosGroup/glslang" target="_blank">here</a>.
 </p>
   
