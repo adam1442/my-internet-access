@@ -364,9 +364,7 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 
 <img src="../img/advanced/anti_aliasing_multisampled.png" class="clean" alt="Image of a multisampled cube in OpenGL"/>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The cube does indeed look a lot smoother and the same will apply for any other object you're drawing in your scene. You can find the source code for this simple example <a href="../code_viewer_gh.php%3Fcode=src%252F4.advanced_opengl%252F11.1.anti_aliasing_msaa%252Fanti_aliasing_msaa.cpp.html" target="_blank">here</a>.
 </p>
 
@@ -375,7 +373,9 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
   Because GLFW takes care of creating the multisampled buffers, enabling MSAA is quite easy. If we want to use our own framebuffers however, we have to generate the multisampled buffers ourselves; now we <strong>do</strong> need to take care of creating multisampled buffers.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   There are two ways we can create multisampled buffers to act as attachments for framebuffers: texture attachments and renderbuffer attachments. Quite similar to normal attachments like we've discussed in the <a href="Framebuffers.html" target="_blank">framebuffers</a> chapter.
 </p>
 

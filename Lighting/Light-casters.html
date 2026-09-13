@@ -499,7 +499,9 @@ lightingShader.setFloat("light.linear",    0.09f);
 lightingShader.setFloat("light.quadratic", 0.032f);	    
 </code></pre>
     
-  <p>
+  <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
     Implementing attenuation in the fragment shader is relatively straightforward: we simply calculate an attenuation value based on the equation and multiply this with the ambient, diffuse and specular components. 
   </p>
   
@@ -533,9 +535,7 @@ specular *= attenuation;
   
   <img src="../img/lighting/light_casters_point_light.png" class="clean"/>
   
-  <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+  <p>
     You can see that right now only the front containers are lit with the closest container being the brightest. The containers in the back are not lit at all since they're too far from the light source. You can find the source code of the application <a href="../code_viewer_gh.php%3Fcode=src%252F2.lighting%252F5.2.light_casters_point%252Flight_casters_point.cpp.html" target="_blank">here</a>.
   </p>
   

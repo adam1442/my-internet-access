@@ -439,7 +439,9 @@ unsigned int quadVAO, quadVBO;
 <function id='27'>glBindVertexArray</function>(0);
 </code></pre>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
         Next, we will create two framebuffers for our solid and transparent passes. Our solid pass needs a color buffer and a depth buffer to store color and depth information. Our transparent pass needs two color buffers to store color accumulation and pixel revealage threshold. We will also attach the opaque framebuffer's depth texture to our transparent framebuffer, to utilize it for depth testing when rendering our transparent surfaces.
     </p>
 
@@ -521,9 +523,7 @@ glDisable(GL_BLEND);
 <function id='10'>glClear</function>(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         We have to reset our depth function and depth mask for the solid pass at every frame since pipeline changes these states further down the line.
     </p>
 

@@ -646,7 +646,9 @@ const float LUT_BIAS = 0.5/LUT_SIZE;
       the surface as well, as is found in most PBR pipelines.
     </note>
 
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
       We then figure out where in the textures we need to lookup, construct the uv-coordinates,
       and recreate the transformation matrix:
     </p>
@@ -673,9 +675,7 @@ mat3 Minv = mat3(
 );
 </code></pre>
 
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
       In order to compute the solid angle we need two functions: One to compute the integral
       for a single edge, and one to call that function several times, sum up the results, and perform
       the horizon-clipping. The edge integral is the shortest of them, and was shown earlier in this

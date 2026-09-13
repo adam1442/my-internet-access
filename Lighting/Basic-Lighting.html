@@ -427,9 +427,7 @@ vec3 lightDir = normalize(lightPos - FragPos);
   When calculating lighting we usually do not care about the magnitude of a vector or their position; we only care about their direction. Because we only care about their direction almost all the calculations are done with unit vectors since it simplifies most calculations (like the dot product). So when doing lighting calculations, make sure you always normalize the relevant vectors to ensure they're actual unit vectors. Forgetting to normalize a vector is a popular mistake.
 </note>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Next we need to calculate the diffuse impact of the light on the current fragment by taking the dot product between the <var>norm</var> and <var>lightDir</var> vectors. The resulting value is then multiplied with the light's color to get the diffuse component, resulting in a darker diffuse component the greater the angle between both vectors:
 </p>
 
@@ -438,7 +436,9 @@ float diff = max(dot(norm, lightDir), 0.0);
 vec3 diffuse = diff * lightColor;
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   If the angle between both vectors is greater than <code>90</code> degrees then the result of the dot product will actually become negative and we end up with a negative diffuse component.
   For that reason we use the <fun>max</fun> function that returns the highest of both its parameters to make sure the diffuse component (and thus the colors) never become negative. Lighting for negative colors is not really defined so it's best to stay away from that, unless you're one of those eccentric artists. 
 </p>
