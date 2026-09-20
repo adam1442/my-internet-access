@@ -649,7 +649,9 @@ return shadow;
       
       <img src="../../img/guest/2021/CSM/demoscene.png" width="800px">
         
-        <p>
+        <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
           You can find the full source code for the cascaded shadow mapping demo <a href="../../code_viewer_gh.php%3Fcode=src%252F8.guest%252F2021%252F2.csm%252Fshadow_mapping.cpp.html" target="_blank">here</a>.
         </p>
 
@@ -657,9 +659,7 @@ return shadow;
 	<p>
 		In the sample project provided you can toggle depthmap visualization by pressing <kbd>F</kbd>. When in depthmap visualization mode you can press the <kbd>+</kbd> key to swap between the different layers.
 	</p>
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		When browsing through the code you might wonder why is the UBO array length <code>16</code>. This is just an arbitrary choice, to me it seemed unlikely that anyone would use more than <code>16</code> shadow cascades, so this seemed like a nice number to allocate.
 	</p>
 	<p>

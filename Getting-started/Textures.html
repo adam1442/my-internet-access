@@ -402,14 +402,14 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
   Texture images can be stored in dozens of file formats, each with their own structure and ordering of data, so how do we get those images in our application? One solution would be to choose a file format we'd like to use, say <code>.PNG</code> and write our own image loader to convert the image format into a large array of bytes. While it's not very hard to write your own image loader, it's still cumbersome and what if you want to support more file formats? You'd then have to write an image loader for each format you want to support.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Another solution, and probably a good one, is to use an image-loading library that supports several popular formats and does all the hard work for us. A library like <code>stb_image.h</code>.
 </p>
 
 <h2>stb_image.h</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   <code>stb_image.h</code> is a very popular single header image loading library by <a href="https://github.com/nothings" target="_blank">Sean Barrett</a> that is able to load most popular file formats and is easy to integrate in your project(s). <code>stb_image.h</code> can be downloaded from <a href="https://github.com/nothings/stb/blob/master/stb_image.h" target="_blank">here</a>. Simply download the single header file, add it to your project as <code>stb_image.h</code>, and create an additional C++ file with the following code:
 </p>
   

@@ -763,7 +763,9 @@ private:
 };
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  Again, we start with the <tt>Init</tt> function. This should initialize the
 	  data member that contains the framebuffer and load the shader programs:
 	</p>
@@ -844,9 +846,7 @@ GLuint BloomRenderer::BloomTexture()
 	  it restores the viewport size and binds the default framebuffer.
 	</p>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  The only thing that we are missing now is the two private methods, which renders
 	  downsamples and upsamples. I have done my best to add some comments explaining
 	  what is happening:
@@ -1144,7 +1144,9 @@ void configureQuad() {
 	  a solution:
 	</p>
 
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  <ol>
 		<li>For each group of 4 pixels (described in figure 3), compute the Luma value.</li>
 		<li>Calculate the Karis average from the Luma values and divide by 4.</li>
@@ -1178,9 +1180,7 @@ float KarisAverage(vec3 col)
 }
 </code></pre>
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  Luminance measures the brightness of a pixel, and has the per-channel weights as
 	  shown in the <tt>RGBToLuminance</tt> function, because we perceive green much
 	  more bright than the other primaries. I multiply Luma with 0.25f because

@@ -419,13 +419,13 @@ void main()
 }
 </code></pre>
 
-<p>
-  As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
-</p>
-
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
+</p>
+
+<p>
   Next we declare all the input vertex attributes in the vertex shader with the <code>in</code> keyword. Right now we only care about position data so we only need a single vertex attribute. GLSL has a vector datatype that contains 1 to 4 floats based on its postfix digit. Since each vertex has a 3D coordinate we create a <code>vec3</code> input variable with the name <var>aPos</var>. We also specifically set the location of the input variable via <code>layout (location = 0)</code> and you'll later see that why we're going to need that location.
 </p>
 

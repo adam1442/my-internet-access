@@ -489,9 +489,7 @@ void main()
   The fragment shader takes two uniforms: one is the mono-colored bitmap image of the glyph, and the other is a color uniform for adjusting the text's final color. We first sample the color value of the bitmap texture. Because the texture's data is stored in just its red component, we sample the <code>r</code> component of the texture as the sampled alpha value. By varying the output color's alpha value, the resulting pixel will be transparent for all the glyph's background colors and non-transparent for the actual character pixels. We also multiply the RGB colors by the <var>textColor</var> uniform to vary the text color.
 </p>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We do need to enable <a href="../Advanced-OpenGL/Blending.html" target="_blank">blending</a> for this to work though: 
 </p>
     
@@ -529,7 +527,9 @@ unsigned int VAO, VBO;
 <function id='27'>glBindVertexArray</function>(0);      
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The 2D quad requires <code>6</code> vertices of <code>4</code> floats each, so we reserve <code>6 * 4</code> floats of memory. Because we'll be updating the content of the VBO's memory quite often we'll allocate the memory with <var>GL_DYNAMIC_DRAW</var>.
 </p>
     

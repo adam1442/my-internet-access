@@ -500,7 +500,9 @@ for (unsigned int i = 0; i &lt; amount; i++)
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0); 
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Each iteration we bind one of the two framebuffers based on whether we want to blur horizontally or vertically and bind the other framebuffer's color buffer as the texture to blur. The first iteration we specifically bind the texture we'd like to blur (<var>brightnessTexture</var>) as both color buffers would else end up empty. By repeating this process 10 times, the brightness image ends up with a complete Gaussian blur that was repeated 5 times. This construct allows us to blur any image as often as we'd like; the more Gaussian blur iterations, the stronger the blur.
 </p>
     
@@ -515,9 +517,7 @@ for (unsigned int i = 0; i &lt; amount; i++)
 </p>
       
 <h2>Blending both textures</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
    With the scene's HDR texture and a blurred brightness texture of the scene we only need to combine the two to achieve the infamous Bloom or glow effect. In the final fragment shader (largely similar to the one we used in the <a href="HDR.html" target="_blank">HDR</a> chapter) we additively blend both textures:
 </p>
       

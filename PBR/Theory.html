@@ -368,7 +368,9 @@ float kD = 1.0 - kS;                        // refraction/diffuse  fraction
   
   <img src="../img/pbr/radiant_intensity.png" class="clean" alt="Radiant intensity"/>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The equation to describe the radiant intensity is defined as follows:
 </p>
   
@@ -417,9 +419,7 @@ float cosTheta = dot(lightDir, N);
   
   <img src="../img/pbr/hemisphere.png" class="clean" alt="Hemisphere"/>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>  
+<p>  
   To calculate the total of values inside an area or (in the case of a hemisphere) a volume, we use a mathematical construct called an <def>integral</def> denoted in the reflectance equation as \(\int\) over all incoming directions \(d\omega_i\) within the hemisphere \(\Omega\) . An integral measures the area of a function, which can either be calculated analytically or numerically. As there is no analytical solution to both the render and reflectance equation, we'll want to numerically solve the integral discretely. This translates to taking the result of small discrete steps of the reflectance equation over the hemisphere \(\Omega\) and averaging their results over the step size. This is known as the <def>Riemann sum</def> that we can roughly visualize in code as follows:
 </p>
 
@@ -561,9 +561,7 @@ float DistributionGGX(vec3 N, vec3 H, float a)
     	{(n \cdot v)(1 - k) + k }
     \]
     
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Here \(k\) is a remapping of \(\alpha\) based on whether we're using the geometry function for either direct lighting or IBL lighting:
 </p>
     
@@ -598,7 +596,9 @@ float DistributionGGX(vec3 N, vec3 H, float a)
   The geometry function is a multiplier between [0.0, 1.0] with 1.0 (or white) measuring no microfacet shadowing, and 0.0 (or black) complete microfacet shadowing. 
 </p>
     
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   In GLSL the geometry function translates to the following code:
 </p>
     

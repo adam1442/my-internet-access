@@ -545,9 +545,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0);  
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   We take the color attachment of the framebuffer and switch its texture target around for every face of the cubemap, directly rendering the scene into one of the cubemap's faces. Once this routine has finished (which we only have to do once), the cubemap <var>envCubemap</var> should be the cubemapped environment version of our original HDR image.
 </p>
     
@@ -575,7 +573,9 @@ void main()
 }
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Note the <code>xyww</code> trick here that ensures the depth value of the rendered cube fragments always end up at <code>1.0</code>, the maximum depth value, as described in the <a href="../../Advanced-OpenGL/Cubemaps.html" target="_blank">cubemap</a> chapter. Do note that we need to change the depth comparison function to <var>GL_LEQUAL</var>:
 </p>
     
@@ -693,7 +693,9 @@ void main()
       
       <img src="../../img/pbr/ibl_spherical_integrate.png" class="clean" alt="Converting the solid angle over the equivalent polar azimuth and inclination angle for PBR"/>
         
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   We use the polar azimuth \(\phi\) angle to sample around the ring of the hemisphere between \(0\) and \(2\pi\), and use the inclination zenith \(\theta\) angle between \(0\) and \(\frac{1}{2}\pi\) to sample the increasing rings of the hemisphere. This will give us the updated reflectance integral: 
 </p>
 
@@ -808,9 +810,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='77'>glBindFramebuffer</function>(GL_FRAMEBUFFER, 0);  
 </code></pre>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Now after this routine we should have a pre-computed irradiance map that we can directly use for our diffuse image based lighting. To see if we successfully convoluted the environment map we'll substitute the environment map for the irradiance map as the skybox's environment sampler:
 </p>
       
