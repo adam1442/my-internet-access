@@ -373,9 +373,7 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 
 <img src="../img/getting-started/perspective.png" class="clean"/>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   As you can see, due to perspective the lines seem to coincide at a far enough distance. This is exactly the effect perspective projection tries to mimic and it does so using a <def>perspective projection matrix</def>. The projection matrix maps a given frustum range to clip space, but also manipulates the <code>w</code> value of each vertex coordinate in such a way that the further away a vertex coordinate is from the viewer, the higher this <code>w</code> component becomes. Once the coordinates are transformed to clip space they are in the range <code>-w</code> to <code>w</code> (anything outside this range is clipped). OpenGL requires that the visible coordinates fall between the range <code>-1.0</code> and <code>1.0</code> as the final vertex shader output, thus once the coordinates are in clip space, perspective division is applied to the clip space coordinates:
 
   \[ out = \begin{pmatrix} x /w \\ y / w \\ z / w \end{pmatrix} \]
@@ -430,7 +428,9 @@ Note that the order of matrix multiplication is reversed (remember that we need 
   The output of the vertex shader requires the coordinates to be in clip-space which is what we just did with the transformation matrices. OpenGL then performs <em>perspective division</em> on the <em>clip-space coordinates</em> to transform them to <em>normalized-device coordinates</em>. OpenGL then uses the parameters from <fun><function id='22'>glViewPort</function></fun> to map the normalized-device coordinates to <em>screen coordinates</em> where each coordinate corresponds to a point on your screen (in our case a 800x600 screen). This process is called the <em>viewport transform</em>. 
 </note>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This is a difficult topic to understand so if you're still not exactly sure about what each space is used for you don't have to worry. Below you'll see how we can actually put these coordinate spaces to good use and enough examples will follow in the upcoming chapters.
 </p>
 

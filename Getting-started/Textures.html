@@ -402,9 +402,7 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
   Texture images can be stored in dozens of file formats, each with their own structure and ordering of data, so how do we get those images in our application? One solution would be to choose a file format we'd like to use, say <code>.PNG</code> and write our own image loader to convert the image format into a large array of bytes. While it's not very hard to write your own image loader, it's still cumbersome and what if you want to support more file formats? You'd then have to write an image loader for each format you want to support.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Another solution, and probably a good one, is to use an image-loading library that supports several popular formats and does all the hard work for us. A library like <code>stb_image.h</code>.
 </p>
 
@@ -422,7 +420,9 @@ float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
   By defining <var>STB_IMAGE_IMPLEMENTATION</var> the preprocessor modifies the header file such that it only contains the relevant definition source code, effectively turning the header file into a <code>.cpp</code> file, and that's about it. Now simply include <code>stb_image.h</code> somewhere in your program and compile.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   For the following texture sections we're going to use an image of a <a href="../img/textures/container.jpg" target="_blank">wooden container</a>.
   To load an image using <code>stb_image.h</code> we use its <fun>stbi_load</fun> function:
 </p>

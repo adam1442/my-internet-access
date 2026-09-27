@@ -508,7 +508,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
   Then what's left to do is capture the equirectangular 2D texture onto the cubemap faces.
 </p>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   I won't go over the details as the code details topics previously discussed in the <a href="../../Advanced-OpenGL/Framebuffers.html" target="_blank">framebuffer</a> and <a href="../../Advanced-Lighting/Shadows/Point-Shadows.html" target="_blank">point shadows</a> chapters, but it effectively boils down to setting up 6 different view matrices (facing  each side of the cube), set up a projection matrix with a fov of <code>90</code> degrees to capture the entire face, and render a cube 6 times storing the results in a floating point framebuffer: 
 </p>
     
@@ -573,9 +575,7 @@ void main()
 }
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Note the <code>xyww</code> trick here that ensures the depth value of the rendered cube fragments always end up at <code>1.0</code>, the maximum depth value, as described in the <a href="../../Advanced-OpenGL/Cubemaps.html" target="_blank">cubemap</a> chapter. Do note that we need to change the depth comparison function to <var>GL_LEQUAL</var>:
 </p>
     
@@ -693,9 +693,7 @@ void main()
       
       <img src="../../img/pbr/ibl_spherical_integrate.png" class="clean" alt="Converting the solid angle over the equivalent polar azimuth and inclination angle for PBR"/>
         
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   We use the polar azimuth \(\phi\) angle to sample around the ring of the hemisphere between \(0\) and \(2\pi\), and use the inclination zenith \(\theta\) angle between \(0\) and \(\frac{1}{2}\pi\) to sample the increasing rings of the hemisphere. This will give us the updated reflectance integral: 
 </p>
 
@@ -747,7 +745,9 @@ for(float phi = 0.0; phi &lt; 2.0 * PI; phi += sampleDelta)
 irradiance = PI * irradiance * (1.0 / float(nrSamples));
 </code></pre>
       
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   We specify a fixed <var>sampleDelta</var> delta value to traverse the hemisphere; decreasing or increasing the sample delta will increase or decrease the accuracy respectively.
 </p>
         
