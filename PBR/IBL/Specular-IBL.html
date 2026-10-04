@@ -408,14 +408,14 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 When it comes to Monte Carlo integration, some samples may have a higher probability of being generated than others. This is why for any general Monte Carlo estimation we divide or multiply the sampled value by the sample probability according to a pdf. So far, in each of our cases of estimating an integral, the samples we've generated were uniform, having the exact same chance of being generated. Our estimations so far were <def>unbiased</def>, meaning that given an ever-increasing amount of samples we will eventually <def>converge</def> to the <strong>exact</strong> solution of the integral. 
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
     However, some Monte Carlo estimators are <def>biased</def>, meaning that the generated samples aren't completely random, but focused towards a specific value or direction. These biased Monte Carlo estimators have a <def>faster rate of convergence</def>, meaning they can converge to the exact solution at a much faster rate, but due to their biased nature it's likely they won't ever converge to the exact solution. This is generally an acceptable tradeoff, especially in computer graphics, as the exact solution isn't too important as long as the results are visually acceptable.
     As we'll soon see with importance sampling (which uses a biased estimator), the generated samples  are biased towards specific directions in which case we account for this by multiplying or dividing each sample by its corresponding pdf.
   </p>
       
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Monte Carlo integration is quite prevalent in computer graphics as it's a fairly intuitive way to approximate continuous integrals in a discrete and efficient fashion: take any area/volume to sample over (like the hemisphere \(\Omega\)), generate \(N\) amount of random samples within the area/volume, and sum and weigh every sample contribution to the final result. 
 </p>
             
@@ -708,7 +708,9 @@ float saSample = 1.0 / (float(SAMPLE_COUNT) * pdf + 0.0001);
 float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel); 
 </code></pre>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Don't forget to enable trilinear filtering on the environment map you want to sample its mip levels from:
 </p>
               
@@ -734,9 +736,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 </p>
 
 <h2>Pre-computing the BRDF</h2>
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   With the pre-filtered environment up and running, we can focus on the second part of the split-sum approximation: the BRDF. Let's briefly review the specular split sum approximation again:
 </p>
           

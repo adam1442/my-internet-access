@@ -458,9 +458,7 @@ void main()
   This geometry shader is relatively straightforward. We take as input a triangle, and output a total of 6 triangles (6 * 3 equals 18 vertices). In the <fun>main</fun> function we iterate over 6 cubemap faces where we specify each face as the output face by storing the face integer into <var>gl_Layer</var>. We then generate the output triangles by transforming each world-space input vertex to the relevant light space by multiplying <var>FragPos</var> with the face's light-space transformation matrix. Note that we also sent the resulting <var>FragPos</var> variable to the fragment shader that we'll need to calculate a depth value.
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   In the last chapter we used an empty fragment shader and let OpenGL figure out the depth values of the depth map. This time we're going to calculate our own (linear) depth as the linear distance between each closest fragment position and the light source's position. Calculating our own depth values makes the later shadow calculations a bit more intuitive.
 </p>
   
@@ -484,7 +482,9 @@ void main()
 }  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The fragment shader takes as input the <var>FragPos</var> from the geometry shader, the light's position vector, and the frustum's far plane value. Here we take the distance between the fragment and the light source, map it to the [<code>0</code>,<code>1</code>] range and write it as the fragment's depth value. 
 </p>
   
