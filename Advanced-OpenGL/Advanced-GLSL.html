@@ -408,9 +408,7 @@ gl_FragDepth = 0.0; // this fragment now has a depth value of 0.0
 layout (depth_&ltcondition&gt;) out float gl_FragDepth;
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   This <code>condition</code> can take the following values:
 </p>
 
@@ -466,7 +464,9 @@ void main()
   So far, every time we sent data from the vertex to the fragment shader we declared several matching input/output variables. Declaring these one at a time is the easiest way to send data from one shader to another, but as applications become larger you probably want to send more than a few variables over.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To help us organize these variables GLSL offers us something called <def>interface blocks</def> that allows us to group variables together. The declaration of such an interface block looks a lot like a <fun>struct</fun> declaration, except that it is now declared using an <fun>in</fun> or <fun>out</fun> keyword based on the block being an input or an output block.
 </p>
 

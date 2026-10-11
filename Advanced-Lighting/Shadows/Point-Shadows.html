@@ -482,9 +482,7 @@ void main()
 }  
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The fragment shader takes as input the <var>FragPos</var> from the geometry shader, the light's position vector, and the frustum's far plane value. Here we take the distance between the fragment and the light source, map it to the [<code>0</code>,<code>1</code>] range and write it as the fragment's depth value. 
 </p>
   
@@ -512,7 +510,9 @@ RenderScene();
   Here the <fun>renderScene</fun> function renders a few cubes in a large cube room scattered around a light source at the center of the scene.
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The vertex and fragment shader are mostly similar to the original shadow mapping shaders: the difference being that the fragment shader no longer requires a fragment position in light space as we can now sample the depth values with a direction vector. 
 </p>
   

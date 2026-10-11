@@ -436,9 +436,7 @@ float diff = max(dot(norm, lightDir), 0.0);
 vec3 diffuse = diff * lightColor;
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   If the angle between both vectors is greater than <code>90</code> degrees then the result of the dot product will actually become negative and we end up with a negative diffuse component.
   For that reason we use the <fun>max</fun> function that returns the highest of both its parameters to make sure the diffuse component (and thus the colors) never become negative. Lighting for negative colors is not really defined so it's best to stay away from that, unless you're one of those eccentric artists. 
 </p>
@@ -471,7 +469,9 @@ FragColor = vec4(result, 1.0);
   in the previous section we passed the normal vector directly from the vertex shader to the fragment shader. However, the calculations in the fragment shader are all done in world space, so shouldn't we transform the normal vectors to world space coordinates as well? Basically yes, but it's not as simple as simply multiplying it with a model matrix. 
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   First of all, normal vectors are only direction vectors and do not represent a specific position in space. Second, normal vectors do not have a homogeneous coordinate (the <code>w</code> component of a vertex position). This means that translations should not have any effect on the normal vectors. So if we want to multiply the normal vectors with a model matrix we want to remove the translation part of the matrix by taking the upper-left <code>3x3</code> matrix of the model matrix (note that we could also set the <code>w</code> component of a normal vector to <code>0</code> and multiply with the 4x4 matrix). 
 </p>
 
