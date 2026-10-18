@@ -471,9 +471,7 @@ else if(lightVector.w == 1.0)
 </p>
   
 <h3>Implementing attenuation</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
     To implement attenuation we'll be needing 3 extra values in the fragment shader: namely the constant, linear and quadratic terms of the equation. These are best stored in the <fun>Light</fun> struct we defined earlier. Note that we need to calculate <var>lightDir</var> again using <var>position</var> as this is a point light (as we did in the previous chapter) and not a directional light.
 </p>
 
@@ -539,7 +537,9 @@ specular *= attenuation;
     You can see that right now only the front containers are lit with the closest container being the brightest. The containers in the back are not lit at all since they're too far from the light source. You can find the source code of the application <a href="../code_viewer_gh.php%3Fcode=src%252F2.lighting%252F5.2.light_casters_point%252Flight_casters_point.cpp.html" target="_blank">here</a>.
   </p>
   
-  <p>
+  <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
     A point light is thus a light source with a configurable location and attenuation applied to its lighting calculations. Yet another type of light for our lighting arsenal.
   </p>
 

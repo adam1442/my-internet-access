@@ -384,7 +384,9 @@ void main()
   The input variable <var>gl_FragCoord</var> is an input variable that allows us to read screen-space coordinates and get the depth value of the current fragment, but it is a <def>read-only</def> variable. We can't influence the screen-space coordinates of the fragment, but it is possible to set the depth value of the fragment. GLSL gives us an output variable called <var>gl_FragDepth</var> that we can use to manually set the depth value of the fragment within the shader.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To set the depth value in the shader we write any value between <code>0.0</code> and <code>1.0</code> to the output variable:
 </p>
 
@@ -464,9 +466,7 @@ void main()
   So far, every time we sent data from the vertex to the fragment shader we declared several matching input/output variables. Declaring these one at a time is the easiest way to send data from one shader to another, but as applications become larger you probably want to send more than a few variables over.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   To help us organize these variables GLSL offers us something called <def>interface blocks</def> that allows us to group variables together. The declaration of such an interface block looks a lot like a <fun>struct</fun> declaration, except that it is now declared using an <fun>in</fun> or <fun>out</fun> keyword based on the block being an input or an output block.
 </p>
 

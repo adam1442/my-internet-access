@@ -417,9 +417,7 @@ The same rules apply for matrix subtraction:
 </p>
 
 <h2>Matrix-scalar products</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   A matrix-scalar product multiples each element of the matrix by a scalar. The following example illustrates the multiplication:
   
   \[\color{green}2 \cdot \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = \begin{bmatrix} \color{green}2 \cdot 1 & \color{green}2 \cdot 2 \\ \color{green}2 \cdot 3 & \color{green}2 \cdot 4 \end{bmatrix} = \begin{bmatrix} 2 & 4 \\ 6 & 8 \end{bmatrix}\]
@@ -432,7 +430,9 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
 </p>
 
 <h2>Matrix-matrix multiplication</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Multiplying matrices is not necessarily complex, but rather difficult to get comfortable with. Matrix multiplication basically means to follow a set of pre-defined rules when multiplying. There are a few restrictions though: 
   
   <ol>
@@ -575,9 +575,7 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   
   <img src="../img/getting-started/vectors_angle.png" class="clean" />
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Rotations in 3D are specified with an angle <strong>and</strong> a <def>rotation axis</def>. The angle specified will rotate the object along the rotation axis given. Try to visualize this by spinning your head a certain degree while continually looking down a single rotation axis. When rotating 2D vectors in a 3D world for example, we set the rotation axis to the z-axis (try to visualize this).
 </p>
   
@@ -589,7 +587,9 @@ Now it also makes sense as to why those single numbers are called scalars. A sca
   A rotation matrix is defined for each unit axis in 3D space where the angle is represented as the  theta symbol \(\theta\).
 </p>
   
-  <p>
+  <p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
     Rotation around the X-axis:
   
   \[\begin{bmatrix} \color{red}1 & \color{red}0 & \color{red}0 & \color{red}0 \\ \color{green}0 & \color{green}{\cos \theta} & - \color{green}{\sin \theta} & \color{green}0 \\ \color{blue}0 & \color{blue}{\sin \theta} & \color{blue}{\cos \theta} & \color{blue}0 \\ \color{purple}0 & \color{purple}0 & \color{purple}0 & \color{purple}1 \end{bmatrix} \cdot \begin{pmatrix} x \\ y \\ z \\ 1 \end{pmatrix} = \begin{pmatrix} x \\ \color{green}{\cos \theta} \cdot y - \color{green}{\sin \theta} \cdot z \\ \color{blue}{\sin \theta} \cdot y + \color{blue}{\cos \theta} \cdot z \\ 1 \end{pmatrix}\]

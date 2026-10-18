@@ -438,7 +438,9 @@ glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
   OpenGL requires that textures all have a 4-byte alignment e.g. their size is always a multiple of 4 bytes. Normally this won't be a problem since most textures have a width that is a multiple of 4 and/or use 4 bytes per pixel, but since we now only use a single byte per pixel, the texture can have any possible width. By setting its unpack alignment to <code>1</code> we ensure there are no  alignment issues (which could cause segmentation faults).
 </p>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Be sure to clear FreeType's resources once you're finished processing the glyphs:
 </p>
     
@@ -485,9 +487,7 @@ void main()
 }  
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The fragment shader takes two uniforms: one is the mono-colored bitmap image of the glyph, and the other is a color uniform for adjusting the text's final color. We first sample the color value of the bitmap texture. Because the texture's data is stored in just its red component, we sample the <code>r</code> component of the texture as the sampled alpha value. By varying the output color's alpha value, the resulting pixel will be transparent for all the glyph's background colors and non-transparent for the actual character pixels. We also multiply the RGB colors by the <var>textColor</var> uniform to vary the text color.
 </p>
     

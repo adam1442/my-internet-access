@@ -483,7 +483,9 @@ unsigned int captureFBO, captureRBO;
 <function id='89'>glFramebufferRenderbuffer</function>(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, captureRBO);  
 </code></pre>  
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Of course, we then also generate the corresponding cubemap color textures, pre-allocating memory for each of its 6 faces:
 </p>
   
@@ -508,9 +510,7 @@ for (unsigned int i = 0; i &lt; 6; ++i)
   Then what's left to do is capture the equirectangular 2D texture onto the cubemap faces.
 </p>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   I won't go over the details as the code details topics previously discussed in the <a href="../../Advanced-OpenGL/Framebuffers.html" target="_blank">framebuffer</a> and <a href="../../Advanced-Lighting/Shadows/Point-Shadows.html" target="_blank">point shadows</a> chapters, but it effectively boils down to setting up 6 different view matrices (facing  each side of the cube), set up a projection matrix with a fov of <code>90</code> degrees to capture the entire face, and render a cube 6 times storing the results in a floating point framebuffer: 
 </p>
     
@@ -745,9 +745,7 @@ for(float phi = 0.0; phi &lt; 2.0 * PI; phi += sampleDelta)
 irradiance = PI * irradiance * (1.0 / float(nrSamples));
 </code></pre>
       
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   We specify a fixed <var>sampleDelta</var> delta value to traverse the hemisphere; decreasing or increasing the sample delta will increase or decrease the accuracy respectively.
 </p>
         
@@ -775,7 +773,9 @@ for (unsigned int i = 0; i &lt; 6; ++i)
 <function id='15'>glTexParameter</function>i(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 </code></pre>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   As the irradiance map averages all surrounding radiance uniformly it doesn't have a lot of high frequency details, so we can store the map at a low resolution (32x32) and let OpenGL's linear filtering do most of the work. Next, we re-scale the capture framebuffer to the new resolution:
 </p>
       

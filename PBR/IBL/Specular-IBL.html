@@ -693,7 +693,9 @@ vec3 envColor = textureLod(environmentMap, WorldPos, 1.2).rgb;
             
             <img src="../../img/pbr/ibl_prefilter_dots.png" alt="Visible dots on high frequency HDR maps in the deeper mip LOD levels of a pre-filter map."/>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   One option is to further increase the sample count, but this won't be enough for all environments. As described by <a href="https://chetanjags.wordpress.com/2015/08/26/image-based-lighting/" target="_blank">Chetan Jags</a> we can reduce this artifact by (during the pre-filter convolution) not directly sampling the environment map, but sampling a mip level of the environment map based on the integral's PDF and the roughness:
 </p>
               
@@ -761,9 +763,7 @@ float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel);
 	\int\limits_{\Omega} \frac{f_r(p, \omega_i, \omega_o)}{F(\omega_o, h)} F(\omega_o, h)  n \cdot \omega_i d\omega_i
 \]
           
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Substituting the right-most \(F\) with the Fresnel-Schlick approximation gives us:
   </p>
           

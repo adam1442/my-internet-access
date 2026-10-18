@@ -489,9 +489,7 @@ for(unsigned int i = 0; i &lt; mesh-&gt;mNumFaces; i++)
 </p>
 
 <h3>Material</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Similar to nodes, a mesh only contains an index to a material object. To retrieve the material of a mesh, we need to index the scene's <var>mMaterials</var> array. The mesh's material index is set in its <var>mMaterialIndex</var> property, which we can also query to check if the mesh contains a material or not:
 </p>
 
@@ -534,7 +532,9 @@ vector&lt;Texture&gt; loadMaterialTextures(aiMaterial *mat, aiTextureType type, 
 }  
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   We first check the amount of textures stored in the material via its <fun>GetTextureCount</fun> function that expects one of the texture types we've given. We retrieve each of the texture's file locations via the <fun>GetTexture</fun> function that stores the result in an <code>aiString</code>. We then use another helper function called <fun>TextureFromFile</fun> that loads a texture (with <code>stb_image.h</code>) for us and returns the texture's ID. You can check the complete code listing at the end for its content if you're not sure how such a function is written.
 </p>
 

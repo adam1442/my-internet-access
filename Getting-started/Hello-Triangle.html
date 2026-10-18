@@ -396,14 +396,14 @@ unsigned int VBO;
   The position data of the triangle does not change, is used a lot, and stays the same for every render call so its usage type should best be <var>GL_STATIC_DRAW</var>. If, for instance, one would have a buffer with data that is likely to change frequently, a usage type of <var>GL_DYNAMIC_DRAW</var> ensures the graphics card will place the data in memory that allows for faster writes.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   As of now we stored the vertex data within memory on the graphics card as managed by a vertex buffer object named <var>VBO</var>. Next we want to create a vertex and fragment shader that actually processes this data, so let's start building those.
 </p>
 
 <h2>Vertex shader</h2>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The vertex shader is one of the shaders that are programmable by people like us. Modern OpenGL requires that we at least set up a vertex and fragment shader if we want to do some rendering so we will briefly introduce shaders and configure two very simple shaders for drawing our first triangle. In the next chapter we'll discuss shaders in more detail.
 </p>
 
@@ -621,7 +621,9 @@ if(!success) {
   The vertex shader allows us to specify any input we want in the form of vertex attributes and while this allows for great flexibility, it does mean we have to manually specify what part of our input data goes to which vertex attribute in the vertex shader. This means we have to specify how OpenGL should interpret the vertex data before rendering.
 </p>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   Our vertex buffer data is formatted as follows:
 </p>
 
@@ -634,9 +636,7 @@ if(!success) {
     <li>The first value in the data is at the beginning of the buffer.</li>
   </ul>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
    With this knowledge we can tell OpenGL how it should interpret the vertex data (per vertex attribute) using <fun><function id='30'>glVertexAttribPointer</function></fun>:
 </p>
 
