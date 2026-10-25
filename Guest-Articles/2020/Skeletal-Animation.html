@@ -559,9 +559,7 @@ private:
 };
 </code></pre>
             
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>We start by declaring a map <code>m_BoneInfoMap</code> and a counter <code>m_BoneCounter</code> 
+<p>We start by declaring a map <code>m_BoneInfoMap</code> and a counter <code>m_BoneCounter</code> 
 	which will be incremented as soon as we read a new bone.
 	 we saw in the diagram earlier that each <code>aiMesh</code> contains all 
 	 aiBones which are associated with the <code>aiMesh</code>. 
@@ -584,7 +582,9 @@ private:
 	 <p> One thing to notice that we are calling <code>AssimpGLMHelpers::ConvertMatrixToGLMFormat</code>. 
 	 Assimp store its matrix data in different format than GLM so this function just gives us our matrix in GLM format.
     </p>
-	<p>We have extracted the offsetMatrix for the bone and now we will simply iterate its <code>aiVertexWeight</code>array 
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>We have extracted the offsetMatrix for the bone and now we will simply iterate its <code>aiVertexWeight</code>array 
 		and extract all vertices indices which will be influenced by this bone along with their 
 		respective weights and call <code>SetVertexBoneData</code> to fill up <code>Vertex.boneIds</code> and <code>Vertex.weights</code> with extracted information. </p>
 		

@@ -462,7 +462,9 @@ vec3 specular     = numerator / denominator;
   Note that we add <code>0.0001</code> to the denominator to prevent a divide by zero in case any dot product ends up <code>0.0</code>.
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Now we can finally calculate each light's contribution to the reflectance equation. As the Fresnel value directly corresponds to \(k_S\) we can use <var>F</var> to denote the specular contribution of any light that hits the surface. From \(k_S\) we can then calculate the ratio of refraction \(k_D\):
 </p>
   
@@ -499,9 +501,7 @@ vec3 color   = ambient + Lo;
 </code></pre>
   
 <h3>Linear and HDR rendering</h3>
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   So far we've assumed all our calculations to be in linear color space and to account for this we need to <a href="../Advanced-Lighting/Gamma-Correction.html" target="_blank">gamma correct</a> at the end of the shader. Calculating lighting in linear space is incredibly important as PBR requires all inputs to be linear. Not taking this into account will result in incorrect lighting. Additionally, we want light inputs to be close to their physical equivalents such that their radiance or color values can vary wildly over a high spectrum of values. As a result, <var>Lo</var> can rapidly grow really high which then gets clamped between <code>0.0</code> and <code>1.0</code> due to the default low dynamic range (LDR) output. We fix this by taking <var>Lo</var> and tone or exposure map the <a href="../Advanced-Lighting/HDR.html" target="_blank">high dynamic range</a> (HDR) value correctly to LDR before gamma correction: 
 </p>
   

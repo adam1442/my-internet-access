@@ -407,13 +407,13 @@ float cosTheta = dot(lightDir, N);
   L_o(p,\omega_o) = \int\limits_{\Omega} f_r(p,\omega_i,\omega_o) L_i(p,\omega_i) n \cdot \omega_i  d\omega_i
   \]
   
-<p>
-  We now know that \(L\) in the render equation represents the radiance of some point \(p\) and some incoming infinitely small solid angle \(\omega_i\) which can be thought of as an incoming direction vector \(\omega_i\). Remember that \(\cos \theta\) scales the energy based on the light's incident angle to the surface, which we find in the reflectance equation as \(n \cdot \omega_i\). The reflectance equation calculates the sum of reflected radiance \(L_o(p, \omega_o)\) of a point \(p\) in direction \(\omega_o\) which is the outgoing direction to the viewer. Or to put it differently: \(L_o\) measures the reflected sum of the lights' irradiance onto point \(p\) as viewed from \(\omega_o\).
-</p>
-  
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  We now know that \(L\) in the render equation represents the radiance of some point \(p\) and some incoming infinitely small solid angle \(\omega_i\) which can be thought of as an incoming direction vector \(\omega_i\). Remember that \(\cos \theta\) scales the energy based on the light's incident angle to the surface, which we find in the reflectance equation as \(n \cdot \omega_i\). The reflectance equation calculates the sum of reflected radiance \(L_o(p, \omega_o)\) of a point \(p\) in direction \(\omega_o\) which is the outgoing direction to the viewer. Or to put it differently: \(L_o\) measures the reflected sum of the lights' irradiance onto point \(p\) as viewed from \(\omega_o\).
+</p>
+  
+<p>
   The reflectance equation is based around irradiance, which is the sum of all incoming radiance we measure light of. Not just of a single incoming light direction, but of all incoming light directions within a hemisphere \(\Omega\) centered around point \(p\). A <def>hemisphere</def> can be described as half a sphere aligned around a surface's normal \(n\):
   </p>
   
@@ -577,9 +577,7 @@ float DistributionGGX(vec3 N, vec3 H, float a)
   Note that the value of \(\alpha\) may differ based on how your engine translates roughness to \(\alpha\). In the following chapters we'll extensively discuss how and where this remapping becomes relevant. 
     </p>
   
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   To effectively approximate the geometry we need to take account of both the view direction (geometry obstruction) and the light direction vector (geometry shadowing). We can take both into account using <def>Smith's method</def>:
 </p>
     
@@ -628,7 +626,9 @@ float GeometrySmith(vec3 N, vec3 V, vec3 L, float k)
 	The Fresnel equation (pronounced as Freh-nel) describes the ratio of light that gets reflected over the light that gets refracted, which varies over the angle we're looking at a surface. The moment light hits a surface, based on the surface-to-view angle, the Fresnel equation tells us the  percentage of light that gets reflected. From this ratio of reflection and the energy conservation principle we can directly obtain the refracted portion of light.
     </p>
     
- <p>
+ <p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
    Every surface or material has a level of <def>base reflectivity</def> when looking straight at its surface, but when looking at the surface from an angle <a href="http://filmicworlds.com/blog/everything-has-fresnel/" target="_blank">all</a> reflections become more apparent compared to the surface's base reflectivity. You can check this for yourself by looking at your (presumably) wooden/metallic desk which has a certain level of base reflectivity from a perpendicular view angle, but by looking at your desk from an almost 90 degree angle you'll see the reflections become much more apparent. All surfaces theoretically fully reflect light if seen from perfect 90-degree angles. This phenomenon is known as <def>Fresnel</def> and is described by the Fresnel equation. 
 </p>
         

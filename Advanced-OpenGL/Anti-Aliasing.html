@@ -388,9 +388,7 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 <function id='48'>glBindTexture</function>(GL_TEXTURE_2D_MULTISAMPLE, 0);  
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The second argument sets the number of samples we'd like the texture to have. If the last argument is set to <var>GL_TRUE</var>, the image will use identical sample locations and the same number of subsamples for each texel.
 </p>
 
@@ -407,7 +405,9 @@ $('#menu-item143').mousedown(function() { MenuClick(143, true) });
 </p>
 
 <h3>Multisampled renderbuffer objects</h3>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Like textures, creating a multisampled renderbuffer object isn't difficult. It is even quite easy since all we need to change is <fun><function id='88'>glRenderbufferStorage</function></fun> to <fun><function id='102'><function id='88'>glRenderbufferStorage</function>Multisample</function></fun> when we configure the (currently bound) renderbuffer's memory storage:
 </p>
 

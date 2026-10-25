@@ -454,7 +454,9 @@ void main()
 }  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   This geometry shader is relatively straightforward. We take as input a triangle, and output a total of 6 triangles (6 * 3 equals 18 vertices). In the <fun>main</fun> function we iterate over 6 cubemap faces where we specify each face as the output face by storing the face integer into <var>gl_Layer</var>. We then generate the output triangles by transforming each world-space input vertex to the relevant light space by multiplying <var>FragPos</var> with the face's light-space transformation matrix. Note that we also sent the resulting <var>FragPos</var> variable to the fragment shader that we'll need to calculate a depth value.
 </p>
   
@@ -486,9 +488,7 @@ void main()
   The fragment shader takes as input the <var>FragPos</var> from the geometry shader, the light's position vector, and the frustum's far plane value. Here we take the distance between the fragment and the light source, map it to the [<code>0</code>,<code>1</code>] range and write it as the fragment's depth value. 
 </p>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Rendering the scene with these shaders and the cubemap-attached framebuffer object active should give you a completely filled depth cubemap for the second pass's shadow calculations.
 </p>
   

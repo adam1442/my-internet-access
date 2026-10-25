@@ -479,13 +479,13 @@ FragColor = vec4(result, 1.0);
 
 <img src="../img/lighting/basic_lighting_normal_transformation.png" class="clean"/>
 
-<p>
-  Whenever we apply a non-uniform scale (note: a uniform scale only changes the normal's magnitude, not its direction, which is easily fixed by normalizing it) the normal vectors are not perpendicular to the corresponding surface anymore which distorts the lighting.
-</p>
-
 <p><div id="in_content_ad_2">
 				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
 				</div><p>
+  Whenever we apply a non-uniform scale (note: a uniform scale only changes the normal's magnitude, not its direction, which is easily fixed by normalizing it) the normal vectors are not perpendicular to the corresponding surface anymore which distorts the lighting.
+</p>
+
+<p>
   The trick of fixing this behavior is to use a different model matrix specifically tailored for normal vectors. This matrix is called the <def>normal matrix</def> and uses a few linear algebraic operations to remove the effect of wrongly scaling the normal vectors. If you want to know how this matrix is calculated I suggest the following <a href="http://www.lighthouse3d.com/tutorials/glsl-tutorial/the-normal-matrix/" target="_blank">article</a>. 
 </p>
 
