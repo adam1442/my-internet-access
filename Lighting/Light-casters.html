@@ -513,9 +513,7 @@ float attenuation = 1.0 / (light.constant + light.linear * distance +
     		    light.quadratic * (distance * distance));    
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Then we include this attenuation value in the lighting calculations by multiplying the attenuation value with the ambient, diffuse and specular colors.
   </p>
   
@@ -544,7 +542,9 @@ specular *= attenuation;
   </p>
 
 <h1>Spotlight</h1>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   The last type of light we're going to discuss is a <def>spotlight</def>. A spotlight is a light source that is located somewhere in the environment that, instead of shooting light rays in all directions, only shoots them in a specific direction. The result is that only the objects within a certain radius of the spotlight's direction are lit and everything else stays dark. A good example of a spotlight would be a street lamp or a flashlight.
 </p>
   

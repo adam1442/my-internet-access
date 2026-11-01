@@ -427,9 +427,7 @@ When it comes to Monte Carlo integration, some samples may have a higher probabi
   When using a low-discrepancy sequence for generating the Monte Carlo sample vectors, the process is known as <def>Quasi-Monte Carlo integration</def>. Quasi-Monte Carlo methods have a faster <def>rate of convergence</def> which makes them interesting for performance heavy applications.
 </p>
         
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Given our newly obtained knowledge of Monte Carlo and Quasi-Monte Carlo integration, there is an interesting property we can use for an even faster rate of convergence known as <def>importance sampling</def>. We've mentioned it before in this chapter, but when it comes to specular reflections of light, the reflected light vectors are constrained in a specular lobe with its size determined by the roughness of the surface. Seeing as any (quasi-)randomly generated sample outside the specular lobe isn't relevant to the specular integral it makes sense to focus the sample generation to within the specular lobe, at the cost of making the Monte Carlo estimator biased.
 </p>
 
@@ -469,7 +467,9 @@ vec2 Hammersley(uint i, uint N)
 
 <note>
 <strong>Hammersley sequence without bit operator support</strong><br/>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Not all OpenGL related drivers support bit operators (WebGL and OpenGL ES 2.0 for instance) in which case you may want to use an alternative version of the Van Der Corput Sequence that doesn't rely on bit operators:
 </p>
   
@@ -693,7 +693,9 @@ vec3 envColor = textureLod(environmentMap, WorldPos, 1.2).rgb;
             
             <img src="../../img/pbr/ibl_prefilter_dots.png" alt="Visible dots on high frequency HDR maps in the deeper mip LOD levels of a pre-filter map."/>
               
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   One option is to further increase the sample count, but this won't be enough for all environments. As described by <a href="https://chetanjags.wordpress.com/2015/08/26/image-based-lighting/" target="_blank">Chetan Jags</a> we can reduce this artifact by (during the pre-filter convolution) not directly sampling the environment map, but sampling a mip level of the environment map based on the integral's PDF and the roughness:
 </p>
               
@@ -708,9 +710,7 @@ float saSample = 1.0 / (float(SAMPLE_COUNT) * pdf + 0.0001);
 float mipLevel = roughness == 0.0 ? 0.0 : 0.5 * log2(saSample / saTexel); 
 </code></pre>
               
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   Don't forget to enable trilinear filtering on the environment map you want to sample its mip levels from:
 </p>
               

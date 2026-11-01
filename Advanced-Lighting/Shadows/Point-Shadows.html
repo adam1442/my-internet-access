@@ -454,9 +454,7 @@ void main()
 }  
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   This geometry shader is relatively straightforward. We take as input a triangle, and output a total of 6 triangles (6 * 3 equals 18 vertices). In the <fun>main</fun> function we iterate over 6 cubemap faces where we specify each face as the output face by storing the face integer into <var>gl_Layer</var>. We then generate the output triangles by transforming each world-space input vertex to the relevant light space by multiplying <var>FragPos</var> with the face's light-space transformation matrix. Note that we also sent the resulting <var>FragPos</var> variable to the fragment shader that we'll need to calculate a depth value.
 </p>
   
@@ -516,7 +514,9 @@ RenderScene();
   The vertex and fragment shader are mostly similar to the original shadow mapping shaders: the difference being that the fragment shader no longer requires a fragment position in light space as we can now sample the depth values with a direction vector. 
 </p>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Because of this, the vertex shader doesn't needs to transform its position vectors to light space so we can remove the <var>FragPosLightSpace</var> variable:
 </p>
 

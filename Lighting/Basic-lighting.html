@@ -460,14 +460,14 @@ FragColor = vec4(result, 1.0);
   You can see that with diffuse lighting the cube starts to look like an actual cube again. Try visualizing the normal vectors in your head and move the camera around the cube to see that the larger the angle between the normal vector and the light's direction vector, the darker the fragment becomes.
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Feel free to compare your source code with the complete source code <a href="../code_viewer_gh.php%3Fcode=src%252F2.lighting%252F2.1.basic_lighting_diffuse%252Fbasic_lighting_diffuse.cpp.html" target="_blank">here</a> if you're stuck.
 </p>
 
 <h2>One last thing</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   in the previous section we passed the normal vector directly from the vertex shader to the fragment shader. However, the calculations in the fragment shader are all done in world space, so shouldn't we transform the normal vectors to world space coordinates as well? Basically yes, but it's not as simple as simply multiplying it with a model matrix. 
 </p>
 

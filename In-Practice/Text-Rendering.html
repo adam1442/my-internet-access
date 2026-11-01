@@ -527,14 +527,14 @@ unsigned int VAO, VBO;
 <function id='27'>glBindVertexArray</function>(0);      
 </code></pre>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The 2D quad requires <code>6</code> vertices of <code>4</code> floats each, so we reserve <code>6 * 4</code> floats of memory. Because we'll be updating the content of the VBO's memory quite often we'll allocate the memory with <var>GL_DYNAMIC_DRAW</var>.
 </p>
     
 <h3>Render line of text</h3>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   To render a character, we extract the corresponding <fun>Character</fun> struct of the <var>Characters</var> map and calculate the quad's dimensions using the character's metrics. With the quad's calculated dimensions we dynamically generate a set of 6 vertices that we use to update the content of the memory managed by the VBO using <fun><function id='90'>glBufferSubData</function></fun>.
 </p>
  

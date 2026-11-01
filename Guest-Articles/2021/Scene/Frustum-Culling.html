@@ -669,16 +669,16 @@ void drawSelfAndChild(const Frustum& frustum, Shader& ourShader,
     </p>
 
     <h2>Optimization</h2>
-    <p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+    <p>
         Now you know how to make your frustum culling.
         Frustum culling can be useful to avoid computation of things that are not visible.
         You can use it to not compute the animation state of your entity, simplify its AI...
         For this reason, I advise you to add a IsInFrustum flag in your entity and do a frustum culling pass that fills this variable.
     </p>
     <h3>Space partitionning</h3>
-    <p>
+    <p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
         In our example, frustum culling is a good balance with a small number of entities in the CPU.
         If you want to optimize your detection, you now will need to partition your space. 
         To do it, a lot of algorithms exist and each has interesting properties which depend on your usage :

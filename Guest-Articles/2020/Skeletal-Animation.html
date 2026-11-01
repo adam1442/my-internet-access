@@ -439,7 +439,9 @@ struct Vertex {
 }
 </code></pre>
             
-<p>Just like before, except now we have added 3 and 4 layout location ids for <code> boneIds</code> and <code>weights</code>. One imporant thing to notice here is how we are passing data for <code>boneIds</code>. We are using <code>glVertexAttribIPointer</code> and we passed GL_INT as third parameter.&nbsp;</p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>Just like before, except now we have added 3 and 4 layout location ids for <code> boneIds</code> and <code>weights</code>. One imporant thing to notice here is how we are passing data for <code>boneIds</code>. We are using <code>glVertexAttribIPointer</code> and we passed GL_INT as third parameter.&nbsp;</p>
 <p>Now we can extract the bone-weight information from the assimp data structure. Let's make some changes in Model class...</p>
 
 <pre><code>struct BoneInfo
@@ -582,9 +584,7 @@ private:
 	 <p> One thing to notice that we are calling <code>AssimpGLMHelpers::ConvertMatrixToGLMFormat</code>. 
 	 Assimp store its matrix data in different format than GLM so this function just gives us our matrix in GLM format.
     </p>
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>We have extracted the offsetMatrix for the bone and now we will simply iterate its <code>aiVertexWeight</code>array 
+	<p>We have extracted the offsetMatrix for the bone and now we will simply iterate its <code>aiVertexWeight</code>array 
 		and extract all vertices indices which will be influenced by this bone along with their 
 		respective weights and call <code>SetVertexBoneData</code> to fill up <code>Vertex.boneIds</code> and <code>Vertex.weights</code> with extracted information. </p>
 		

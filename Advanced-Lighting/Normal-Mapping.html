@@ -379,9 +379,7 @@ void main()
    We can calculate \(E\) as the difference vector between two triangle positions, and \(\Delta U\) and \(\Delta V\) as their texture coordinate differences. We're then left with two unknowns (tangent \(T\) and bitangent \(B\)) and two equations. You may remember from your algebra classes that this allows us to solve for \(T\) and \(B\).
 </p>
      
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The last equation allows us to write it in a different form: that of matrix multiplication:
 </p>
      
@@ -441,7 +439,9 @@ glm::vec2 deltaUV1 = uv2 - uv1;
 glm::vec2 deltaUV2 = uv3 - uv1;  
 </code></pre>
      
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   With the required data for calculating tangents and bitangents we can start following the equation from the previous section:
 </p>
      

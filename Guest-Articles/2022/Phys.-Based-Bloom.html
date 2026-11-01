@@ -844,9 +844,7 @@ GLuint BloomRenderer::BloomTexture()
 	  it restores the viewport size and binds the default framebuffer.
 	</p>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  The only thing that we are missing now is the two private methods, which renders
 	  downsamples and upsamples. I have done my best to add some comments explaining
 	  what is happening:
@@ -925,7 +923,9 @@ void BloomRenderer::RenderUpsamples(float filterRadius)
 }
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  For both methods we're<!--'--> relying on <tt>quadVAO</tt>, which is created
 	  before-hand (code snippet below this paragraph). During the downsampling
 	  we fetch the mip chain, activate the shader, and then run a loop through
@@ -1152,7 +1152,9 @@ void configureQuad() {
 	  </ol>
 	</p>
 
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  Luma is equal to how we would compute Luminance from RGB, but Luma is computed
 	  from sRGB. The below code shows the procedure:
 	</p>
@@ -1301,9 +1303,7 @@ void main()
 	<img src="\img\guest\2022\physically_based_bloom\lens-dirt-overlay.png.html"/>
 	
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  Notice how the lens dirt is visible on the entire screen, and not only at the bright
 	  areas. This is because there is bloom everywhere. If we were using thresholded bloom
 	  this would not work, and we would have to blend in the lens dirt in some other way.
