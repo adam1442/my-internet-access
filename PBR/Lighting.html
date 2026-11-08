@@ -458,7 +458,9 @@ float denominator = 4.0 * max(dot(N, V), 0.0) * max(dot(N, L), 0.0)  + 0.0001;
 vec3 specular     = numerator / denominator;  
 </code></pre>
   
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Note that we add <code>0.0001</code> to the denominator to prevent a divide by zero in case any dot product ends up <code>0.0</code>.
 </p>
   
@@ -602,9 +604,7 @@ void main()
   
   <img src="../img/pbr/lighting_result.png" alt="Render of PBR spheres with varying roughness and metallic values in OpenGL."/>
   
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   From bottom to top the metallic value ranges from <code>0.0</code> to <code>1.0</code>, with roughness increasing left to right from <code>0.0</code> to <code>1.0</code>. You can see that by only changing these two simple to understand parameters we can already display a wide array of different materials.
 </p>
 

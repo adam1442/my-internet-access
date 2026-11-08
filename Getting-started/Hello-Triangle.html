@@ -423,7 +423,9 @@ void main()
   As you can see, GLSL looks similar to C. Each shader begins with a declaration of its version. Since OpenGL 3.3 and higher the version numbers of GLSL match the version of OpenGL (GLSL version 420 corresponds to OpenGL version 4.2 for example). We also explicitly mention we're using core profile functionality.
 </p>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Next we declare all the input vertex attributes in the vertex shader with the <code>in</code> keyword. Right now we only care about position data so we only need a single vertex attribute. GLSL has a vector datatype that contains 1 to 4 floats based on its postfix digit. Since each vertex has a 3D coordinate we create a <code>vec3</code> input variable with the name <var>aPos</var>. We also specifically set the location of the input variable via <code>layout (location = 0)</code> and you'll later see that why we're going to need that location.
 </p>
 
@@ -432,9 +434,7 @@ void main()
   In graphics programming we use the mathematical concept of a vector quite often, since it neatly represents positions/directions in any space and has useful mathematical properties. A vector in GLSL has a maximum size of 4 and each of its values can be retrieved via <code>vec.x</code>, <code>vec.y</code>, <code>vec.z</code> and <code>vec.w</code> respectively where each of them represents a coordinate in space. Note that the <code>vec.w</code> component is not used as a position in space (we're dealing with 3D, not 4D) but is used for something called <def>perspective division</def>. We'll discuss vectors in much greater depth in a later chapter.
 </note>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   To set the output of the vertex shader we have to assign the position data to the predefined <var>gl_Position</var> variable which is a <code>vec4</code> behind the scenes. At the end of the <fun>main</fun> function, whatever we set <var>gl_Position</var> to will be used as the output of the  vertex shader. Since our input is a vector of size 3 we have to cast this to a vector of size 4. We can do this by inserting the <code>vec3</code> values inside the constructor of <code>vec4</code> and set its <code>w</code> component to <code>1.0f</code> (we will explain why in a later chapter).
 </p>
 
@@ -553,9 +553,7 @@ fragmentShader = <function id='37'>glCreateShader</function>(GL_FRAGMENT_SHADER)
  A shader program object is the final linked version of multiple shaders combined. To use the recently compiled shaders we have to <def>link</def> them to a shader program object and then activate this shader program when rendering objects. The activated shader program's shaders will be used when we issue render calls. 
 </p>
 
-<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+<p>
   When linking the shaders into a program it links the outputs of each shader to the inputs of the next shader. This is also where you'll get linking errors if your outputs and inputs do not match. </p>
 
 <p>
@@ -593,7 +591,9 @@ if(!success) {
 </code></pre>
 </note>
 
-<p>
+<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
   The result is a program object that we can activate by calling <fun><function id='28'>glUseProgram</function></fun> with the newly created program object as its argument:
 </p>
 

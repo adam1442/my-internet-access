@@ -533,9 +533,7 @@ glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
   This removes any translation, but keeps all rotation transformations so the user can still look around the scene. 
 </p>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   The result is a scene that instantly looks enormous due to our skybox. If you'd fly around the basic container you immediately get a sense of scale which dramatically improves the realism of the scene. The result looks something like this:
 </p>
 
@@ -546,7 +544,9 @@ glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
 </p>
 
 <h2>An optimization</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Right now we've rendered the skybox first before we rendered all the other objects in the scene. This works great, but isn't too efficient. If we render the skybox first we're running the fragment shader for each pixel on the screen even though only a small part of the skybox will eventually be visible; fragments that could have easily been discarded using <def>early depth testing</def> saving us valuable bandwidth.
 </p>
 

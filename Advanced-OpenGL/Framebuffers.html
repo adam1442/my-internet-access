@@ -432,9 +432,7 @@ unsigned int rbo;
 <function id='89'>glFramebufferRenderbuffer</function>(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, rbo);  
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Renderbuffer objects can be more efficient for use in your off-screen render projects, but it is important to realize when to use renderbuffer objects and when to use textures. The general rule is that if you never need to sample data from a specific buffer, it is wise to use a renderbuffer object for that specific buffer. If you need to sample data from a specific buffer like colors or depth values, you should use a texture attachment instead. 
 </p>
 
@@ -487,7 +485,9 @@ unsigned int rbo;
 <function id='83'>glBindRenderbuffer</function>(GL_RENDERBUFFER, 0);
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Once we've allocated enough memory for the renderbuffer object we can unbind the renderbuffer.
 </p>
 
