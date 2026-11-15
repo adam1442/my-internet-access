@@ -763,7 +763,9 @@ private:
 };
 </code></pre>
 
-	<p>
+	<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 	  Again, we start with the <tt>Init</tt> function. This should initialize the
 	  data member that contains the framebuffer and load the shader programs:
 	</p>
@@ -923,9 +925,7 @@ void BloomRenderer::RenderUpsamples(float filterRadius)
 }
 </code></pre>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 	  For both methods we're<!--'--> relying on <tt>quadVAO</tt>, which is created
 	  before-hand (code snippet below this paragraph). During the downsampling
 	  we fetch the mip chain, activate the shader, and then run a loop through
@@ -1227,7 +1227,9 @@ default:
 	</p>
 
 	<h2>Bonus material 3: Lens dirt</h2>
-	<p>
+	<p><div id="in_content_ad_3">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
+				</div><p>
 	  Another extension commonly attached to bloom is lens dirt. Where bloom
 	  aims to model the scattering of light in the lens, lens dirt is an overlay
 	  which controls the bloom effect in certain fixed areas of the lens. As you
@@ -1307,9 +1309,7 @@ void main()
 	  this would not work, and we would have to blend in the lens dirt in some other way.
 	</p>
 
-	<p><div id="in_content_ad_3">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15503"></div>
-				</div><p>
+	<p>
 	  The effect is exaggerated for the sake of visibility, but should probably be used
 	  with more subtlety in a game. It adds a lot of realism and immersion, especially for
 	  action games or desert environments. Feel tree to experiment!

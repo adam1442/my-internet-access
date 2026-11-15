@@ -447,7 +447,9 @@ void main()
 }
 </code></pre>
     
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Here we take a relatively small sample of Gaussian weights that we each use to assign a specific weight to the horizontal or vertical samples around the current fragment. You can see that we split the blur filter into a horizontal and vertical section based on whatever value we set the <var>horizontal</var> uniform. We base the offset distance on the exact size of a texel obtained by the division of <code>1.0</code> over the size of the texture (a <code>vec2</code> from <fun>textureSize</fun>).
 </p>
     
@@ -477,9 +479,7 @@ for (unsigned int i = 0; i &lt; 2; i++)
 }
 </code></pre>
     
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Then after we've obtained an HDR texture and an extracted brightness texture, we first fill one of the ping-pong framebuffers with the brightness texture and then blur the image 10 times (5 times horizontally and 5 times vertically):
 </p>
     

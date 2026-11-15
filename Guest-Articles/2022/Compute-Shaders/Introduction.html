@@ -421,7 +421,9 @@ checkCompileErrors(ID, "PROGRAM");
 layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
 </code></pre>
 
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
 		Since we will execute our shader for every pixel of an image, we will keep our local size at 1 in every dimension  (1 pixel per <def>work group</def>). We will alter this value later. OpenGL will handle this <def>local size</def> in the background. The values must be an integral constant expression of a value greater than 0 and it must abide by limitations shown in the warning paragraph below.
 	</p>
 
@@ -496,9 +498,7 @@ layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
 }
 </code></pre>
 
-	<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+	<p>
 		We will setup the execution of the compute shader that every <def>invocation</def> corresponds to one pixel, though the global x and y size will be equal to the image's x and y dimension. Therefore, the <var>gl_GlobalInvocationID</var> gives us the absolute coordinate of the current pixel.Remember that we only have one single <def>invocation</def> per <def>work group</def> as we set all local dimensions to 1. Using the <var>gl_NumWorkGroups</var> variable, we can calculate the relative coordinate of the image in the range [0, 1] per dimension.
 	</p>
 

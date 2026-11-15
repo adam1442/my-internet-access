@@ -471,7 +471,9 @@ geometryShader = <function id='37'>glCreateShader</function>(GL_GEOMETRY_SHADER)
 </p>
 
 <h2>Let's build houses</h2>
-<p>
+<p><div id="in_content_ad_2">
+				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
+				</div><p>
   Drawing points and lines isn't <strong>that</strong> interesting so we're going to get a little creative by using the geometry shader to draw a house for us at the location of each point. We can accomplish this by setting the output of the geometry shader to <def>triangle_strip</def> and draw a total of three triangles: two for the square house and one for the roof.
 </p>
 
@@ -539,9 +541,7 @@ float points[] = {
 };  
 </code></pre>
 
-<p><div id="in_content_ad_2">
-				<!-- 728x90/300x250/320x50 --><div id="waldo-tag-15502"></div>
-				</div><p>
+<p>
   Then we update the vertex shader to forward the color attribute to the geometry shader using an interface block:
 </p>
 
